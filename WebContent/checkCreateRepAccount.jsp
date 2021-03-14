@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Create Account Check Details</title>
+<title>Create Customer Rep Account Check Details</title>
 </head>
 <body>
 <%@ page import ="java.sql.*" %>
@@ -24,12 +24,12 @@
 	Statement stmt = con.createStatement();
     
     ResultSet rs = null;
-    rs = stmt.executeQuery("select * from users where username='" + userid + "'");
+    rs = stmt.executeQuery("select * from customerrep where username='" + userid + "'");
     if (rs.next()) {
-    	out.println("Username exists, please try another <a href='createAccount.jsp'>try again</a>");
+    	out.println("Username exists, please try another <a href='createRepAccount.jsp'>try again</a>");
     } else {
     	int x = stmt.executeUpdate("insert into account values('" +userid+ "', '" +pwd+ "', '" + address + "', '" + email + "', '"+ name + "')");
-    	int y = stmt.executeUpdate("insert into users values('" +userid+ "', '" +pwd+ "')");
+    	int y = stmt.executeUpdate("insert into customerrep values('" +userid+ "', '" +pwd+ "')");
     	session.setAttribute("user", userid); 
         response.sendRedirect("success.jsp");
         out.println("welcome " + userid);
