@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Page</title>
+<title>Admin </title>
 </head>
 <body>
 <a href="createRepAccount.jsp">Create Customer Rep Account</a>
