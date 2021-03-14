@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Login</title>
+<title>Admin Login Page</title>
 </head>
 <body>
 	<form action="checkAdminLogin.jsp" method="POST">
