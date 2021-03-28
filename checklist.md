@@ -2,9 +2,9 @@ I. Create accounts of users; login, logout.
 
 II. Auctions (Manual)
    [ ] seller creates auctions and posts items for sale
-	[ ] set all the characteristics of the item
-	[ ] set closing date and time
-        	[ ] set a hidden minimum price (reserve)
+	[] set all the characteristics of the item
+	[] set closing date and time
+        	[] set a hidden minimum price (reserve)
     [] a buyer should be able to bid
 	    [] let the buyer set a new bid
 	    [] alert other buyers of the item that a higher bid has been placed 
