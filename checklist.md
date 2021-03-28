@@ -1,6 +1,7 @@
 I. Create accounts of users; login, logout.
 
 II. Auctions (Manual)
+
    [ ] seller creates auctions and posts items for sale
 	[ ] set all the characteristics of the item
 	[ ] set closing date and time
