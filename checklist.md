@@ -1,6 +1,6 @@
-## I. Create accounts of users; login, logout.
+I. Create accounts of users; login, logout.
 
-## II. Auctions (Manual)
+II. Auctions (Manual)
    [ ] seller creates auctions and posts items for sale
 	[ ] set all the characteristics of the item
 	[ ] set closing date and time
@@ -14,7 +14,7 @@
 	    [ ] if no: whoever has the higher bid is the winner
 		[] alert the winner that they won the auction
 
-## III Auctions (Automatic)
+III Auctions (Automatic)
     [ ] a buyer should be able to set an automatic bidding
 	[ ] set a secret upper limit
 	[ ] set a bid increment (put in the database a higher bid automatically for the user in       
@@ -27,7 +27,7 @@
 		[ ] alert the winner that they won the auction
 
 
-## IV Browsing and advanced search functionality
+IV Browsing and advanced search functionality
     [ ] let people browse on the items and see the status of the current bidding
     [ ] sort by different criteria (by type, bidding price etc.)
     [ ] search the list of items by various criteria.
@@ -38,7 +38,7 @@
     [ ] let user set an alert for specific items s/he is interested 
 	[ ] get an alert when the item becomes available
 
-## V Admin and customer rep functions
+V Admin and customer rep functions
       [ ] Admin (create an admin account ahead of time)
 	[ ] creates accounts for customer representatives
     	[ ] generates sales reports for:
