@@ -15,7 +15,7 @@
 		[] alert the winner that they won the auction
 
 ## III Auctions (Automatic)
-    [] a buyer should be able to set an automatic bidding
+   [] a buyer should be able to set an automatic bidding
 	[] set a secret upper limit
 	[] set a bid increment (put in the database a higher bid automatically for the user in       
        case someone bids higher)
@@ -28,7 +28,7 @@
 
 
 ## IV Browsing and advanced search functionality
-    [] let people browse on the items and see the status of the current bidding
+   [] let people browse on the items and see the status of the current bidding
     [] sort by different criteria (by type, bidding price etc.)
     [] search the list of items by various criteria.
     [] a user should be able to:
@@ -39,7 +39,7 @@
 	[] get an alert when the item becomes available
 
 ## V Admin and customer rep functions
-      [] Admin (create an admin account ahead of time)
+  [] Admin (create an admin account ahead of time)
 	[] creates accounts for customer representatives
     	[] generates sales reports for:
 		[] total earnings
@@ -50,7 +50,7 @@
     		[] best-selling items
    		[] best buyers
 
-      [] Customer representative functions:
+  []  Customer representative functions:
 	[] users browse questions and answers
 	[] users search questions by keywords
 	[] users post questions to the customer representatives (i.e. customer service)
