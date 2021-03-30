@@ -12,55 +12,72 @@
       <input type="text" name="search" placeholder="Username">
       <button type="submit">Search</button>
     </form>
-    <table>
-    	<tr>
-    		<th>Username</th>
-    		<th>Name</th>
-    		<th>Email</th>
-    	</tr>
+   
 <% 	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem", "root", "aDriTa@123");
-    	Statement st = con.createStatement();
-    	ResultSet rs;
-    	String name = request.getParameter("search");
-    	//if (name != null && name.length() > 0) {
-    	    rs = st.executeQuery("SELECT * FROM users WHERE username LIKE'%"+name+"%'");
-    	//} else {
-    	    //rs = st.executeQuery("SELECT * FROM users WHERE username NOT IN (SELECT username FROM admin) AND username NOT IN(SELECT username FROM customerrep)");
-    	//} 
-    	while(rs.next()) {
-%>
-		<tr>
-			<td><%=rs.getString("username")%></td>
-			<td><%=rs.getString("name")%></td>
-			<td><%=rs.getString("email")%></td>
-			<td>
-			<form action="editUser.jsp" method="POST">
-      			<input type="submit" value="Edit">
-      			<input type="hidden" value=<%=rs.getString("username")%> name="username">
-      			<input type="hidden" value=<%=rs.getString("name")%> name="name">
-       			<input type="hidden" value=<%=rs.getString("email")%> name="email">
-   			</form>
-   			</td>
-   			<td>
-  			<form method="POST">
-   				<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
-  				<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
-  			</form>
-   			</td>
-			
-		</tr>     
-<%    
+	//Get the database connection
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem", "root", "aDriTa@123");
+		
+
+	//Create a SQL statement
+	Statement stmt = con.createStatement();
+	//Get the selected radio button from the index.jsp
+	String entity = request.getParameter("search");
+	//Make a SELECT query from the table specified by the 'command' parameter at the index.jsp
+	String str = "SELECT * FROM account WHERE username LIKE'%"+entity+"%' AND username NOT IN (SELECT username FROM admin) AND username NOT IN(SELECT username FROM customerrep)";
+	//Run the query against the database.
+	ResultSet rs = stmt.executeQuery(str);
+	%>
+		<% //Make an HTML table to show the results in:
+			out.print("<table>");
+
+			//make a row
+			out.print("<tr>");
+			//make a column
+			out.print("<td>");
+			//print out column header
+			out.print("Username");
+			out.print("</td>");
+			//make a column
+			out.print("<td>");
+			out.print("Name");
+			out.print("</td>");
+			//make a column
+			out.print("<td>");
+			out.print("Email");
+			out.print("</td>");
+			out.print("</tr>");
+
+			//parse out the results
+			while (rs.next()) {
+				//make a row
+				out.print("<tr>");
+				//make a column
+				out.print("<td>");
+				//Print out current bar name:
+				out.print(rs.getString("username"));
+				out.print("</td>");
+				out.print("<td>");
+				//Print out current beer name:
+				out.print(rs.getString("name"));
+				out.print("</td>");
+				out.print("<td>");
+				//Print out current price
+				out.print(rs.getString("email"));
+				out.print("</td>");
+				out.print("</tr>");
+
+			}
+		
+			out.print("</table>");
+		
+			   
+//close the connection.
+			con.close();
+
+		} catch (Exception e) {
 		}
-	}
-	catch(SQLException se){
-		se.printStackTrace();
-	}
-	catch(Exception e){
-		e.printStackTrace();
-	}
-%>
-	</table>
+	%>
+
 </body>
 </html>
