@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import ="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +17,10 @@
    
 <% 	try{
 	//Get the database connection
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem", "root", "aDriTa@123");
+	/* Class.forName("com.mysql.jdbc.Driver"); */
+	ApplicationDB db = new ApplicationDB();	
+	Connection con = db.getConnection();
 		
-
 	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	//Get the selected radio button from the index.jsp
@@ -51,7 +53,7 @@
 			//parse out the results
 			while (rs.next()) {
 				//make a row
-				out.print("<tr>");
+				/* out.print("<tr>");
 				//make a column
 				out.print("<td>");
 				//Print out current bar name:
@@ -65,7 +67,30 @@
 				//Print out current price
 				out.print(rs.getString("email"));
 				out.print("</td>");
-				out.print("</tr>");
+				out.print("</tr>"); */
+				
+				%>
+				<tr>
+					<td><%=rs.getString("username")%></td>
+					<td><%=rs.getString("name")%></td>
+					<td><%=rs.getString("email")%></td>
+					<td>
+					<form action="editUser.jsp" method="POST">
+		      			<input type="submit" value="Edit">
+		      			<input type="hidden" value=<%=rs.getString("username")%> name="username">
+		      			<input type="hidden" value=<%=rs.getString("name")%> name="name">
+		       			<input type="hidden" value=<%=rs.getString("email")%> name="email">
+		   			</form>
+		   			</td>
+		   			<td>
+		  			<form method="POST">
+		   				<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
+		  				<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
+		  			</form>
+		   			</td>
+					
+				</tr>     
+		<%
 
 			}
 		
