@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*,java.text.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*"%> 	
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +17,21 @@
  	<% if (session.getAttribute("user") == null) { 
     		response.sendRedirect("login.jsp");
        } else { %>
-    	<%@ include file="navbar.jsp" %>
+    <%-- 	<%@ include file="navbar.jsp" %> --%>
     	<div class="content">
     	<%
-	    	String url = "jdbc:mysql://buyme.cas20dm0rabg.us-east-1.rds.amazonaws.com:3306/buyMe";
-			Connection conn = null;
+/* 	    	String url = "jdbc:mysql://buyme.cas20dm0rabg.us-east-1.rds.amazonaws.com:3306/buyMe";
+ */			Connection conn = null;
 			Statement s = null;
     		ResultSet rs = null;
-    	
+    		 ApplicationDB db = new ApplicationDB();	
+    			Connection con = db.getConnection(); 	
     		try {
-    			Class.forName("com.mysql.jdbc.Driver").newInstance();
-				conn = DriverManager.getConnection(url, "cs336admin", "cs336password");
+    		/* 	Class.forName("com.mysql.jdbc.Driver").newInstance();
+				conn = DriverManager.getConnection(url, "cs336admin", "cs336password"); */
 				Locale locale = new Locale("en", "US");
 				NumberFormat currency = NumberFormat.getCurrencyInstance(locale);
-				String allAuctionsQuery = "SELECT * FROM Product WHERE sold=false";
+				String allAuctionsQuery = "SELECT * FROM product WHERE sold=false";
 				s = conn.createStatement();
 				rs = s.executeQuery(allAuctionsQuery);
 				if (rs.next()) { %>

@@ -23,6 +23,8 @@
 	            <li><a href="accountSettings.jsp">Change account settings</a></li> -->
 	            <li><a href="createAuction.jsp">Create Auction</a></li>
 				<li><a href="search.jsp">Search Auction</a></li>
+				<li><a href="askQuestion.jsp">Search Auction</a></li>
+				<li><a href="index.jsp">Search Auction</a></li>
 	    	</ul>
     	</div>
     <% } %>

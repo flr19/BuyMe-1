@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="style.css?v=1.0" />
 </head>
 <body>	
-	<%@ include file="navbar.jsp"%>
+	<%-- <%@ include file="navbar.jsp"%> --%>
 	<div class="content">
 	<%	if (request.getParameter("submit") != null && (request.getParameter("submit")).toString().equals("success")) { %>
 			<h1>Your question has been submitted successfully.</h1>
@@ -25,17 +25,15 @@
 			<input type="submit" value="Submit">					
 		</form>	
 	<% 
-		/* String url = "jdbc:mysql://buyme.cas20dm0rabg.us-east-1.rds.amazonaws.com:3306/buyMe"; */
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ApplicationDB db = new ApplicationDB();	
 		Connection con = db.getConnection();
 		try {   		
-			/* Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection(url, "cs336admin", "cs336password"); */
+		
 			String username = (session.getAttribute("user")).toString();
-			String questionsQuery = "SELECT * FROM Questions";
+			String questionsQuery = "SELECT * FROM questions";
 			String check = "Awaiting answer from customer representative";
 			
 			ps = conn.prepareStatement(questionsQuery);
@@ -56,7 +54,7 @@
 							<td><%= rs.getString("question") %> </td>
 							<% if (check.equals(rs.getString("answer"))
 									&& Integer.parseInt((session.getAttribute("access_level")).toString()) != 1) { %>
-								<form action="answersHandler.jsp?questionId=<%= rs.getInt("questionId") %>" method="POST">
+								<form action="ansersHandler.jsp?questionid=<%= rs.getInt("questionid") %>" method="POST">
 									<td>
 										<textarea type="textarea" name="Answer"></textarea>
 										<input type="submit" value="Answer">
