@@ -31,7 +31,7 @@
     	int x = stmt.executeUpdate("insert into account values('" +userid+ "', '" +pwd+ "', '" + address + "', '" + email + "', '"+ name + "')");
     	int y = stmt.executeUpdate("insert into users values('" +userid+ "', '" +pwd+ "')");
     	session.setAttribute("user", userid); 
-        response.sendRedirect("success.jsp");
+        response.sendRedirect("account.jsp");
         out.println("welcome " + userid);
     }
 %>

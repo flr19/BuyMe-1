@@ -14,7 +14,7 @@ public class ApplicationDB {
 		
 		
 		//Create a connection string
-		String connectionUrl = "jdbc:mysql://localhost:3306/AuctionSystem";
+		String connectionUrl = "jdbc:mysql://cs336db.cnp0zklnvjct.us-east-2.rds.amazonaws.com:3306/auctionsystem";
 		Connection connection = null;
 		
 		try {
