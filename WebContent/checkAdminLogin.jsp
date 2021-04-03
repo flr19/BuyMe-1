@@ -26,7 +26,7 @@
     	 ResultSet rs1;
     	    rs1 = stmt.executeQuery("select * from admin where username='" + userid + "' and password='" + pwd + "'");
     	    if (rs1.next()) {
-    	    	session.setAttribute("user", userid); // the username will be stored in the session
+    	    	session.setAttribute("admin", userid); // the username will be stored in the session
     	        response.sendRedirect("adminPage.jsp");
     	        out.println("welcome " + userid);
     	        out.println("<a href='logout.jsp'>Log out</a>");

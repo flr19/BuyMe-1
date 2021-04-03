@@ -1,20 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 		
 	<% 
-		String url = "jdbc:mysql://buyme.cas20dm0rabg.us-east-1.rds.amazonaws.com:3306/buyMe";
 		Connection conn = null;
 		PreparedStatement ps = null;
 			
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection(url, "cs336admin", "cs336password");
+			ApplicationDB db = new ApplicationDB();	
+			conn = db.getConnection();
 			
-			int questionId = Integer.parseInt(request.getParameter("questionId"));
-			String answer = request.getParameter("Answer");
+			int questionId = Integer.parseInt(request.getParameter("questionid"));
+			String answer = request.getParameter("answer");
 			if(answer != null && !answer.isEmpty()){
 				
-				String insert = "UPDATE Questions SET answer=? WHERE questionId=?";
+				String insert = "UPDATE questions SET answer=? WHERE questionid=?";
 				
 				ps = conn.prepareStatement(insert);
 				

@@ -4,15 +4,15 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 		
 	<% 
-		Connection conn = null;
 		PreparedStatement ps = null;
+	Connection conn = null;
 			
 		try {
 			ApplicationDB db = new ApplicationDB();	
-			Connection con = db.getConnection();
+			conn = db.getConnection();
 			
 			String username = (session.getAttribute("user")).toString();
-			String question = request.getParameter("Question");
+			String question = request.getParameter("question");
 			if(username != null && !username.isEmpty() && question != null && !question.isEmpty()){
 				
 				String insert = "INSERT INTO questions (user, question, answer)" + "VALUES (?, ?, ?)";

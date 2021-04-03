@@ -6,34 +6,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Delete User</title>
+<title>Delete Customer Representative</title>
 </head>
+<body>
 <%
 try{
+	
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 	Statement st = con.createStatement();
-	String usn=request.getParameter("usn");
-	int res=st.executeUpdate("DELETE FROM users WHERE username='"+usn+"'");
+	String user=request.getParameter("user");
+	int res=st.executeUpdate("DELETE FROM customerrep WHERE username='"+user+"'");
 	if(res>0){
-		out.println("User deleted.");
+		out.println("Representative deleted");
+		out.println("<a href='adminPage.jsp'>Return to dashboard.</a>");
 	}
 	else{
-		out.println("Error deleting user.");
-		out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
+		out.println("Error deleting.");
+		out.println("<a href='adminPage.jsp'>Return to dashboard.</a>");
 	}
 }
 catch (SQLException se){
 	out.println("Error.");
-	out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
+	out.println("<a href='adminPage.jsp'>Return to dashboard.</a>");
 	se.printStackTrace();
 }
 catch (Exception e){
 	e.printStackTrace();
 }
 %>
-<body>
-	<p>User deleted.</p>
-	<a href="customerRepHomepage.jsp">Homepage</a>
 </body>
 </html>

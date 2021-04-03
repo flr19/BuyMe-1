@@ -40,12 +40,10 @@
 			
 			//Locale locale = new Locale("en", "US");
 			//NumberFormat currency = NumberFormat.getCurrencyInstance(locale);
-			
-			Connection conn = null;
 			Statement s = null;
 			ResultSet rs = null;
 			ApplicationDB db = new ApplicationDB();	
-			Connection con = db.getConnection();
+			Connection conn = db.getConnection();
 			try {
 		
 			

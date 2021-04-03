@@ -10,10 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Frequently Asked Questions </title>
-<link rel="stylesheet" href="style.css?v=1.0" />
 </head>
 <body>	
-	<%-- <%@ include file="navbar.jsp"%> --%>
+
 	<div class="content">
 	<%	if (request.getParameter("submit") != null && (request.getParameter("submit")).toString().equals("success")) { %>
 			<h1>Your question has been submitted successfully.</h1>
@@ -21,15 +20,14 @@
 	
 		<h1>Submit a new question:</h1>
 		<form action="questionsHandler.jsp" method="post">
-			<textarea style="font-size: 18pt" rows="1" cols="90" maxlength="250" id="msg" name="Question"></textarea> <br>
+			<textarea style="font-size: 18pt" rows="1" cols="90" maxlength="250" id="msg" name="question"></textarea> <br>
 			<input type="submit" value="Submit">					
 		</form>	
 	<% 
-		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ApplicationDB db = new ApplicationDB();	
-		Connection con = db.getConnection();
+		Connection conn = db.getConnection();
 		try {   		
 		
 			String username = (session.getAttribute("user")).toString();
@@ -53,11 +51,12 @@
 						<tr>
 							<td><%= rs.getString("question") %> </td>
 							<% if (check.equals(rs.getString("answer"))
-									&& Integer.parseInt((session.getAttribute("access_level")).toString()) != 1) { %>
-								<form action="ansersHandler.jsp?questionid=<%= rs.getInt("questionid") %>" method="POST">
+									&& (session.getAttribute("customerrep"))!=null)
+									{%>
+								<form action="answersHandler.jsp?questionid=<%= rs.getInt("questionid") %>" method="POST">
 									<td>
-										<textarea type="textarea" name="Answer"></textarea>
-										<input type="submit" value="Answer">
+										<textarea type="textarea" name="answer"></textarea>
+										<input type="submit" value="answer">
 									</td>
 								</form>
 							<% } else { %>

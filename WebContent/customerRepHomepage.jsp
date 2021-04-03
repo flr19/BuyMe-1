@@ -10,7 +10,9 @@
 	<h2>Customer Representative Homepage</h2>
      <a href="questions.jsp">Reply to User Questions</a><br>
 	<a href="manageUsers.jsp">Manage User Accounts</a><br>
-	<!-- <a href="auctionManager.jsp">Manage Auctions</a><br>-->
-	<a href="logout.jsp">Logout</a>
+	<!-- <a href="manageAuctions.jsp">Cancel an Auction</a><br>
+	
+	<a href="removeBids.jsp">Remove Bids</a><br> -->
+		<a href="logout.jsp">Logout</a>
 </body>
 </html>

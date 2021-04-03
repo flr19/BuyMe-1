@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuyMe - Error</title>
-<!--     <link rel="stylesheet" href="style.css?v=1.0"/>
- --></head>
+</head>
 <body>
     <% if(session.getAttribute("user") == null) { 
     		response.sendRedirect("login.jsp");

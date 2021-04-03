@@ -10,25 +10,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuyMe</title>
-    <link rel="stylesheet" href="style.css?v=1.0"/>
 </head>
 <body> 	
  	
  	<% if (session.getAttribute("user") == null) { 
     		response.sendRedirect("login.jsp");
        } else { %>
-    <%-- 	<%@ include file="navbar.jsp" %> --%>
     	<div class="content">
     	<%
-/* 	    	String url = "jdbc:mysql://buyme.cas20dm0rabg.us-east-1.rds.amazonaws.com:3306/buyMe";
- */			Connection conn = null;
+    	Connection conn = null;
 			Statement s = null;
     		ResultSet rs = null;
     		 ApplicationDB db = new ApplicationDB();	
-    			Connection con = db.getConnection(); 	
+    			conn = db.getConnection(); 	
     		try {
-    		/* 	Class.forName("com.mysql.jdbc.Driver").newInstance();
-				conn = DriverManager.getConnection(url, "cs336admin", "cs336password"); */
 				Locale locale = new Locale("en", "US");
 				NumberFormat currency = NumberFormat.getCurrencyInstance(locale);
 				String allAuctionsQuery = "SELECT * FROM product WHERE sold=false";
@@ -46,8 +41,8 @@
 						<%	do { %>
 						<tr>
 							<td>
-								<a href="auction.jsp?productId=<%= rs.getInt("productId") %>">
-									<%= rs.getString("brand") + " " + rs.getString("model") + " " + rs.getString("gender") +  " " + rs.getFloat("size") %>
+								<a href="auction.jsp?productId=<%= rs.getInt("productid") %>">
+									<%= rs.getString("brand")/*  + " " + rs.getString("model") + " " + rs.getString("gender") +  " " + rs.getFloat("size") */ %>
 								</a>
 							</td>
 							<td><%= rs.getString("seller") %></td>

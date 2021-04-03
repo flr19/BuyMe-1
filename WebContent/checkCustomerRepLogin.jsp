@@ -16,8 +16,6 @@
    ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection(); 	
 	
-	/* Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem","root", ""); */
 	Statement stmt = con.createStatement();
 	
     ResultSet rs;
@@ -25,7 +23,7 @@
   
     	    rs = stmt.executeQuery("select * from customerrep where username='" + userid + "' and password='" + pwd + "'");
     	    if (rs.next()) {
-    	    	session.setAttribute("user", userid); // the username will be stored in the session
+    	    	session.setAttribute("customerrep", userid); // the username will be stored in the session
     	        response.sendRedirect("customerRepHomepage.jsp");
     	        out.println("welcome " + userid);
     	        out.println("<a href='logout.jsp'>Log out</a>");
