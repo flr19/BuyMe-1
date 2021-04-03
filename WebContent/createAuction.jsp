@@ -18,8 +18,8 @@
 		<form action="checkCreateAuction.jsp" method="POST">
 			<label for="category">Category</label> <select name="category" id="category" required>
 				<option value="" disabled selected hidden="true">Select category</option>
-				<option value="Dress Shoes">Dress Shoes</option>
-				<option value="Sneakers">Sneakers</option>
+				<option value="Analog Watches">Analog Watches</option>
+				<option value="Digital Watches">Digital Watches</option>
 				<option value="Sandals">Sandals</option>
 				<option value="Boots">Boots</option>
 			</select> <br>
