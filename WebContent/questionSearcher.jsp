@@ -24,7 +24,7 @@
 	//Get the selected radio button from the index.jsp
 	String entity = request.getParameter("search");
 	//Make a SELECT query from the table specified by the 'command' parameter at the index.jsp
-	String str = "SELECT * FROM questions WHERE question LIKE'%"+entity+"%'";
+	String str = "SELECT question,answer FROM questions WHERE question LIKE'%"+entity+"%'";
 	//Run the query against the database.
 	ResultSet rs = stmt.executeQuery(str);
 	%>
@@ -46,43 +46,12 @@
 
 			//parse out the results
 			while (rs.next()) {
-				//make a row
-				/* out.print("<tr>");
-				//make a column
-				out.print("<td>");
-				//Print out current bar name:
-				out.print(rs.getString("question"));
-				out.print("</td>");
-				out.print("<td>");
-				//Print out current beer name:
-				out.print(rs.getString("name"));
-				out.print("</td>");
-				out.print("<td>");
-				//Print out current price
-				out.print(rs.getString("email"));
-				out.print("</td>");
-				out.print("</tr>"); */
+				
 				
 				%>
 				<tr>
-					<td><%=rs.getString("username")%></td>
-					<td><%=rs.getString("name")%></td>
-					<td><%=rs.getString("email")%></td>
-					<td>
-					<form action="editUser.jsp" method="POST">
-		      			<input type="submit" value="Edit">
-		      			<input type="hidden" value=<%=rs.getString("username")%> name="username">
-		      			<input type="hidden" value=<%=rs.getString("name")%> name="name">
-		       			<input type="hidden" value=<%=rs.getString("email")%> name="email">
-		   			</form>
-		   			</td>
-		   			<td>
-		  			<form method="POST">
-		   				<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
-		  				<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
-		  			</form>
-		   			</td>
-					
+					<td><%=rs.getString("question")%></td>
+					<td><%=rs.getString("answer")%></td>
 				</tr>     
 		<%
 

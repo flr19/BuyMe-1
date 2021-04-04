@@ -8,24 +8,25 @@
 <body>
 	<h2>Edit User Details</h2>
 <%
-	String usn=request.getParameter("username");
-	System.out.println(usn);
+	String user=request.getParameter("username");
 	String email=request.getParameter("email");
 	String name=request.getParameter("name");
+	String password=request.getParameter("password");
 %>
 	<form method="POST" action="editUserHandler.jsp">
     	Full Name: <input type="text" name="name" value=<%=name%>> <br/>
       	Email: <input type="text" name="email" value=<%=email%>> <br/>
+      	Password: <input type="text" name="password" value=<%=password%>> <br/>
       	<input type="hidden" name="oldName" value=<%=name%>>
       	<input type="hidden" name="oldEmail" value=<%=email%>>
-      	<input type="hidden" name="username" value=<%=usn%>>
+      	<input type="hidden" name="username" value=<%=user%>>
       	<input type="submit" value="Save Changes">
 	</form>
-	<%-- 
-	<form method="POST" action="resetPassword.jsp">
+	
+	<%--  <form method="POST" action="resetPassword.jsp">
 		<input type="submit" value="Reset Password">
-		<input type="hidden" name="usn" value=<%=usn%>>
-	</form> --%>
+		<input type="hidden" name="user" value=<%=user%>>
+	</form>  --%>
 
 </body>
 </html>

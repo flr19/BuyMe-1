@@ -17,15 +17,17 @@
 			ResultSet rs1, rs2;
 			String currName = request.getParameter("name");
 			String currEmail = request.getParameter("email");
+			String password= request.getParameter("password");
 			String name = request.getParameter("oldName");
 			String usn = request.getParameter("username");
 			String email = request.getParameter("oldEmail");
 			PreparedStatement update = con
-					.prepareStatement("UPDATE account SET name = ?, email= ? WHERE username = ?");
-			if (!currName.equals(name) || !currEmail.equals(email)) {
-				update.setString(1, currName);
+					.prepareStatement("UPDATE account SET password = ?, email = ?, name = ?  WHERE username = ?");
+			/* if (!currName.equals(name) || !currEmail.equals(email)){ */
+				update.setString(3, currName);
 				update.setString(2, currEmail);
-				update.setString(3, usn);
+				update.setString(1, password);
+				update.setString(4, usn);
 				int res = update.executeUpdate();
 				System.out.println(update);
 				if (res >= 1) {
@@ -35,7 +37,7 @@
 					out.println("Changes failed.");
 					out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
 				}
-			}
+			
 		} catch (SQLException se) {
 			out.println("Error: Cannot Update <br>");
 			out.println("<a href='manageUsers.jsp'>Return to list of users</a>");

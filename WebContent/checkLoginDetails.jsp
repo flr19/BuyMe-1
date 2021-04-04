@@ -21,10 +21,10 @@
 	Statement stmt = con.createStatement();
 	
     ResultSet rs;
-    rs = stmt.executeQuery("select * from users where username='" + userid + "'");
+    rs = stmt.executeQuery("select * from account where username='" + userid + "'");
     if (rs.next()){
     	 ResultSet rs1;
-    	    rs1 = stmt.executeQuery("select * from users where username='" + userid + "' and password='" + pwd + "'");
+    	    rs1 = stmt.executeQuery("select * from account where username='" + userid + "' and password='" + pwd + "'");
     	    if (rs1.next()) {
     	    	session.setAttribute("user", userid); // the username will be stored in the session
     	        response.sendRedirect("account.jsp");

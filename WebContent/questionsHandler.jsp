@@ -28,7 +28,7 @@
 		        if (result < 1) {
 		        	out.println("Error: Question failed.");
 		        } else {
-		        	response.sendRedirect("questions.jsp?submit=success");
+		        	response.sendRedirect("askQuestionsHandler.jsp?submit=success");
 		        	return;
 		        }
 			} else {
