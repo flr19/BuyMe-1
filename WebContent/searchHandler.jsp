@@ -51,7 +51,7 @@
 				String condition = null;
 				for (int i = 0; i < searchParams.size(); i++) {
 					// Check for numeric parameter so we can format the SQL query correctly
-					if ((paramList.get(i)).equals("size")) {
+					if ((paramList.get(i)).equals("brand")) {
 						condition = paramList.get(i) + " LIKE " + searchParams.get(paramList.get(i));
 					} else if ((paramList.get(i)).equals("color")) {
 						condition = paramList.get(i) + " LIKE \'%" + searchParams.get(paramList.get(i)) + "%\'";

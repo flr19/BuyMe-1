@@ -16,5 +16,6 @@
 			<input type="submit" value="Submit">					
 		</form>	
 	</div>
+	<h1><a href="questionSearcher.jsp"> Search for questions</a> </h1>
 </body>
 </html>

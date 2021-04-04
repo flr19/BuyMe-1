@@ -37,14 +37,10 @@
 				<option value="Other">Other</option>
 			</select> <br> 
 
-				<input type="radio" name="gender" value="Men's" id="mens">
+			   <input type="radio" name="gender" value="Men's" id="mens"> 
 				<label for="mens">Men's</label> <br> 
 				<input type="radio" name="gender" value="Women's" id="womens"> 
-				<label for="womens">Women's</label> <br> 
-				<input type="radio" name="gender" value="Boys'" id="boys">
-				<label for="boys">Boys'</label> <br> 
-				<input type="radio" name="gender" value="Girls'" id="girls">
-				<label for="girls">Girls'</label> <br>
+				<label for="womens">Women's</label> <br>  -->
 				 <br> 
 				<label for="color">Color</label>
 				<input type="text" name="color" id="color" placeholder="Enter color(s)"> <br>
