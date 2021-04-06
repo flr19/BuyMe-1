@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Search Items </title>
+<title>Filter Items </title>
 </head>
 <body> 
-	<b> GENERAL SEARCH </b>
-	<form name="itemsearch" method="post" action="searchHandler.jsp">
+	<b> Browse Auctions </b>
+	<form name="itemsearch" method="post" action="filterProductsHandler.jsp">
 	<table>
 	<tr>    
 	<td>Category: </td><td><input type="text" name="category" ></td>
@@ -25,6 +25,9 @@
 	<td>Gender: </td><td><input type="text" name="gender" ></td>
 	</tr>
 	<tr>    
+	<td>Seller: </td><td><input type="text" name="gender" ></td>
+	</tr>
+	<tr>    
 	<td>Price: </td><td><input type="text" name="price" ></td>
 	</tr>
 	<!-- <tr>    
@@ -35,31 +38,7 @@
 	<input type="radio" name="status1" value="open"> Open<br>
 	<input type="radio" name="status1" value="closed"> Closed <br>
 	<input type="submit" value="Search">
-	
-	<!-- </form>
-	<b> SPECIFIC SEARCH </b>
-	<form name="Itemsearch" method="post" action="searchHandler.jsp">
-	<table>
-	<tr>    
-	<td>Manufacturer: </td><td><input type="text" name="Manufacturer"required ></td>
-	</tr>
-	<tr>
-	<td>Type: </td><td><input type="text" name="Type"required ></td>
-	</tr>
-	<tr>    
-	<td>Model: </td><td><input type="text" name="Model" required></td>
-	</tr>
-	<tr>    
-	<td>AuctionID: </td><td><input type="text" name="AuctionID" required ></td>
-	</tr>
-	</table>
-	<p>Is the Auction Open or Closed? </p> 
-	
-	<input type="radio" name="status2" value="open"> Open<br>
-	<input type="radio" name="status2" value="closed"> Closed <br>
-	<input type="submit" value="Search">
-	</form> -->
-	
+
 
 </body>
 </html>

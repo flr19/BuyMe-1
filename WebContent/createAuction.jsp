@@ -61,13 +61,13 @@
 	<td>Brand: </td><td><input type="text" name="brand" required></td>
 	</tr>
 	<tr>    
-	<td>Gender: </td><td><input type="text" name="gender" required></td>
-	</tr>
-	<tr>    
 	<td>Color: </td><td><input type="text" name="color" required></td>
 	</tr>
+	<tr>    
+	<td>Gender: </td><td><input type="text" name="gender" required></td>
+	</tr>
 	<tr> 
-	<td>Start Date: </td><td><input type="datetime-local" name="start_datetime" id="start_datetime" placeholder="mm/dd/yyyy --:-- --" required></td>
+	<td>Start Date: </td><td><input type="datetime-local" name="start_datetime" id="start_datetime"  placeholder="mm/dd/yyyy --:-- --" required></td>
 	</tr>
 	<tr>    
 	<td>End Date: </td><td><input type="datetime-local" name="end_datetime" id="end_datetime" placeholder="mm/dd/yyyy --:-- --" required></td>

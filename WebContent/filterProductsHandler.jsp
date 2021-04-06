@@ -43,7 +43,7 @@ tr:nth-child(even) {
 			String pricev=request.getParameter("price");
 /* 			String auctionID= request.getParameter("auctionID");
  */			//query 
-			String str = "Select category, brand, color, gender, price from product WHERE (category ='" + categoryv + "') and (brand ='" + brandv + "') and (color ='" + colorv + "') and  (gender = '" + genderv + "') and (price ='" + pricev  + "') ;";
+			String str = "Select category, brand, color, gender, price from product WHERE (category ='" + categoryv + "') or (brand ='" + brandv + "') or (color ='" + colorv + "') or  (gender = '" + genderv + "') or (price ='" + pricev  + "') ;";
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);
 			

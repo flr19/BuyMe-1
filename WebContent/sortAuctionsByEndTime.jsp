@@ -35,7 +35,7 @@ tr:nth-child(even) {
 <form action='sortAuctionsByColor.jsp'><input type="submit" value = "Sort by Color" /></form>
 <form action='sortAuctionsByPrice.jsp'><input type="submit" value = "Sort by Price" /></form>
 <form action='sortAuctionsByEndTime.jsp'><input type="submit" value = "Sort by End Time" /></form>
- 
+
 </div>
 	<% 
 	//Create a connection string
@@ -75,7 +75,7 @@ tr:nth-child(even) {
 					"JOIN Bids using (auction_id)" + 
 					  "GROUP BY auction_id" + 
 					")ORDER BY (auction_id) ASC;"; */
-			String str = "select * from product order by (product_id);";
+			String str = "select * from product order by (end_date);";
 					
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);

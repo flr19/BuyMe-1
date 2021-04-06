@@ -25,6 +25,7 @@
 				<li><a href="search.jsp">Search Auction</a></li>
 				<li><a href="askQuestion.jsp">Ask Question</a></li>
 				<li><a href="getAuctions.jsp">View Auctions</a></li>
+				<li><a href="sortAuctions.jsp">Sort Auctions</a></li>
 				<!-- <li><a href="index.jsp">Search Auction</a></li> -->
 	    	</ul>
     	</div>

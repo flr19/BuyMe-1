@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- <style>
-/* #buttons{
+#buttons{
     display:flex;
 }
 table {
@@ -21,50 +21,41 @@ td, th {
 }
 tr:nth-child(even) {
     background-color: #dddddd;
-} */
+}
 </style> -->
 <meta charset="ISO-8859-1">
-<title>Sort Auctions</title>
+<title>LOGIN PAGE</title>
 </head>
 <body>
 <div id = "buttons">
-<form action='sortAuctions.jsp'><input type="submit" value = "Sort by Auction ID" /></form>
-<form action='sortAuctionsByCategory.jsp'><input type="submit" value = "Sort by Category" /></form>
-<form action='sorthAuctionsByBrand.jsp'><input type="submit" value = "Sort by Brand" /></form>
-<form action='sortActionByGender.jsp'><input type="submit" value = "Sort by Gender" /></form>
-<form action='sortAuctionsByColor.jsp'><input type="submit" value = "Sort by Color" /></form>
-<form action='sortAuctionsByPrice.jsp'><input type="submit" value = "Sort by Price" /></form>
-<form action='sortAuctionsByEndTime.jsp'><input type="submit" value = "Sort by End Time" /></form>
- 
+<!-- <form action='browseAuctions.jsp'><input type="submit" value = "Sort by Auction ID" /></form>
+<form action='browseAuctionsType.jsp'><input type="submit" value = "Sort by Type" /></form>
+<form action='browseAuctionsManu.jsp'><input type="submit" value = "Sort by Manufracturer" /></form>
+<form action='browseAuctionsModel.jsp'><input type="submit" value = "Sort by Model" /></form>
+<form action='browseAuctionsAmount.jsp'><input type="submit" value = "Sort by Price" /></form>
+<form action='browseAuctionsEndTime.jsp'><input type="submit" value = "Sort by Ending Soonest" /></form> -->
+
 </div>
 	<% 
 	//Create a connection string
 	
-	ApplicationDB db = new ApplicationDB();	
+ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	
-	/* if(session.getAttribute("ACCOUNT_TYPE").equals("seller"))
+	if(session.getAttribute("ACCOUNT_TYPE").equals("customer_rep"))
 	{
-		out.print("Logged in as: Seller");
+		out.print("Logged in as: Customer Rep");
 		out.print("<br/>");
 		out.print("Username: " +  session.getAttribute("USERNAME"));
 		out.print("<br/>");
 	}
 	
-	if(session.getAttribute("ACCOUNT_TYPE").equals("buyer"))
-	{
-		out.print("Logged in as: Buyer");
-		out.print("<br/>");
-		out.print("Username: " +  session.getAttribute("USERNAME"));
-		out.print("<br/>");
-	}
-	 */
 	try {
 		 
-			/* String str = "SELECT * " +
+			String str = "SELECT * " +
 					"FROM Auction " + 
 					"JOIN Items using (item_id)" +
 					"JOIN Bids using (auction_id)" +
@@ -74,32 +65,31 @@ tr:nth-child(even) {
 					"JOIN Items using (item_id)" + 
 					"JOIN Bids using (auction_id)" + 
 					  "GROUP BY auction_id" + 
-					")ORDER BY (auction_id) ASC;"; */
-			String str = "select * from product order by (product_id);";
+					")ORDER BY (auction_id) ASC;";
 					
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);
 			
 			//Make an HTML table to show the results in:
 			out.print("<table>");
-			//make a row			out.print("<tr>");
+			//make a row
+			out.print("<tr>");
 			out.print("<th>");
 			out.print("Auction ID ");
 			out.print("</th>");		
 			out.print("<th>");
-			out.print("Category");
+			out.print("Type");
 			out.print("</th>");	
 			out.print("<th>");
-			out.print("Brand");
+			out.print("Manufac.");
 			out.print("</th>");	
 			out.print("<th>");
 			out.print("Model");
 			out.print("</th>");
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Current Bid");
-			out.print("</th>"); */
-			
+			out.print("</th>");
 			out.print("<th>");
 			out.print("Start Time");
 			out.print("</th>");	
@@ -107,15 +97,14 @@ tr:nth-child(even) {
 			out.print("End Time");
 			out.print("</th>");
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Winner");
-			out.print("</th>"); */
+			out.print("</th>");
 			
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Status");
-			out.print("</th>"); */
-			
+			out.print("</th>");
 			
 			
 			out.print("<th>");
@@ -123,36 +112,36 @@ tr:nth-child(even) {
 			out.print("</th>");
 			out.print("</tr>");
 			
+			out.print("<th>");
+			out.print("Remove Auction");
+			out.print("</th>");
+			out.print("</tr>");
+			
 			while (result.next()) 
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("product_id"));
+				out.print(result.getString("auction_id"));
 				out.print("</td>");
 				out.print("<td>");
-				out.print(result.getString("category"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(result.getString("brand"));
+				out.print(result.getString("type"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print(result.getString("color"));
+				out.print(result.getString("maker"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print(result.getString("gender"));
+				out.print(result.getString("model"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print("$" + result.getString("price"));
+				out.print("$" + result.getString("amount"));
 				out.print("</td>");
 		 
 				out.print("<td>");
 				out.print(result.getString("start_date"));
 				out.print("</td>");
-				
 				
 				out.print("<td>");
 				out.print(result.getString("end_date"));
@@ -165,13 +154,19 @@ tr:nth-child(even) {
 				out.print(tempwinner); 
 				out.print("</td>");
 				
-				out.print("<th>");
+			/* 	out.print("<th>");
 				out.print(result.getString("status"));
 				out.print("</th>");
-				/* out.print("<td>");
+				out.print("<td>");
 				out.print("<form action='itemBid.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>View Item</button></form>");
-				out.print("</td>"); */
+				out.print("</td>");
 				out.print("</tr>");
+				
+				out.print("<td>");
+				out.print("<form action='removeAuction.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>Remove</button></form>");
+				out.print("</td>");
+				out.print("</tr>"); */
+				
 			}
 			out.print("</table>");	
 			

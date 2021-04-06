@@ -36,7 +36,7 @@
 				&& startingPrice >= 0.0f) { */
 			
 		// Build the SQL query with placeholders for parameters
-			String insert = "INSERT INTO product (category, brand, color, gender, seller, min_price, price, sold, startDate, endDate)"
+			String insert = "INSERT INTO product (category, brand, color, gender, seller, min_price, price, status, start_date, end_date)"
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 		
@@ -58,8 +58,8 @@
 	        } else {
 	        	rs = ps.getGeneratedKeys();
 	        	rs.next();
-	        	int productId = rs.getInt(1);
-	        	response.sendRedirect("search.jsp?productId=" + productId); //success
+	        	int product_id = rs.getInt(1);
+	        	response.sendRedirect("search.jsp?product_id=" + product_id); //success
 	        	return;
 	        }
 /* 	 } else {
