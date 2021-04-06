@@ -16,37 +16,40 @@
 		// Get the parameters from the createAuction request
 		String category = request.getParameter("category");
 		String brand = request.getParameter("brand");
-/* 		String gender = request.getParameter("gender");	
- */		String color = request.getParameter("color");
+		String gender = request.getParameter("gender");
+		String color = request.getParameter("color");
+
 		String seller = (session.getAttribute("user")).toString();
 		float minPrice = Float.parseFloat(request.getParameter("min_price"));
-		float startingPrice = Float.parseFloat(request.getParameter("starting_price"));
+		float price = Float.parseFloat(request.getParameter("price"));
 		String startDate = request.getParameter("start_datetime");
 		String endDate = request.getParameter("end_datetime");
 		
 		// Make sure all the fields are entered
-		if(category != null  && !category.isEmpty()
+/* 		if(category != null  && !category.isEmpty()
 				&& brand != null && !brand.isEmpty() 
 				&& color != null && !color.isEmpty()
+						&& gender != null && !gender.isEmpty()
 				&& startDate != null && !startDate.isEmpty()
 				&& endDate != null && !endDate.isEmpty()
 				&& minPrice >= 0.0f
-				&& startingPrice >= 0.0f) {
+				&& startingPrice >= 0.0f) { */
 			
 		// Build the SQL query with placeholders for parameters
-			String insert = "INSERT INTO product (category, brand, color, seller, min_price, price, sold, startDate, endDate)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String insert = "INSERT INTO product (category, brand, color, gender, seller, min_price, price, sold, startDate, endDate)"
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 		
 			ps.setString(1, category);
 			ps.setString(2, brand);
 			ps.setString(3, color);
-			ps.setString(4, seller);
-			ps.setFloat(5, minPrice);
-			ps.setFloat(6, startingPrice);			
-			ps.setBoolean(7, false);
-			ps.setString(8, startDate);
-			ps.setString(9, endDate);
+			ps.setString(4, gender);
+			ps.setString(5, seller);
+			ps.setFloat(6, minPrice);
+			ps.setFloat(7, price);			
+			ps.setBoolean(8, false);
+			ps.setString(9, startDate);
+			ps.setString(10, endDate);
 			
 			int result = 0;
 	        result = ps.executeUpdate();
@@ -56,16 +59,16 @@
 	        	rs = ps.getGeneratedKeys();
 	        	rs.next();
 	        	int productId = rs.getInt(1);
-	        	response.sendRedirect("auction.jsp?productId=" + productId); //success
+	        	response.sendRedirect("search.jsp?productId=" + productId); //success
 	        	return;
 	        }
-		} else {
+/* 	 } else {
 			response.sendRedirect("createAuctionError.jsp"); //error
-			return;
-		}
+			return;  */
+		
 	} catch(Exception e) {
         response.sendRedirect("createAuctionError.jsp"); // MySql error such as Start Date before End Date
-        e.printStackTrace();
+       e.printStackTrace();
     } finally {
         try { ps.close(); } catch (Exception e) {}
         try { conn.close(); } catch (Exception e) {}

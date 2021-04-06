@@ -13,6 +13,8 @@
        Enter password: <input type="password" name="password"/> <br/>
        Enter address: <input type="text" name="address"/> <br/>
        Enter email: <input type="text" name="email"/> <br/>
+<!--        <input type="radio" name="account_type" value="buyer" checked> Buyer<br>
+  	<input type="radio" name="account_type" value="seller"> Seller<br> -->
        <input type="submit" value="Submit"/>
      </form>
 </body>

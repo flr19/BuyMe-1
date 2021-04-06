@@ -1,53 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BuyMe - Search Results</title>
+<meta charset="ISO-8859-1">
+<title>Search Items </title>
 </head>
-<body>
-    <% if(session.getAttribute("user") == null) { 
-    		response.sendRedirect("login.jsp");
-       } else { %>
- --%>    	<div class="content">
-    		<h2>Select at least one search parameter</h2>
-			<form action="searchHandler.jsp" method="GET">
-				<label for="category">Category</label> 
-				<select name="category" id="category" required>
-				<option value="" disabled selected hidden="true">Select category</option>
-				<option value="Analog Watches">Analog Watches</option>
-				<option value="Digital Watches">Digital Watches</option>
-				<option value="Touchscreen Watches">Touchscreen Watches</option>
-			</select> <br>
-			<label for="brand">Brand</label>
-			<select name="brand" id="brand" required>
-				<option value="" disabled selected hidden="true">Select brand</option>
-				<option value="Rolex">Rolex</option>
-				<option value="Apple">Apple</option>
-				<option value="Seiko">Seiko</option>
-				<option value="Patek Philippe">Patek Philippe</option>
-				<option value="Chopard">Chopard</option>
-				<option value="Cartier">Cartier</option>
-				<option value="Fossil">Fossil</option>
-				<option value="Fitbit">Fitbit</option>
-				<option value="Movado">Movado</option>
-				<option value="Other">Other</option>
-			</select> <br> 
+<body> 
+	<b> GENERAL SEARCH </b>
+	<form name="itemsearch" method="post" action="searchHandler.jsp">
+	<table>
+	<tr>    
+	<td>Category: </td><td><input type="text" name="category" ></td>
+	</tr>
+	<tr>
+	<td>Brand: </td><td><input type="text" name="brand" ></td>
+	</tr>
+	<tr>    
+	<td>Color: </td><td><input type="text" name="color" ></td>
+	</tr>
+	<tr>    
+	<td>Gender: </td><td><input type="text" name="gender" ></td>
+	</tr>
+	<tr>    
+	<td>Price: </td><td><input type="text" name="price" ></td>
+	</tr>
+	<!-- <tr>    
+	<td>AuctionID: </td><td><input type="text" name="auctionID" ></td>
+	</tr> -->
+	</table>
+	<p>Is the Auction Open or Closed? </p> 
+	<input type="radio" name="status1" value="open"> Open<br>
+	<input type="radio" name="status1" value="closed"> Closed <br>
+	<input type="submit" value="Search">
+	
+	<!-- </form>
+	<b> SPECIFIC SEARCH </b>
+	<form name="Itemsearch" method="post" action="searchHandler.jsp">
+	<table>
+	<tr>    
+	<td>Manufacturer: </td><td><input type="text" name="Manufacturer"required ></td>
+	</tr>
+	<tr>
+	<td>Type: </td><td><input type="text" name="Type"required ></td>
+	</tr>
+	<tr>    
+	<td>Model: </td><td><input type="text" name="Model" required></td>
+	</tr>
+	<tr>    
+	<td>AuctionID: </td><td><input type="text" name="AuctionID" required ></td>
+	</tr>
+	</table>
+	<p>Is the Auction Open or Closed? </p> 
+	
+	<input type="radio" name="status2" value="open"> Open<br>
+	<input type="radio" name="status2" value="closed"> Closed <br>
+	<input type="submit" value="Search">
+	</form> -->
+	
 
-			   <input type="radio" name="gender" value="Men's" id="mens"> 
-				<label for="mens">Men's</label> <br> 
-				<input type="radio" name="gender" value="Women's" id="womens"> 
-				<label for="womens">Women's</label> <br>  -->
-				 <br> 
-				<label for="color">Color</label>
-				<input type="text" name="color" id="color" placeholder="Enter color(s)"> <br>
-
-				<input type="submit" value="Search">
-			</form>      
-	    </div>
-    <% } %>
 </body>
 </html>
