@@ -26,6 +26,8 @@
 				<li><a href="askQuestion.jsp">Ask Question</a></li>
 				<li><a href="getAuctions.jsp">View Auctions</a></li>
 				<li><a href="sortAuctions.jsp">Sort Auctions</a></li>
+				<li><a href="createWatch.jsp">Create a new watch</a></li>
+				<li><a href="showAllWatch.jsp">Show Watches</a></li>
 				<!-- <li><a href="index.jsp">Search Auction</a></li> -->
 	    	</ul>
     	</div>
