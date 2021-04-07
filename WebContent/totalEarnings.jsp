@@ -30,7 +30,6 @@ tr:nth-child(even) {
 <% 			
 ApplicationDB db = new ApplicationDB();	
 Connection con = db.getConnection();
-//Create a SQL statement
 Statement stmt = con.createStatement();
 PreparedStatement ps = null;
 ResultSet result = null;
@@ -44,11 +43,13 @@ try
 			"WHERE buyer IS NOT NULL and winner <> 'None' and winner IS NOT NULL ";  */
 /* 	String str = "select sum(b.amount) from bids b, product p where p.product_id = b.product_id and p.winner not null and b.amount = (select max(price) from pr);";
  */	
-String str_bid = "update auction a set a.winner =  (select b.username from bids b, auction a where b.amount = (select max(amount) from bids) and a.auction_id = b.auction_id); ";
- 	result = stmt.executeQuery(str_bid);
+/* String str_bid = "update auction a set a.winner =  (select b.username from bids b, auction a where b.amount = (select max(amount) from bids) and a.auction_id = b.auction_id); ";
+ */ 
+ String str = "select sum(amount) as total_earnings from winners";	
+ result = stmt.executeQuery(str);
 	while(result.next())
 	{
-		out.print(result.getString("SUM(amount)"));
+		out.print(result.getString("total_earnings"));
 	}
 }		
 catch (Exception e) 

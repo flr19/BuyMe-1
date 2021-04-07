@@ -92,24 +92,20 @@ finally
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Remove Auctions/title>
+<title>Remove Auctions</title>
 </head>
 <body>
 	<% 	
-	
-	String url = "jdbc:mysql://cs336db.ceppltipnhmk.us-east-1.rds.amazonaws.com:3306/cs336Project";
-	//Load JDBC driver
-	Class.forName("com.mysql.jdbc.Driver");	
-	//Get the database connection
-	Connection con = DriverManager.getConnection(url, "cs336", "gamer5221");
+	ApplicationDB db = new ApplicationDB();	
+	Connection con = db.getConnection();
 	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	try
 	{
-		String delete = "DELETE FROM Auction WHERE auction_id ='" + request.getParameter("auct") + "'";
+		String delete = "DELETE FROM auction WHERE auction_id ='" + request.getParameter("auction_id") + "'";
         stmt.executeUpdate(delete);
-		response.sendRedirect("browseAuctionsCR.jsp");		
+		response.sendRedirect("browseAuctionsCustomerRep.jsp");		
 	}		
 	
 	catch (Exception e) 

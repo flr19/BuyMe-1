@@ -55,7 +55,7 @@ ApplicationDB db = new ApplicationDB();
 	
 	try {
 		 
-			String str = "SELECT * " +
+/* 			String str = "SELECT * " +
 					"FROM Auction " + 
 					"JOIN Items using (item_id)" +
 					"JOIN Bids using (auction_id)" +
@@ -65,8 +65,8 @@ ApplicationDB db = new ApplicationDB();
 					"JOIN Items using (item_id)" + 
 					"JOIN Bids using (auction_id)" + 
 					  "GROUP BY auction_id" + 
-					")ORDER BY (auction_id) ASC;";
-					
+					")ORDER BY (auction_id) ASC;"; */
+			String str="select * from auction join product using (product_id)";		
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);
 			
@@ -77,24 +77,33 @@ ApplicationDB db = new ApplicationDB();
 			out.print("<th>");
 			out.print("Auction ID ");
 			out.print("</th>");		
+			
 			out.print("<th>");
-			out.print("Type");
+			out.print("Category");
 			out.print("</th>");	
+			
 			out.print("<th>");
-			out.print("Manufac.");
+			out.print("Brand");
 			out.print("</th>");	
+			
 			out.print("<th>");
-			out.print("Model");
+			out.print("Color");
 			out.print("</th>");
 			
 			out.print("<th>");
-			out.print("Current Bid");
+			out.print("Gender");
 			out.print("</th>");
+			
+		 	out.print("<th>");
+			out.print("Seller");
+			out.print("</th>"); 
+			
 			out.print("<th>");
-			out.print("Start Time");
-			out.print("</th>");	
+			out.print("Start Date");
+			out.print("</th>");
+			
 			out.print("<th>");
-			out.print("End Time");
+			out.print("End Date");
 			out.print("</th>");
 			
 			out.print("<th>");
@@ -107,11 +116,11 @@ ApplicationDB db = new ApplicationDB();
 			out.print("</th>");
 			
 			
-			out.print("<th>");
+		/* 	out.print("<th>");
 			out.print(" ");
 			out.print("</th>");
 			out.print("</tr>");
-			
+			 */
 			out.print("<th>");
 			out.print("Remove Auction");
 			out.print("</th>");
@@ -124,20 +133,28 @@ ApplicationDB db = new ApplicationDB();
 				out.print(result.getString("auction_id"));
 				out.print("</td>");
 				out.print("<td>");
-				out.print(result.getString("type"));
+				out.print(result.getString("category"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print(result.getString("maker"));
+				out.print(result.getString("brand"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print(result.getString("model"));
+				out.print(result.getString("color"));
 				out.print("</td>");
 				
 				out.print("<td>");
+				out.print(result.getString("gender"));
+				out.print("</td>");
+				
+				out.print("<td>");
+				out.print(result.getString("seller"));
+				out.print("</td>");
+				
+				/* out.print("<td>");
 				out.print("$" + result.getString("amount"));
-				out.print("</td>");
+				out.print("</td>"); */
 		 
 				out.print("<td>");
 				out.print(result.getString("start_date"));
@@ -156,16 +173,12 @@ ApplicationDB db = new ApplicationDB();
 				
 			/* 	out.print("<th>");
 				out.print(result.getString("status"));
-				out.print("</th>");
-				out.print("<td>");
-				out.print("<form action='itemBid.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>View Item</button></form>");
-				out.print("</td>");
-				out.print("</tr>");
+				out.print("</th>"); */
 				
 				out.print("<td>");
-				out.print("<form action='removeAuction.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>Remove</button></form>");
+				out.print("<form action='removeAuction.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getString("auction_id") + "'>Remove</button></form>");
 				out.print("</td>");
-				out.print("</tr>"); */
+				out.print("</tr>");
 				
 			}
 			out.print("</table>");	
