@@ -16,11 +16,13 @@
 	<div class="content">
 		<form action="checkCreateAuction.jsp" method="POST">	
 	<table>
-	<tr> 
+	 <tr> 
+	 <td>
 	<input type="hidden" name="product_id" value = <%=request.getParameter("auction")%>>
-	</tr>
+	</td>
+	</tr> 
 	<tr>    
-	<td>End Date: </td><td><input type="datetime-local" name="end_datetime" id="end_datetime" placeholder="mm/dd/yyyy --:-- --"></td>
+	<td>End Date: </td><td><input type="text" name="end_datetime" id="end_datetime" placeholder="yyyy-MM-dd hh:mm:ss"></td>
 	</tr> 
 	<tr>    
 	<td>Minimum Price: </td><td><input type="text" name="min_price"  placeholder="0.00" min="0.00" required></td>

@@ -8,7 +8,7 @@ PreparedStatement ps = null;
 Connection conn =  null;
 try {
 	ApplicationDB db = new ApplicationDB();
-	Connection conn = db.getConnection();
+	conn = db.getConnection();
 
 	int questionId = Integer.parseInt(request.getParameter("question_id"));
 	String answer = request.getParameter("answer");

@@ -18,15 +18,16 @@
 		String seller = (session.getAttribute("user")).toString();
 		float minPrice = Float.parseFloat(request.getParameter("min_price"));
 		float price = Float.parseFloat(request.getParameter("price"));
-/* 		String startDate = request.getParameter("start_datetime");
- */		/* String endDate = request.getParameter("end_datetime");
+		/* String startDate = request.getParameter("start_datetime"); */
+		String endDate = request.getParameter("end_datetime");
 		
-
-		SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy --:-- --");//give format in which you are receiving the `String date_updated`
+	/* 	out.println(endDate); */
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//give format in which you are receiving the `String date_updated`
 	    java.util.Date date = sdf.parse(endDate);
 	    java.sql.Date sqlDate_updated = new java.sql.Date(date.getTime());	    
 	    
-	    Calendar calendar = Calendar.getInstance();
+	/*     Calendar calendar = Calendar.getInstance();
+	    
 	    java.util.Date currentTime = calendar.getTime();
 	    
 	    long time = currentTime.getTime(); */
@@ -42,20 +43,20 @@
 				&& startingPrice >= 0.0f) { */
 			
 		// Build the SQL query with placeholders for parameters
-			/* String insert = "INSERT INTO auction (product_id, seller, min_price, price, status, start_date, end_date)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?)"; */
-				String insert = "INSERT INTO auction (product_id, seller, min_price, price, status)"
-					+ "VALUES(?, ?, ?, ?, ?)";
+		String insert = "INSERT INTO auction(product_id, seller, min_price, price, status, end_date)"
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
+		/* 	String insert = "INSERT INTO auction (product_id, seller, min_price, price, status)"
+					+ "VALUES(?, ?, ?, ?, ?)";*/ 
 			ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, product_id);
 			ps.setString(2, seller);
 			ps.setFloat(3, minPrice);
 			ps.setFloat(4, price);			
-			ps.setBoolean(5, false);
-/* 			ps.setTimestamp(6,new Timestamp(time));
-			ps.setDate(7, sqlDate_updated); */
-			
-			int result = 0;
+			ps.setString(5,"open");
+		/* 	ps.setTimestamp(6,new Timestamp(time)); */
+			ps.setDate(6, sqlDate_updated);
+
+		 	int result = 0;
 	        result = ps.executeUpdate();
 	        if (result < 1) {
 	        	out.println("Error: Auction creation failed.");
@@ -63,16 +64,13 @@
 	        	rs = ps.getGeneratedKeys();
 	        	rs.next();
 	        int auction_id = rs.getInt(1);
-	        	/* response.sendRedirect("sortAuctions.jsp?auction_id=" + auction_id); //success  */
-	        	response.sendRedirect("sortAuctions.jsp"); //success 
+	        	/* response.sendRedirect("sortAuctions.jsp?auction_id=" + auction_id); */ //success  */
+	        	 response.sendRedirect("sortAuctions.jsp"); //success 
 	        	return;
-	        }
-/* 	 } else {
-			response.sendRedirect("createAuctionError.jsp"); //error
-			return;  */
+	        } 
 		
 	} catch(Exception e) {
-       response.sendRedirect("createAuctionError.jsp"); // MySql error such as Start Date before End Date
+        response.sendRedirect("createAuctionError.jsp");  // MySql error such as Start Date before End Date
        e.printStackTrace();
     } finally {
         try { ps.close(); } catch (Exception e) {}

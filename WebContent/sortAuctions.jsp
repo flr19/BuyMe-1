@@ -85,10 +85,10 @@ tr:nth-child(even) {
 			/* out.print("<th>");
 			out.print("Current Bid");
 			out.print("</th>"); */
-			
+		/* 	
 			out.print("<th>");
 			out.print("Start Time");
-			out.print("</th>");	
+			out.print("</th>");	 */
 			out.print("<th>");
 			out.print("End Time");
 			out.print("</th>");
@@ -134,10 +134,10 @@ tr:nth-child(even) {
 				out.print("<td>");
 				out.print("$" + result.getString("price"));
 				out.print("</td>");
-		 
+		 /* 
 				out.print("<td>");
 				out.print(result.getString("start_date"));
-				out.print("</td>");
+				out.print("</td>"); */
 				
 				
 				out.print("<td>");
@@ -154,9 +154,9 @@ tr:nth-child(even) {
 				out.print("<th>");
 				out.print(result.getString("status"));
 				out.print("</th>");
-				/* out.print("<td>");
-				out.print("<form action='itemBid.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>View Item</button></form>");
-				out.print("</td>"); */
+				out.print("<td>");
+				out.print("<form action='bidOnItem.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>Bid on Item</button></form>");
+				out.print("</td>"); 
 				out.print("</tr>");
 			}
 			out.print("</table>");	
