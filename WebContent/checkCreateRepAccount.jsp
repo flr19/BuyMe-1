@@ -16,7 +16,7 @@
 	String email = request.getParameter("email");
 	String name = request.getParameter("name");
 	String address = request.getParameter("address");
-	
+	String account_type = request.getParameter("account_type");
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 	/* Class.forName("com.mysql.jdbc.Driver");
@@ -28,9 +28,10 @@
     if (rs.next()) {
     	out.println("Username exists, please try another <a href='createRepAccount.jsp'>try again</a>");
     } else {
-    	int x = stmt.executeUpdate("insert into account values('" +userid+ "', '" +pwd+ "', '" + address + "', '" + email + "', '"+ name + "')");
+    	int x = stmt.executeUpdate("insert into account values('" +userid+ "', '" +pwd+ "', '" + address + "', '" + email + "', '"+ name + "', '"+account_type+"')");
     	int y = stmt.executeUpdate("insert into customerrep values('" +userid+ "', '" +pwd+ "')");
-    	session.setAttribute("user", userid); 
+    	session.setAttribute("customerrep", userid);
+    	session.setAttribute("account_type", account_type);
         response.sendRedirect("success.jsp");
         out.println("welcome " + userid);
     }

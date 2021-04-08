@@ -24,7 +24,7 @@ tr:nth-child(even) {
 }
 </style> -->
 <meta charset="ISO-8859-1">
-<title>Generate Report</title>
+<title>Best Buyers</title>
 </head>
 <body>
 <% 			
@@ -53,7 +53,6 @@ try
 	{
 		out.print(result.getString("buyer"));
 	}
-	out.print("<br/>");
 	out.print("<br/>");
 }		
 catch (Exception e) 

@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ask Question</title>
 </head>
 <body>
-
 
 <%	if (request.getParameter("submit") != null && (request.getParameter("submit")).toString().equals("success")) { %>
 			<h1>Your question has been submitted successfully.</h1>

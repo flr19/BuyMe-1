@@ -22,11 +22,6 @@
       	<input type="hidden" name="username" value=<%=user%>>
       	<input type="submit" value="Save Changes">
 	</form>
-	
-	<%--  <form method="POST" action="resetPassword.jsp">
-		<input type="submit" value="Reset Password">
-		<input type="hidden" name="user" value=<%=user%>>
-	</form>  --%>
 
 </body>
 </html>

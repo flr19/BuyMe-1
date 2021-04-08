@@ -21,8 +21,8 @@
 	            <li><a href="sellingHistory.jsp">View your selling history</a></li>
 	            <li><a href="buyingHistory.jsp">View your purchase history</a></li>
 	            <li><a href="accountSettings.jsp">Change account settings</a></li> -->
-	            <li><a href="createAuction.jsp">Create Auction</a></li>
-				<li><a href="search.jsp">Search Auction</a></li>
+<!-- 	            <li><a href="createAuction.jsp">Create Auction</a></li>
+ -->			<li><a href="filterProducts.jsp">Search Auction</a></li>
 				<li><a href="askQuestion.jsp">Ask Question</a></li>
 				<li><a href="getAuctions.jsp">View Auctions</a></li>
 				<li><a href="sortAuctions.jsp">Sort Auctions</a></li>

@@ -17,11 +17,8 @@
 		<form action="checkCreateAuction.jsp" method="POST">	
 	<table>
 	<tr> 
-	<td>Product ID: </td><td><input type="hidden" name="product_id" value =  <%=request.getParameter("auction")%> ></td>
+	<input type="hidden" name="product_id" value = <%=request.getParameter("auction")%>>
 	</tr>
-<!-- 	<tr> 
-	<td>Start Date: </td><td><input type="datetime-local" name="start_datetime" id="start_datetime"  placeholder="mm/dd/yyyy --:-- --" required></td>
-	</tr> -->
 	<tr>    
 	<td>End Date: </td><td><input type="datetime-local" name="end_datetime" id="end_datetime" placeholder="mm/dd/yyyy --:-- --"></td>
 	</tr> 

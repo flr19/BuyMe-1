@@ -45,23 +45,6 @@ tr:nth-child(even) {
 	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
-	
-	/* if(session.getAttribute("ACCOUNT_TYPE").equals("seller"))
-	{
-		out.print("Logged in as: Seller");
-		out.print("<br/>");
-		out.print("Username: " +  session.getAttribute("USERNAME"));
-		out.print("<br/>");
-	}
-	
-	if(session.getAttribute("ACCOUNT_TYPE").equals("buyer"))
-	{
-		out.print("Logged in as: Buyer");
-		out.print("<br/>");
-		out.print("Username: " +  session.getAttribute("USERNAME"));
-		out.print("<br/>");
-	}
-	 */
 	try {
 		 
 			/* String str = "SELECT * " +
@@ -75,7 +58,7 @@ tr:nth-child(even) {
 					"JOIN Bids using (auction_id)" + 
 					  "GROUP BY auction_id" + 
 					")ORDER BY (auction_id) ASC;"; */
-			String str = "select * from auction order by (auction_id);";
+			String str = "select * from auction join product using (product_id) order by (auction_id);";
 					
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);

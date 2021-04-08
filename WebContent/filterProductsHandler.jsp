@@ -41,9 +41,10 @@ tr:nth-child(even) {
 			String colorv= request.getParameter("color");
 			String genderv = request.getParameter("gender");
 			String pricev=request.getParameter("price");
+			String seller =request.getParameter("seller");
 /* 			String auctionID= request.getParameter("auctionID");
  */			//query 
-			String str = "Select category, brand, color, gender, price from product WHERE (category ='" + categoryv + "') or (brand ='" + brandv + "') or (color ='" + colorv + "') or  (gender = '" + genderv + "') or (price ='" + pricev  + "') ;";
+			String str = "Select p.category, p.brand, p.color, p.gender, a.price, a.seller from product p, auction a WHERE p.product_id = a.product_id and (category ='" + categoryv + "') or (brand ='" + brandv + "') or (color ='" + colorv + "') or  (gender = '" + genderv + "') or (price ='" + pricev  + "') ;";
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);
 			
@@ -52,19 +53,22 @@ tr:nth-child(even) {
 			//make a row
 			out.print("<tr>");	
 			out.print("<th>");
-			out.print("category");
+			out.print("Category");
 			out.print("</th>");	
 			out.print("<th>");
-			out.print("brand");
+			out.print("Brand");
 			out.print("</th>");	
 			out.print("<th>");
-			out.print("color");
+			out.print("Color");
 			out.print("</th>");
 			out.print("<th>");
-			out.print("gender");
+			out.print("Gender");
 			out.print("</th>");
 			out.print("<th>");
-			out.print("price");
+			out.print("Price");
+			out.print("</th>");
+			out.print("<th>");
+			out.print("Seller");
 			out.print("</th>");
 			/* out.print("<th>");
 			out.print("Auction_ID");
@@ -90,6 +94,10 @@ tr:nth-child(even) {
 				
 				out.print("<td>");
 				out.print(result.getString("price"));
+				out.print("</td>");
+				
+				out.print("<td>");
+				out.print(result.getString("seller"));
 				out.print("</td>");
 				
 			}

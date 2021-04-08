@@ -26,7 +26,8 @@
     	 ResultSet rs1;
     	    rs1 = stmt.executeQuery("select * from account where username='" + userid + "' and password='" + pwd + "'");
     	    if (rs1.next()) {
-    	    	session.setAttribute("user", userid); // the username will be stored in the session
+    	    	session.setAttribute("user", userid);
+    	    	session.setAttribute("account_type", rs1.getString("account_type"));// the username will be stored in the session
     	        response.sendRedirect("account.jsp");
     	        out.println("welcome " + userid);
     	        out.println("<a href='logout.jsp'>Log out</a>");

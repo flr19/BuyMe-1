@@ -15,10 +15,6 @@
 		
 		// Get the parameters from the createAuction request
 		String product_id = request.getParameter("product_id");
-		/* String brand = request.getParameter("brand");
-		String gender = request.getParameter("gender");
-		String color = request.getParameter("color"); */
-
 		String seller = (session.getAttribute("user")).toString();
 		float minPrice = Float.parseFloat(request.getParameter("min_price"));
 		float price = Float.parseFloat(request.getParameter("price"));

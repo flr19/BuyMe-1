@@ -24,7 +24,7 @@ tr:nth-child(even) {
 }
 </style> -->
 <meta charset="ISO-8859-1">
-<title>Generate Report</title>
+<title>Earning Per End User</title>
 </head>
 <body>
 <% 			

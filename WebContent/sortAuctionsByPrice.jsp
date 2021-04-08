@@ -75,7 +75,7 @@ tr:nth-child(even) {
 					"JOIN Bids using (auction_id)" + 
 					  "GROUP BY auction_id" + 
 					")ORDER BY (auction_id) ASC;"; */
-			String str = "select * from product order by (price);";
+			String str = "select * from auction join product using (product_id) order by (price);";
 					
 			//Run the query against the database.
 			 result = stmt.executeQuery(str);
@@ -127,7 +127,7 @@ tr:nth-child(even) {
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("product_id"));
+				out.print(result.getString("auction_id"));
 				out.print("</td>");
 				out.print("<td>");
 				out.print(result.getString("category"));

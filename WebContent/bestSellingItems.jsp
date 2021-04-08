@@ -24,7 +24,7 @@ tr:nth-child(even) {
 }
 </style> -->
 <meta charset="ISO-8859-1">
-<title>Generate Report</title>
+<title>Best Selling Items</title>
 </head>
 <body>
 <% 			
@@ -94,7 +94,6 @@ out.print("<b>Top 5 Selling Items: </b>");
 		out.print("</tr>");
 	}
 	out.print("</table>");	
-	out.print("<br/>");
 
 }		
 catch (Exception e) 

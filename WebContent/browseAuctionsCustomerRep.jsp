@@ -24,7 +24,7 @@ tr:nth-child(even) {
 }
 </style> -->
 <meta charset="ISO-8859-1">
-<title>LOGIN PAGE</title>
+<title>Browse Auctions</title>
 </head>
 <body>
 <div id = "buttons">
@@ -45,7 +45,7 @@ ApplicationDB db = new ApplicationDB();
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	
-	if(session.getAttribute("ACCOUNT_TYPE").equals("customer_rep"))
+	if(session.getAttribute("account_type").equals("customerrep"))
 	{
 		out.print("Logged in as: Customer Rep");
 		out.print("<br/>");

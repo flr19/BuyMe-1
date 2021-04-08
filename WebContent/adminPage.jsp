@@ -8,9 +8,9 @@
 </head>
 <body>
 <h2>Generate Sales Reports</h2>
-<a href="createRepAccount.jsp">Create Customer Rep Account</a><br>
-<a href="manageCustomerRep.jsp">Delete customer representative account.</a><br>
-<a href="generateSalesReport.jsp">Generate Sales Report.</a><br>
+<a href="createRepAccount.jsp">Create Customer Representative Account</a><br>
+<a href="manageCustomerRep.jsp">Delete Customer Representative account</a><br>
+<a href="generateSalesReport.jsp">Generate Sales Report</a><br>
 
 <!-- <h2>Generate Sales Reports</h2>
 	<form action="salesReport.jsp" method="POST">

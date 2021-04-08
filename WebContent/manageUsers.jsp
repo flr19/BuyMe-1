@@ -52,22 +52,6 @@
 
 			//parse out the results
 			while (rs.next()) {
-				//make a row
-				/* out.print("<tr>");
-				//make a column
-				out.print("<td>");
-				//Print out current bar name:
-				out.print(rs.getString("username"));
-				out.print("</td>");
-				out.print("<td>");
-				//Print out current beer name:
-				out.print(rs.getString("name"));
-				out.print("</td>");
-				out.print("<td>");
-				//Print out current price
-				out.print(rs.getString("email"));
-				out.print("</td>");
-				out.print("</tr>"); */
 				
 				%>
 				<tr>

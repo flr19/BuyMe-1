@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Generate Sales Report</title>
 </head>
 <body>
 <a href="totalEarnings.jsp">By total earnings.</a><br>
