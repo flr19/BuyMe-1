@@ -30,6 +30,7 @@
     	    	session.setAttribute("account_type", rs1.getString("account_type"));// the username will be stored in the session
     	        response.sendRedirect("account.jsp");
     	        out.println("welcome " + userid);
+				
     	        out.println("<a href='logout.jsp'>Log out</a>");
     	        out.println("<a href='account.jsp'>Account</a>");
     	    } else {

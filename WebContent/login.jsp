@@ -10,11 +10,11 @@
 	
 </head>
 <body>
-<form action="checkLoginDetails.jsp" method="POST">
-       Username: <input type="text" name="username"/> <br/>
-       Password: <input type="password" name="password"/> <br/>
-       <input type="submit" value="Submit"/>
-     </form>
-     <a href="createAccount.jsp">Don't have an account? Register here.</a>
+      <form action="checkLoginDetails.jsp" method="POST">
+       	Username: <input type="text" name="username"/> <br/>
+       	Password: <input type="password" name="password"/> <br/>
+       	<input type="submit" value="Submit"/>
+      </form>
+  <a href="createAccount.jsp">Don't have an account? Register here.</a>
 </body>
 </html>

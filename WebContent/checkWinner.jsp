@@ -20,16 +20,12 @@
     LocalDateTime now = LocalDateTime.now();  
     //java.sql.Date date=new java.sql.Date(now);  
     
-	String str = "UPDATE auction a SET a.status = 'close', WHERE a.auction_id in (SELECT a.auction_id FROM auction a WHERE a.end_date > GETDATE())";
-	ResultSet result = null;
+	String str = "create temporary table t2 SELECT auction_id FROM auction WHERE end_date < now();" +
+			"UPDATE auction SET status = 'close' WHERE auction_id in (SELECT auction_id FROM t2);" + "drop temporary table t2;";
 	PreparedStatement ps = null;
 	ps = con.prepareStatement(str);
 	//ps.setInt(1, auction_id);
-	result = ps.executeQuery();
-	result.next();
-	
-	
-	
+	ps.executeUpdate();
 	
 	
 	
