@@ -184,9 +184,19 @@ try
 	result.next();
 	current_bid = result.getFloat("max(b.amount)");
 	
-	str = "UPDATE auction a SET a.current_bid=? where a.auction_id=?";
+	str = "SELECT b.buyer FROM auction a, bid b WHERE b.auction_id=? AND b.auction_id=a.auction_id and b.amount=?"; //get the max bid for our current auction
 	ps = con.prepareStatement(str);
-	ps.setInt(2, auction_id);
+	ps.setInt(1, auction_id);
+	ps.setFloat(2, current_bid);
+	//ps.setString(2, newAuction);
+	result = ps.executeQuery();
+	result.next();
+	String name = result.getString("buyer");
+	
+	str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id=?";
+	ps = con.prepareStatement(str);
+	ps.setInt(3, auction_id);
+	ps.setString(2, name);
 	ps.setFloat(1, current_bid);
 	//ps.setString(2, newAuction);
 	ps.executeUpdate();
