@@ -24,14 +24,13 @@
 	Statement stmt = con.createStatement();
     
     ResultSet rs = null;
-    rs = stmt.executeQuery("select * from users where username='" + userid + "'");
+    rs = stmt.executeQuery("select * from account where username='" + userid + "'");
     if (rs.next()) {
     	out.println("Username exists, please try another <a href='createAccount.jsp'>try again</a>");
     } else {
     	int x = stmt.executeUpdate("insert into account values('" +userid+ "', '" +pwd+ "', '" + address + "', '" + email + "', '"+ name + "', '"+account_type+"')");
-    	int y = stmt.executeUpdate("insert into users values('" +userid+ "', '" +pwd+ "')");
     	session.setAttribute("user", userid); 
-    	session.setAttribute("account_type", account_type);
+    	//session.setAttribute("account_type", account_type);
         response.sendRedirect("account.jsp");
         out.println("welcome " + userid);
     }

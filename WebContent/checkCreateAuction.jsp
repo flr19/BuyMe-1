@@ -14,7 +14,7 @@
 		conn = db.getConnection();
 		
 		// Get the parameters from the createAuction request
-		String product_id = request.getParameter("product_id");
+		int product_id = Integer.parseInt(request.getParameter("product_id"));
 		String seller = (session.getAttribute("user")).toString();
 		float minPrice = Float.parseFloat(request.getParameter("min_price"));
 		float price = Float.parseFloat(request.getParameter("price"));
@@ -48,7 +48,7 @@
 		/* 	String insert = "INSERT INTO auction (product_id, seller, min_price, price, status)"
 					+ "VALUES(?, ?, ?, ?, ?)";*/ 
 			ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, product_id);
+			ps.setInt(1, product_id);
 			ps.setString(2, seller);
 			ps.setFloat(3, minPrice);
 			ps.setFloat(4, price);			
@@ -63,9 +63,8 @@
 	        } else {
 	        	rs = ps.getGeneratedKeys();
 	        	rs.next();
-	        int auction_id = rs.getInt(1);
-	        	/* response.sendRedirect("sortAuctions.jsp?auction_id=" + auction_id); */ //success  */
-	        	 response.sendRedirect("sortAuctions.jsp"); //success 
+	        	int auction_id = rs.getInt(1);
+	        	response.sendRedirect("sortAuctions.jsp?auction_id=" + auction_id); //success 
 	        	return;
 	        } 
 		

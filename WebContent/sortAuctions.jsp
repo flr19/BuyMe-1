@@ -82,9 +82,9 @@ tr:nth-child(even) {
 			out.print("Gender");
 			out.print("</th>");
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Current Bid");
-			out.print("</th>"); */
+			out.print("</th>");
 		/* 	
 			out.print("<th>");
 			out.print("Start Time");
@@ -93,16 +93,14 @@ tr:nth-child(even) {
 			out.print("End Time");
 			out.print("</th>");
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Winner");
-			out.print("</th>"); */
+			out.print("</th>");
 			
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Status");
-			out.print("</th>"); */
-			
-			
+			out.print("</th>");
 			
 			out.print("<th>");
 			out.print(" ");
@@ -113,7 +111,7 @@ tr:nth-child(even) {
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("auction_id"));
+				out.print(result.getInt("auction_id"));
 				out.print("</td>");
 				out.print("<td>");
 				out.print(result.getString("category"));
@@ -130,16 +128,16 @@ tr:nth-child(even) {
 				out.print("<td>");
 				out.print(result.getString("gender"));
 				out.print("</td>");
+
+				 
+				out.print("<td>");
+				out.print(result.getString("current_bid"));
+				out.print("</td>");
 				
 				out.print("<td>");
 				out.print("$" + result.getString("price"));
 				out.print("</td>");
-		 /* 
-				out.print("<td>");
-				out.print(result.getString("start_date"));
-				out.print("</td>"); */
-				
-				
+
 				out.print("<td>");
 				out.print(result.getString("end_date"));
 				out.print("</td>");
@@ -155,12 +153,11 @@ tr:nth-child(even) {
 				out.print(result.getString("status"));
 				out.print("</th>");
 				out.print("<td>");
-				out.print("<form action='bidOnItem.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>Bid on Item</button></form>");
+				out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
 				out.print("</td>"); 
 				out.print("</tr>");
 			}
 			out.print("</table>");	
-			
 		} 
 	catch (Exception e) 
 	{
@@ -179,3 +176,4 @@ tr:nth-child(even) {
 
 </body>
 </html>
+
