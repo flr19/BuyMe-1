@@ -152,6 +152,7 @@ try
 							break;
 						}
 						temp = newUser;
+						//This project is so complicated :(
 						newUser = previous_user;
 						previous_user = temp;
 						
