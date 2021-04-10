@@ -54,12 +54,10 @@ tr:nth-child(even) {
 		out.print("<th>");
 		out.print("Username");
 		out.print("</th>");
-		out.print("<th>");
-		out.print("Start Date");
-		out.print("</th>");
-		out.print("<th>");
+
+		/*out.print("<th>");
 		out.print("End Date");
-		out.print("</th>");
+		out.print("</th>");*/
 
 		out.print("<th>");
 		out.print("Auction ID");
@@ -75,16 +73,13 @@ tr:nth-child(even) {
 			out.print("<td>");
 			out.print(result.getString("seller"));
 			out.print("</td>");
-			out.print("<td>");
-			out.print(result.getString("start_date"));
-			out.print("</td>");
 
 			out.print("<td>");
 			out.print(result.getString("end_date"));
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("auction_id"));
+			out.print(result.getInt("auction_id"));
 			out.print("</td>");
 
 			out.print("<td>");

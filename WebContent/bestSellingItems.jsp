@@ -46,9 +46,8 @@ out.print("<b>Top 5 Selling Items: </b>");
 		  "Bids using (auction_id) group by auction_id) )t2 " +
 		  "GROUP BY maker, type, model ORDER BY COUNT(*) DESC LIMIT 5"; */
 		  
-	String str = "select p.category, p.brand, p.color, p.gender, count(w.amount) as count_items from products p, auction a, winner w where p.product_id = a.product_id and w.auction_id = a.auction_id group by p.category, p.brand, p.color, p.gender order by count(w.amount) desc limit 5 ";
+	String str = "select p.product_id, p.category, p.brand, p.color, p.gender, count(a.auction_id) as count_items from products p, auction a where p.product_id = a.product_id group by p.product_id p.category, p.brand, p.color, p.gender order by count(p.product_id) desc limit 5 ";
 	result = stmt.executeQuery(str);
-	
 	out.print("<table>");
 	//make a row
 	out.print("<tr>");

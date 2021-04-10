@@ -45,11 +45,11 @@ try
  */	
 /* String str_bid = "update auction a set a.winner =  (select b.username from bids b, auction a where b.amount = (select max(amount) from bids) and a.auction_id = b.auction_id); ";
  */ 
- String str = "select sum(amount) as total_earnings from winners";	
+ String str = "select sum(amount) as total_earnings from winner";	
  result = stmt.executeQuery(str);
 	while(result.next())
 	{
-		out.print(result.getString("total_earnings"));
+		out.print(result.getFloat("total_earnings"));
 	}
 }		
 catch (Exception e) 

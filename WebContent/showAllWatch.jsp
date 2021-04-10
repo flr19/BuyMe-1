@@ -53,7 +53,7 @@
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("product_id"));
+				out.print(result.getInt("product_id"));
 				out.print("</td>");
 				out.print("<td>");
 				out.print(result.getString("category"));
@@ -72,7 +72,7 @@
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print("<form action='createAuction.jsp' method='post'><button name='auction' type='submit' value='" + result.getString("product_id") + "'>Create Auction</button></form>");
+				out.print("<form action='createAuction.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("product_id") + "'>Create Auction</button></form>");
 				out.print("</td>"); 
 				out.print("</tr>");
 			}

@@ -65,14 +65,14 @@ tr:nth-child(even) {
 		while (result.next()) {
 			out.print("<tr>");
 			out.print("<td>");
-			out.print(result.getString("auction_id"));
+			out.print(result.getInt("auction_id"));
 			out.print("</td>");
 			out.print("<td>");
-			out.print(result.getString("product_id"));
+			out.print(result.getInt("product_id"));
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("amount"));
+			out.print(result.getFloat("amount"));
 			out.print("</td>");
 
 			out.print("</tr>");

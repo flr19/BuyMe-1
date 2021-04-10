@@ -50,10 +50,11 @@ if(session.getAttribute("ACCOUNT_TYPE").equals("buyer"))
 } */
 try 
 {
-	String newAuction = (String)session.getAttribute("auction_id");
-	String viewBid = "SELECT * FROM bids WHERE auction_id = ? ORDER BY amount asc";
+	//String newAuction = (String)session.getAttribute("auction_id");
+	int auction_id = Integer.parseInt(request.getParameter("auction_id"));
+	String viewBid = "SELECT * FROM bid WHERE auction_id = ? ORDER BY amount desc";
 	ps = con.prepareStatement(viewBid);
-	ps.setString(1, newAuction);
+	ps.setInt(1, auction_id);
 	result = ps.executeQuery();
 	out.print("<table>");
 	out.print("<tr>");
@@ -72,15 +73,15 @@ try
 	{
 		out.print("<tr>");
 		out.print("<td>");
-		out.print(result.getString("auction_id"));
+		out.print(result.getInt("auction_id"));
 		out.print("</td>");
 		
 		out.print("<td>");
-		out.print(result.getString("username"));
+		out.print(result.getString("buyer"));
 		out.print("</td>");
 		
 		out.print("<td>");
-		out.print("$" + result.getString("amount"));
+		out.print("$" + result.getFloat("amount"));
 		out.print("</td>");
 		out.print("</tr>");
 	}

@@ -65,7 +65,8 @@ tr:nth-child(even) {
 			
 			//Make an HTML table to show the results in:
 			out.print("<table>");
-			//make a row			out.print("<tr>");
+			//make a row			
+			out.print("<tr>");
 			out.print("<th>");
 			out.print("Auction ID ");
 			out.print("</th>");		
@@ -85,10 +86,11 @@ tr:nth-child(even) {
 			out.print("<th>");
 			out.print("Current Bid");
 			out.print("</th>");
-		/* 	
+
 			out.print("<th>");
-			out.print("Start Time");
-			out.print("</th>");	 */
+			out.print("Price");
+			out.print("</th>");
+
 			out.print("<th>");
 			out.print("End Time");
 			out.print("</th>");
@@ -96,7 +98,6 @@ tr:nth-child(even) {
 			out.print("<th>");
 			out.print("Winner");
 			out.print("</th>");
-			
 			
 			out.print("<th>");
 			out.print("Status");
@@ -113,6 +114,7 @@ tr:nth-child(even) {
 				out.print("<td>");
 				out.print(result.getInt("auction_id"));
 				out.print("</td>");
+
 				out.print("<td>");
 				out.print(result.getString("category"));
 				out.print("</td>");
@@ -129,13 +131,12 @@ tr:nth-child(even) {
 				out.print(result.getString("gender"));
 				out.print("</td>");
 
-				 
 				out.print("<td>");
-				out.print(result.getString("current_bid"));
+				out.print(result.getFloat("current_bid"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print("$" + result.getString("price"));
+				out.print("$" + result.getFloat("price"));
 				out.print("</td>");
 
 				out.print("<td>");
@@ -152,9 +153,15 @@ tr:nth-child(even) {
 				out.print("<th>");
 				out.print(result.getString("status"));
 				out.print("</th>");
+
 				out.print("<td>");
 				out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
 				out.print("</td>"); 
+
+				out.print("<td>");
+				out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>View Bid History</button></form>");
+				out.print("</td>"); 
+
 				out.print("</tr>");
 			}
 			out.print("</table>");	

@@ -82,7 +82,8 @@ tr:nth-child(even) {
 			
 			//Make an HTML table to show the results in:
 			out.print("<table>");
-			//make a row			out.print("<tr>");
+			//make a row			
+			out.print("<tr>");
 			out.print("<th>");
 			out.print("Auction ID ");
 			out.print("</th>");		
@@ -93,30 +94,31 @@ tr:nth-child(even) {
 			out.print("Brand");
 			out.print("</th>");	
 			out.print("<th>");
-			out.print("Model");
+			out.print("Color");
+			out.print("</th>");
+			out.print("<th>");
+			out.print("Gender");
 			out.print("</th>");
 			
-			/* out.print("<th>");
-			out.print("Current Bid");
-			out.print("</th>"); */
-			
 			out.print("<th>");
-			out.print("Start Time");
-			out.print("</th>");	
+			out.print("Current Bid");
+			out.print("</th>");
+
+			out.print("<th>");
+			out.print("Price");
+			out.print("</th>");
+
 			out.print("<th>");
 			out.print("End Time");
 			out.print("</th>");
 			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Winner");
-			out.print("</th>"); */
+			out.print("</th>");
 			
-			
-			/* out.print("<th>");
+			out.print("<th>");
 			out.print("Status");
-			out.print("</th>"); */
-			
-			
+			out.print("</th>");
 			
 			out.print("<th>");
 			out.print(" ");
@@ -127,8 +129,9 @@ tr:nth-child(even) {
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("auction_id"));
+				out.print(result.getInt("auction_id"));
 				out.print("</td>");
+
 				out.print("<td>");
 				out.print(result.getString("category"));
 				out.print("</td>");
@@ -144,16 +147,15 @@ tr:nth-child(even) {
 				out.print("<td>");
 				out.print(result.getString("gender"));
 				out.print("</td>");
-				
+
 				out.print("<td>");
-				out.print("$" + result.getString("price"));
-				out.print("</td>");
-		 
-				out.print("<td>");
-				out.print(result.getString("start_date"));
+				out.print(result.getFloat("current_bid"));
 				out.print("</td>");
 				
-				
+				out.print("<td>");
+				out.print("$" + result.getFloat("price"));
+				out.print("</td>");
+
 				out.print("<td>");
 				out.print(result.getString("end_date"));
 				out.print("</td>");
@@ -166,15 +168,15 @@ tr:nth-child(even) {
 				out.print("</td>");
 				
 				out.print("<th>");
-				out.print(result.getString("status"));
+				out.print(result.getBoolean("status"));
 				out.print("</th>");
-				/* out.print("<td>");
-				out.print("<form action='itemBid.jsp' method='get'><button name='auct' type='submit' value='" + result.getString("auction_id") + "'>View Item</button></form>");
-				out.print("</td>"); */
+
+				out.print("<td>");
+				out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
+				out.print("</td>"); 
 				out.print("</tr>");
 			}
 			out.print("</table>");	
-			
 		} 
 	catch (Exception e) 
 	{

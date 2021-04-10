@@ -21,6 +21,7 @@
 		/* String startDate = request.getParameter("start_datetime"); */
 		String endDate = request.getParameter("end_datetime");
 		
+		System.out.println(endDate);
 	/* 	out.println(endDate); */
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//give format in which you are receiving the `String date_updated`
 	    java.util.Date date = sdf.parse(endDate);
@@ -57,8 +58,8 @@
 			ps.setDate(6, sqlDate_updated);
 
 		 	int result = 0;
-	        result = ps.executeUpdate();
-	        if (result < 1) {
+	        ps.executeUpdate();
+	       /* if (result < 1) {
 	        	out.println("Error: Auction creation failed.");
 	        } else {
 	        	rs = ps.getGeneratedKeys();
@@ -67,6 +68,7 @@
 	        	response.sendRedirect("sortAuctions.jsp?auction_id=" + auction_id); //success 
 	        	return;
 	        } 
+			*/
 		
 	} catch(Exception e) {
         response.sendRedirect("createAuctionError.jsp");  // MySql error such as Start Date before End Date

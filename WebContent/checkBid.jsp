@@ -9,7 +9,7 @@
 <title>Bid</title>
 </head>
 <body>
-<% 
+	<% 
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 //Create a SQL statement
@@ -19,6 +19,8 @@ ResultSet result2 = null;
 PreparedStatement ps = null;
 PreparedStatement ps2 = null;
 PreparedStatement ps3 = null;
+PreparedStatement ps4 = null;
+
 try 
 {
 	//Get the combobox from the index.jsp
@@ -48,25 +50,22 @@ try
 	result2 = ps2.executeQuery();
 	result2.next();
 	
+
+	
 	float initialPrice = result2.getFloat("min_price");
 	float current_bid = result.getFloat("max(b.amount)");
+	
+	
+	
+
+	
+	
 	if((newBid <= current_bid) || newBid < initialPrice)
 	{
-		throw new Exception("You can't bid lower than the initial price or the previous highest bid!"+newBid+current_bid+initialPrice);
+		throw new Exception("You can't bid lower than the initial price or the previous highest bid! Your bid amount is:"+newBid+" , whereas the current winning bid is:"+current_bid+" , and the seller minimum is:"+initialPrice);
 	}
 	
-	//SEND THE ALERT FOR HIGHEST BIDDER, BY GETTING BIDDERNAME FROM BID TABLE, WHOSE BID FOR THIS AUCTION IS EQUAL TO CURRENT_BID
 	
-	/*String loserUser = result.getString("buyer");
-	if(loserUser != null)
-	{
-		String message = "You have been outbid on Auction #" + auction_id + "!";
-		String insert2 = "INSERT INTO alert(username) VALUES(?)";
-		ps = con.prepareStatement(insert2);
-		ps.setString(1, loserUser);
-		ps.executeUpdate();
-	}*/
- 
 	
 	//Make an insert statement for the Users table:
 	String insert = "INSERT INTO bid(buyer, upper_limit, is_autobid, bid_increment, amount, auction_id)"
@@ -84,7 +83,119 @@ try
 
 	//Run the query against the DB
 	ps3.executeUpdate();
+	
+	System.out.println("Check 0");
+	
+	if(current_bid!=0){
+		
+	
+		String str3 = "SELECT * FROM auction a, bid b WHERE b.auction_id=a.auction_id and a.auction_id=? and b.amount=?"; 
+		
+		ps4 = con.prepareStatement(str3);
+		ps4.setFloat(1, auction_id);
+		ps4.setFloat(2, current_bid);
+		result2 = ps4.executeQuery();
+		result2.next();
+		
+		String previous_user = result2.getString("buyer");
+		int previous_bid_id = result2.getInt("bid_id");
+		
+		
+		str3 = "SELECT b.bid_id FROM bid b, auction a WHERE b.amount=? and a.auction_id=?"; 
+		
+		ps4 = con.prepareStatement(str3);
+		ps4.setFloat(1, newBid);
+		ps4.setFloat(2, auction_id);
+		result2 = ps4.executeQuery();
+		result2.next();
+		
+		
+		int current_bid_id = result2.getInt("bid_id");
+		
+		boolean previous_auto_bid;
+		float previous_auto_increment;
+		float previous_auto_max;
+		String temp;
+		int temp2;
+		
+		if(previous_bid_id!=0){
+			System.out.println("Check 1");
+			if(!(previous_user.equals(newUser))){
+				System.out.println("Check 2");
+				while(true){
+					System.out.println("Check 3");
+					str3 = "SELECT * FROM bid b WHERE b.bid_id = ?"; 	
+					ps4 = con.prepareStatement(str3);
+					ps4.setFloat(1, previous_bid_id);
+					result2 = ps4.executeQuery();
+					result2.next();
+					
+					previous_auto_bid = result2.getBoolean("is_autobid");
+					previous_auto_increment = result2.getFloat("bid_increment");
+					previous_auto_max = result2.getFloat("upper_limit");
+					
+					if(previous_auto_bid && newBid+previous_auto_increment<=previous_auto_max){
+						System.out.println("Check 4");
+						str3 = "INSERT INTO bid(buyer, upper_limit, is_autobid, bid_increment, amount, auction_id)"
+								+ "VALUES (?, ?, ?, ?, ?, ?)";
+						ps3 = con.prepareStatement(str3);
+						ps3.setString(1, previous_user);
+						ps3.setFloat(2, previous_auto_max);
+						ps3.setBoolean(3, previous_auto_bid);
+						ps3.setFloat(4, previous_auto_increment);
+						ps3.setFloat(5, newBid+previous_auto_increment);
+						ps3.setInt(6, auction_id);
+						
+						ps3.executeUpdate();
+						
+						if(!auto_bool){
+							break;
+						}
+						temp = newUser;
+						newUser = previous_user;
+						previous_user = temp;
+						
+						temp2 = previous_bid_id;
+						previous_bid_id = current_bid_id;
+						current_bid_id = temp2;
+						
+						auto_bool = true;
+						
+						newBid = newBid+previous_auto_increment;
+						
+						System.out.println("Check 5");
+					}
+					else{
+						break;
+					}
+				}
+				
+			}
+		}
+	}
+	
+	
+	str = "SELECT max(b.amount) FROM auction a, bid b WHERE b.auction_id=? AND b.auction_id=a.auction_id"; //get the max bid for our current auction
+	ps = con.prepareStatement(str);
+	ps.setInt(1, auction_id);
+	//ps.setString(2, newAuction);
+	result = ps.executeQuery();
+	result.next();
+	current_bid = result.getFloat("max(b.amount)");
+	
+	str = "UPDATE auction a SET a.current_bid=? where a.auction_id=?";
+	ps = con.prepareStatement(str);
+	ps.setInt(2, auction_id);
+	ps.setFloat(1, current_bid);
+	//ps.setString(2, newAuction);
+	ps.executeUpdate();
+	result.next();
+	
+	
+	
 	response.sendRedirect("showAllWatch.jsp");
+	
+	
 	}
 catch (Exception e) 
 {

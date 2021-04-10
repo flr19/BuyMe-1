@@ -24,7 +24,7 @@ try {
 		int result = 0;
 		result = ps.executeUpdate();
 		if (result < 1) {
-	out.println("Error: Question failed.");
+		out.println("Error: Question failed.");
 		} else {
 %>
 

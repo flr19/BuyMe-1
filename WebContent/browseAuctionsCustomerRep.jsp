@@ -99,10 +99,6 @@ ApplicationDB db = new ApplicationDB();
 			out.print("</th>"); 
 			
 			out.print("<th>");
-			out.print("Start Date");
-			out.print("</th>");
-			
-			out.print("<th>");
 			out.print("End Date");
 			out.print("</th>");
 			
@@ -130,7 +126,7 @@ ApplicationDB db = new ApplicationDB();
 			{
 				out.print("<tr>");
 				out.print("<td>");
-				out.print(result.getString("auction_id"));
+				out.print(result.getInt("auction_id"));
 				out.print("</td>");
 				out.print("<td>");
 				out.print(result.getString("category"));
@@ -152,14 +148,6 @@ ApplicationDB db = new ApplicationDB();
 				out.print(result.getString("seller"));
 				out.print("</td>");
 				
-				/* out.print("<td>");
-				out.print("$" + result.getString("amount"));
-				out.print("</td>"); */
-		 
-				out.print("<td>");
-				out.print(result.getString("start_date"));
-				out.print("</td>");
-				
 				out.print("<td>");
 				out.print(result.getString("end_date"));
 				out.print("</td>");
@@ -171,12 +159,12 @@ ApplicationDB db = new ApplicationDB();
 				out.print(tempwinner); 
 				out.print("</td>");
 				
-			/* 	out.print("<th>");
+			out.print("<th>");
 				out.print(result.getString("status"));
-				out.print("</th>"); */
+				out.print("</th>"); 
 				
 				out.print("<td>");
-				out.print("<form action='removeAuction.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getString("auction_id") + "'>Remove</button></form>");
+				out.print("<form action='removeAuction.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Remove nAuctio</button></form>");
 				out.print("</td>");
 				out.print("</tr>");
 				

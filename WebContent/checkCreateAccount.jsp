@@ -19,8 +19,6 @@
 	String account_type = request.getParameter("account_type");
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
-	/* Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem","root", ""); */
 	Statement stmt = con.createStatement();
     
     ResultSet rs = null;
