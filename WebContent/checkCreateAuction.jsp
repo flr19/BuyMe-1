@@ -61,6 +61,7 @@
 
 		 	int result = 0;
 	        ps.executeUpdate();
+	        
 	       /* if (result < 1) {
 	        	out.println("Error: Auction creation failed.");
 	        } else {
