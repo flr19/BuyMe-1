@@ -164,11 +164,15 @@ tr:nth-child(even) {
 				}
 				
 				out.print("<td>");
-				out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>View Bid History</button></form>");
+				out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> View Bid History </button></form>");
 				out.print("</td>"); 
 
 				out.print("<td>");
-				out.print("<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>View Similar Items</button></form>");
+				out.print("<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> View Similar Items </button></form>");
+				out.print("</td>");
+
+				out.print("<td>");
+				out.print("<form action='viewAlert.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> Alert Me! </button></form>");
 				out.print("</td>");
 
 				out.print("</tr>");

@@ -16,7 +16,7 @@
     ResultSet result = null;
     
     int auction_id = Integer.parseInt(request.getParameter("auction_id"));
-    System.out.println("I am an asswhoel"+auction_id);
+   // System.out.println("I am an asswhoel"+auction_id);
     
     String str = "SELECT * FROM auction a, product p WHERE a.product_id=p.product_id and a.auction_id=" + auction_id;
     //ps = con.prepareStatement(str);
