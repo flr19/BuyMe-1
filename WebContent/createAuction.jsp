@@ -9,20 +9,23 @@
 <title>Create Auction</title>
 </head>
 <body>
-	<% if(session.getAttribute("user") == null) {
+	<% 
+	session.setAttribute("product_id", request.getParameter("product_id"));
+	if(session.getAttribute("user") == null) {
     	 	response.sendRedirect("login.jsp");
-        } else { %>
+        } else {
+			 %>
         
 	<div class="content">
 		<form action="checkCreateAuction.jsp" method="POST">	
 	<table>
 	 <tr> 
 	 <td>
-	<input type="hidden" name="product_id" value = <%=request.getParameter("product_id")%>>
+	<input type="text" name="product_id" value = <%=request.getParameter("product_id")%>>
 	</td>
 	</tr> 
 	<tr>    
-	<td>End Date: </td><td><input type="text" name="end_datetime" id="end_datetime" placeholder="yyyy-MM-dd hh:mm:ss"></td>
+	<td>End Date: </td><td><input type="text" name="end_datetime" id="end_datetime" placeholder="yyyy-MM-dd hh:mm:ss" required></td>
 	</tr> 
 	<tr>    
 	<td>Minimum Price: </td><td><input type="text" name="min_price" required></td>
@@ -32,7 +35,7 @@
 	</tr>	
 	</table>
 	<input type="submit" value="Create Auction">
-		</form>
+	</form>
 	</div>
 	<% } %>
 </body>

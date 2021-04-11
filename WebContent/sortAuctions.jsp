@@ -151,16 +151,25 @@ tr:nth-child(even) {
 				out.print("</td>");
 				
 				out.print("<th>");
+				String status = result.getString("status");
 				out.print(result.getString("status"));
 				out.print("</th>");
-
-				out.print("<td>");
-				out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
-				out.print("</td>"); 
-
+				
+				
+				
+				if(!status.equals("close")){
+					out.print("<td>");
+					out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
+					out.print("</td>"); 
+				}
+				
 				out.print("<td>");
 				out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>View Bid History</button></form>");
 				out.print("</td>"); 
+
+				out.print("<td>");
+				out.print("<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>View Similar Items</button></form>");
+				out.print("</td>");
 
 				out.print("</tr>");
 			}

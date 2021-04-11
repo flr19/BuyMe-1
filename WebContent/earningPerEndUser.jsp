@@ -39,20 +39,13 @@ try
 	
 out.print("<b>Earning per End-User: </b>");
 	
-	/* String str = "SELECT username, SUM(amount) " +
-			"FROM Items LEFT JOIN Auction using (item_id) " +
-			"LEFT JOIN Bids using (auction_id) WHERE buyer IS NOT NULL and winner <> 'none' and (auction_id,amount) " + 
-			"IN (select auction_id,max(amount) FROM Auction JOIN " +
-			"Bids using (auction_id) group by auction_id) GROUP BY username"; */
-	String str = "select a.seller,sum(w.amount) as sum_amount as earning from auction a,winner w where "+
-				"a.auction_id=w.auction_id " +
-				"group by a.seller";
+	String str = "SELECT a.seller, sum(a.current_bid) FROM product p, auction a WHERE p.product_id=a.product_id and a.status = 'close' and a.current_bid >= a.min_price group by a.seller";
 	result = stmt.executeQuery(str);
 	out.print("<table>");
 	//make a row
 	out.print("<tr>");
 	out.print("<th>");
-	out.print("User");
+	out.print("Seller");
 	out.print("</th>");		
 	
 	out.print("<th>");
@@ -63,10 +56,10 @@ out.print("<b>Earning per End-User: </b>");
 	while (result.next()) 
 	{
 		out.print("<td>");
-		out.print(result.getString("username"));
+		out.print(result.getString("seller"));
 		out.print("</td>");
 		out.print("<td>");
-		out.print("$" + result.getString("sum_amount"));
+		out.print("$" + result.getFloat("sum(a.current_bid)"));
 		out.print("</td>");
 		out.print("</tr>");
 	}

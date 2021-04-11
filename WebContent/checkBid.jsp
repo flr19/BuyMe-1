@@ -44,7 +44,7 @@ try
 	result = ps.executeQuery();
 	result.next();
 	
-	String str2 = "SELECT min_price FROM auction WHERE auction_id=?";
+	String str2 = "SELECT price FROM auction WHERE auction_id=?";
 	ps2 = con.prepareStatement(str2);
 	ps2.setInt(1, auction_id);
 	result2 = ps2.executeQuery();
@@ -52,7 +52,7 @@ try
 	
 
 	
-	float initialPrice = result2.getFloat("min_price");
+	float initialPrice = result2.getFloat("price");
 	float current_bid = result.getFloat("max(b.amount)");
 	
 	
@@ -84,7 +84,7 @@ try
 	//Run the query against the DB
 	ps3.executeUpdate();
 	
-	System.out.println("Check 0");
+	//System.out.println("Check 0");
 	
 	if(current_bid!=0){
 		
@@ -119,11 +119,11 @@ try
 		int temp2;
 		
 		if(previous_bid_id!=0){
-			System.out.println("Check 1");
+			//System.out.println("Check 1");
 			if(!(previous_user.equals(newUser))){
-				System.out.println("Check 2");
+				//System.out.println("Check 2");
 				while(true){
-					System.out.println("Check 3");
+					//System.out.println("Check 3");
 					str3 = "SELECT * FROM bid b WHERE b.bid_id = ?"; 	
 					ps4 = con.prepareStatement(str3);
 					ps4.setFloat(1, previous_bid_id);
@@ -135,7 +135,7 @@ try
 					previous_auto_max = result2.getFloat("upper_limit");
 					
 					if(previous_auto_bid && newBid+previous_auto_increment<=previous_auto_max){
-						System.out.println("Check 4");
+						//System.out.println("Check 4");
 						str3 = "INSERT INTO bid(buyer, upper_limit, is_autobid, bid_increment, amount, auction_id)"
 								+ "VALUES (?, ?, ?, ?, ?, ?)";
 						ps3 = con.prepareStatement(str3);
@@ -164,7 +164,7 @@ try
 						
 						newBid = newBid+previous_auto_increment;
 						
-						System.out.println("Check 5");
+						//System.out.println("Check 5");
 					}
 					else{
 						break;

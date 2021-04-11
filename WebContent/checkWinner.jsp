@@ -15,20 +15,43 @@
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
 		
-	//Create a SQL statement
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-    LocalDateTime now = LocalDateTime.now();  
-    //java.sql.Date date=new java.sql.Date(now);  
     
-	String str = "create temporary table t2 SELECT auction_id FROM auction WHERE end_date < now();" +
-			"UPDATE auction SET status = 'close' WHERE auction_id in (SELECT auction_id FROM t2);" + "drop temporary table t2;";
+	String str = "create temporary table t2 (SELECT auction_id FROM auction WHERE end_date < now())";
+	
+	
 	PreparedStatement ps = null;
 	ps = con.prepareStatement(str);
 	//ps.setInt(1, auction_id);
-	ps.executeUpdate();
+	ps.executeUpdate();	
+	
+	str = "UPDATE auction SET status = 'close' WHERE auction_id in (SELECT auction_id FROM t2)";
 	
 	
+	ps = null;
+	ps = con.prepareStatement(str);
+	//ps.setInt(1, auction_id);
+	ps.executeUpdate();	
+
+	str = "UPDATE auction SET winner = 'No Winner' WHERE current_bid < min_price and auction_id in (SELECT auction_id FROM t2)";
 	
+	ps = null;
+	ps = con.prepareStatement(str);
+	//ps.setInt(1, auction_id);
+	ps.executeUpdate();	
+	
+	/*str = "INSERT INTO winner values(?, ?, ?) ";
+	ps = con.prepareStatement(str);
+	ps.setInt(1, auction_id);
+	ps.setString(2,username );
+	ps.setFloat(3,amount);*/
+	
+str = "drop temporary table t2";
+	
+	
+	ps = null;
+	ps = con.prepareStatement(str);
+	//ps.setInt(1, auction_id);
+	ps.executeUpdate();	
 }
 catch (Exception se) {
 		se.printStackTrace();

@@ -36,22 +36,14 @@ PreparedStatement ps = null;
 ResultSet result = null;
 try 
 {
-	
+
 	out.print("<b>Best Buyer: </b>");
-	//String str = "SELECT buyer FROM " +
-		//	"(SELECT *, SUM(amount)FROM (select * from Auction Join Bids using (auction_id) " +
-		//		"WHERE (auction_id,amount) IN (select auction_id,max(amount) FROM Auction JOIN " +
-		//		"Bids using (auction_id) group by auction_id))t1 " + 
-		//	    "GROUP BY buyer, winner ORDER BY SUM(amount) DESC) t2 WHERE buyer IS NOT NULL and winner <> 'None' and winner IS NOT NULL  LIMIT 1";
-	String str= "SELECT sum(w.amount), w.username as buyer" +
-				"FROM winners w" +
-				"GROUP BY w.username" +
-				"order by w.amount desc limit 5";
+	String str= "SELECT a.winner, count(*) FROM auction a, product p WHERE a.product_id=p.product_id and a.status='close' and a.current_bid>=a.min_price order by count(*) desc limit 5";
 			
 	result = stmt.executeQuery(str);
 	while(result.next())
 	{
-		out.print(result.getString("buyer"));
+		out.print(result.getString("a.winner"));
 	}
 	out.print("<br/>");
 }		

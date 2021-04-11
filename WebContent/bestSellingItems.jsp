@@ -38,21 +38,19 @@ try
 {
 	
 out.print("<b>Top 5 Selling Items: </b>");
-	
-	/* String str = "SELECT category,brand, color, gender COUNT(*)FROM " +
-		  "(SELECT category,brand, color, gender FROM product LEFT JOIN auction using (product_id) " + 
-		  "LEFT JOIN bids using (auction_id) WHERE username IS NOT NULL and winner <> 'none' and (auction_id,amount) " + 
-		  "IN (select auction_id,max(amount) FROM Auction JOIN " + 
-		  "Bids using (auction_id) group by auction_id) )t2 " +
-		  "GROUP BY maker, type, model ORDER BY COUNT(*) DESC LIMIT 5"; */
 		  
-	String str = "select p.product_id, p.category, p.brand, p.color, p.gender, count(a.auction_id) as count_items from products p, auction a where p.product_id = a.product_id group by p.product_id p.category, p.brand, p.color, p.gender order by count(p.product_id) desc limit 5 ";
+	String str = "SELECT p.product_id, p.category, p.brand, p.color, p.gender, count(*) FROM auction a, product p WHERE a.status='close' and a.current_bid>=a.min_price and a.product_id=p.product_id group by p.product_id order by count(*) desc limit 5";
 	result = stmt.executeQuery(str);
 	out.print("<table>");
 	//make a row
 	out.print("<tr>");
+
 	out.print("<th>");
-	out.print("Category ");
+	out.print("Product ID");
+	out.print("</th>");
+
+	out.print("<th>");
+	out.print("Category");
 	out.print("</th>");		
 	
 	out.print("<th>");
@@ -76,6 +74,10 @@ out.print("<b>Top 5 Selling Items: </b>");
 	while (result.next()) 
 	{
 		out.print("<td>");
+		out.print(result.getInt("product_id"));
+		out.print("</td>");
+		
+		out.print("<td>");
 		out.print(result.getString("category"));
 		out.print("</td>");
 		out.print("<td>");
@@ -88,7 +90,7 @@ out.print("<b>Top 5 Selling Items: </b>");
 		out.print(result.getString("gender"));
 		out.print("</td>");
 		out.print("<td>");
-		out.print(result.getString("count_items"));
+		out.print(result.getInt("count(*)"));
 		out.print("</td>");
 		out.print("</tr>");
 	}

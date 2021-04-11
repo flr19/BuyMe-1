@@ -9,6 +9,7 @@
 <title>Check Login Details</title>
 </head>
 <body>
+	<jsp:include page="checkWinner.jsp" />
 	<%@ page import="java.sql.*"%>
 	<%
 	String userid = request.getParameter("username");

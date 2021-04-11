@@ -38,15 +38,8 @@ try
 {
 	
 	out.print("<b>Earning per Item Type: </b>");
-	
-	/* String str = "SELECT type, SUM(amount) FROM Items " +
-	"LEFT JOIN Auction using (item_id) " +
-	"LEFT JOIN Bids using (auction_id) " +
-	"WHERE (auction_id,amount) IN (select auction_id,max(amount) " + 
-	"FROM Auction JOIN Bids using (auction_id) " +
-	"group by auction_id) and buyer IS NOT NULL and winner <> 'none' GROUP BY type"; */
-	String str = "select p.category, sum(w.amount) as earningPerItemType from products p, winner w, auction a where a.auction_id = w.auction_id and p.product_id and a.product_id" + 
-			"group by p.category";
+
+	String str = "SELECT p.category, sum(a.current_bid) FROM product p, auction a WHERE p.product_id=a.product_id  and a.status = 'close' and a.current_bid >= a.min_price group by p.category";
 	result = stmt.executeQuery(str);
 	out.print("<table>");
 	//make a row
@@ -66,7 +59,7 @@ try
 		out.print(result.getString("category"));
 		out.print("</td>");
 		out.print("<td>");
-		out.print("$" + result.getString("earningPerItemType"));
+		out.print("$" + result.getFloat("sum(a.current_bid)"));
 		out.print("</td>");
 		out.print("</tr>");
 	}

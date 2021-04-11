@@ -9,15 +9,13 @@
 <title>Check Login Details</title>
 </head>
 <body>
+	<jsp:include page="checkWinner.jsp" />
 	<%@ page import ="java.sql.*" %>
 <%
     String userid = request.getParameter("username");   
     String pwd = request.getParameter("password");
    ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection(); 	
-	
-	/* Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auctionsystem","root", ""); */
 	Statement stmt = con.createStatement();
 	
     ResultSet rs;

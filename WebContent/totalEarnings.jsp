@@ -36,16 +36,7 @@ ResultSet result = null;
 try 
 {
 	out.print("<b>Total earnings: </b>");
-	/* String str = "SELECT SUM(amount) FROM (select * " +
-			"from Auction Join Bids using (auction_id) " + 
-			"WHERE (auction_id,amount) IN (select auction_id,max(amount) " +
-			"FROM Auction JOIN Bids using (auction_id) group by auction_id))t1 " +
-			"WHERE buyer IS NOT NULL and winner <> 'None' and winner IS NOT NULL ";  */
-/* 	String str = "select sum(b.amount) from bids b, product p where p.product_id = b.product_id and p.winner not null and b.amount = (select max(price) from pr);";
- */	
-/* String str_bid = "update auction a set a.winner =  (select b.username from bids b, auction a where b.amount = (select max(amount) from bids) and a.auction_id = b.auction_id); ";
- */ 
- String str = "select sum(amount) as total_earnings from winner";	
+ String str = "select sum(current_bid) as total_earnings from auction where status = 'close' and current_bid >= min_price";	
  result = stmt.executeQuery(str);
 	while(result.next())
 	{

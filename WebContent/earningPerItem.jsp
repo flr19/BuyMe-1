@@ -37,19 +37,16 @@ ResultSet result = null;
 try 
 {
 	out.print("<b>Earning per Item: </b>");
+
+	String str = "SELECT p.product_id, p.brand, p.category, p.color, p.gender, sum(a.current_bid) FROM product p, auction a WHERE p.product_id=a.product_id and a.status = 'close' and a.current_bid >= a.min_price group by p.brand, p.category, p.gender, p.color";
 	
-	/* String str = "SELECT maker, type, model, SUM(amount) " +
-			"FROM Items LEFT JOIN Auction using (item_id) " + 
-			"LEFT JOIN Bids using (auction_id) " +
-			"WHERE buyer IS NOT NULL and winner <> 'none' and (auction_id,amount) IN (select auction_id,max(amount) " + 
-			"FROM Auction JOIN Bids using (auction_id) " +
-			"group by auction_id) GROUP BY maker, type, model"; */
-	String str = "select p.category, p.brand, p.color, p.gender, sum(w.amount) as earningPerItem from products p, winner w, auction a where a.auction_id = w.auction_d and p.product_id and a.product_id" + 
-			"group by p.category, p.brand, p.color, p.gender";
 	result = stmt.executeQuery(str);
 	out.print("<table>");
 	//make a row
 	out.print("<tr>");
+	out.print("<th>");
+	out.print("Product ID");
+	out.print("</th>");
 	out.print("<th>");
 	out.print("Category");
 	out.print("</th>");		
@@ -69,7 +66,11 @@ try
 	out.print("</tr>");
 	
 	while (result.next()) 
-	{
+	{	
+		out.print("<td>");
+		out.print(result.getInt("product_id"));
+		out.print("</td>");
+		
 		out.print("<td>");
 		out.print(result.getString("category"));
 		out.print("</td>");
@@ -81,12 +82,13 @@ try
 		out.print("<td>");
 		out.print(result.getString("color"));
 		out.print("</td>");
+
 		out.print("<td>");
 		out.print(result.getString("gender"));
 		out.print("</td>");
 		
 		out.print("<td>");
-		out.print("$" + result.getString("earningPerItem"));
+		out.print("$" + result.getFloat("sum(a.current_bid)"));
 		out.print("</td>");
 		out.print("</tr>");
 	}

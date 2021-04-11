@@ -14,7 +14,8 @@
 		conn = db.getConnection();
 		
 		// Get the parameters from the createAuction request
-		int product_id = Integer.parseInt(request.getParameter("product_id"));
+		//int product_id = Integer.parseInt(request.getParameter("product_id"));
+		int product_id = Integer.parseInt(session.getAttribute("product_id").toString());
 		String seller = (session.getAttribute("user")).toString();
 		float minPrice = Float.parseFloat(request.getParameter("min_price"));
 		float price = Float.parseFloat(request.getParameter("price"));
@@ -25,7 +26,7 @@
 	/* 	out.println(endDate); */
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//give format in which you are receiving the `String date_updated`
 	    java.util.Date date = sdf.parse(endDate);
-	    java.sql.Date sqlDate_updated = new java.sql.Date(date.getTime());	    
+	    java.sql.Timestamp sqlDate_updated = new java.sql.Timestamp(date.getTime());	    
 	    
 	/*     Calendar calendar = Calendar.getInstance();
 	    
@@ -44,8 +45,8 @@
 				&& startingPrice >= 0.0f) { */
 			
 		// Build the SQL query with placeholders for parameters
-		String insert = "INSERT INTO auction(product_id, seller, min_price, price, status, end_date, winner, current_bid)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String insert = "INSERT INTO auction(product_id, seller, min_price, price, status, start_date, end_date, winner, current_bid)"
+					+ "VALUES(?, ?, ?, ?, ?, now(), ?, ?, ?)";
 		/* 	String insert = "INSERT INTO auction (product_id, seller, min_price, price, status)"
 					+ "VALUES(?, ?, ?, ?, ?)";*/ 
 			ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -55,7 +56,7 @@
 			ps.setFloat(4, price);			
 			ps.setString(5,"open");
 		/* 	ps.setTimestamp(6,new Timestamp(time)); */
-			ps.setDate(6, sqlDate_updated);
+			ps.setTimestamp(6, sqlDate_updated);
 			ps.setString(7,null);
 			ps.setFloat(8,0);
 
