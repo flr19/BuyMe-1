@@ -168,6 +168,7 @@ try
 					}
 					else{
 						break;
+						///Set the alert for buyer who has higher bid has been placed
 					}
 				}
 				
@@ -175,6 +176,7 @@ try
 		}
 	}
 	
+	//or set alert here to the loser buyer
 	
 	str = "SELECT max(b.amount) FROM auction a, bid b WHERE b.auction_id=? AND b.auction_id=a.auction_id"; //get the max bid for our current auction
 	ps = con.prepareStatement(str);
