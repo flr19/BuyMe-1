@@ -8,20 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Create Auction</title>
 </head>
-<body>
-	<% 
-	session.setAttribute("product_id", request.getParameter("product_id"));
-	if(session.getAttribute("user") == null) {
-    	 	response.sendRedirect("login.jsp");
-        } else {
-			 %>
-        
+<body>  
 	<div class="content">
 		<form action="checkCreateAuction.jsp" method="POST">	
 	<table>
 	 <tr> 
 	 <td>
-	<input type="text" name="product_id" value = <%=request.getParameter("product_id")%>>
+	<input type="hidden" name="product_id" value = <%=request.getParameter("product_id")%>>
 	</td>
 	</tr> 
 	<tr>    
@@ -37,6 +30,5 @@
 	<input type="submit" value="Create Auction">
 	</form>
 	</div>
-	<% } %>
 </body>
 </html>

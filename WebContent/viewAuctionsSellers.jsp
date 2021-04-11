@@ -32,32 +32,25 @@ tr:nth-child(even) {
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
-	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 
 	try {
 
 		String username = request.getParameter("username1");
-		//query 
 		String str = "Select seller,start_date,end_date, auction_id, status from  auction  Where ( seller ='" + username
 		+ "')";
-
-		//Run the query against the database.
 		result = stmt.executeQuery(str);
-
-		//Make an HTML table to show the results in:
 		out.print("<table>");
 
-		//make a row
 		out.print("<tr>");
 		out.print("<th>");
 		out.print("Username");
 		out.print("</th>");
 
-		/*out.print("<th>");
+		out.print("<th>");
 		out.print("End Date");
-		out.print("</th>");*/
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print("Auction ID");
@@ -75,7 +68,7 @@ tr:nth-child(even) {
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("end_date"));
+			out.print(result.getTimestamp("end_date"));
 			out.print("</td>");
 
 			out.print("<td>");

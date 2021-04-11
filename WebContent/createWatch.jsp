@@ -6,16 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Create Watch</title>
 </head>
 <body>
-	<%
-	if (session.getAttribute("user") == null) {
-		response.sendRedirect("login.jsp");
-	} else {
-	%>
-
 	<div class="content">
 		<form action="checkCreateWatch.jsp" method="POST">
 			<label for="category">Category</label> <select name="category"
@@ -44,8 +37,5 @@
 			<input type="submit" value="Create Watch">
 		</form>
 	</div>
-	<%
-	}
-	%>
 </body>
 </html>

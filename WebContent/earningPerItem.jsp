@@ -30,7 +30,6 @@ tr:nth-child(even) {
 <% 			
 ApplicationDB db = new ApplicationDB();	
 Connection con = db.getConnection();
-//Create a SQL statement
 Statement stmt = con.createStatement();
 PreparedStatement ps = null;
 ResultSet result = null;
@@ -42,7 +41,6 @@ try
 	
 	result = stmt.executeQuery(str);
 	out.print("<table>");
-	//make a row
 	out.print("<tr>");
 	out.print("<th>");
 	out.print("Product ID");

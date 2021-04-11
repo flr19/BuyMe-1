@@ -32,24 +32,16 @@ tr:nth-child(even) {
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
-	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 
 	try {
 
 		String username = request.getParameter("username");
-		//query 
 		String str = "select b.auction_id,b.amount, a.product_id from bid b,auction a WHERE (b.username ='" + username
 		+ "and b.auction_id=a.auction_id";
-
-		//Run the query against the database.
 		result = stmt.executeQuery(str);
-
-		//Make an HTML table to show the results in:
 		out.print("<table>");
-
-		//make a row
 		out.print("<tr>");
 		out.print("<th>");
 		out.print("Auction ID");

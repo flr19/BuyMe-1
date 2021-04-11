@@ -37,158 +37,136 @@ tr:nth-child(even) {
 <form action='sortAuctionsByEndTime.jsp'><input type="submit" value = "Sort by End Time" /></form>
  
 </div>
-	<% 
-	//Create a connection string
-	
-	ApplicationDB db = new ApplicationDB();	
-	Connection con = db.getConnection();
-	//Create a SQL statement
-	Statement stmt = con.createStatement();
-	ResultSet result = null;
-	try {
-		 
-			/* String str = "SELECT * " +
-					"FROM Auction " + 
-					"JOIN Items using (item_id)" +
-					"JOIN Bids using (auction_id)" +
-					"WHERE (auction_id, amount) IN" +
-					"( SELECT auction_id, MAX(amount)" +
-					  "FROM Auction " +
-					"JOIN Items using (item_id)" + 
-					"JOIN Bids using (auction_id)" + 
-					  "GROUP BY auction_id" + 
-					")ORDER BY (auction_id) ASC;"; */
-			String str = "select * from auction join product using (product_id) order by (auction_id);";
-					
-			//Run the query against the database.
-			 result = stmt.executeQuery(str);
-			
-			//Make an HTML table to show the results in:
-			out.print("<table>");
-			//make a row			
+	<%
+		ApplicationDB db = new ApplicationDB();	
+		Connection con = db.getConnection();
+		Statement stmt = con.createStatement();
+		ResultSet result = null;
+		try {
+		String str = "select * from auction join product using (product_id) order by (auction_id);";
+		result = stmt.executeQuery(str);
+		out.print("<table>");
+		out.print("<tr>");
+		out.print("<th>");
+		out.print("Auction ID ");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Category");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Brand");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Color");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Gender");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print("Current Bid");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print("Price");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print("End Time");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print("Winner");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print("Status");
+		out.print("</th>");
+
+		out.print("<th>");
+		out.print(" ");
+		out.print("</th>");
+		out.print("</tr>");
+
+		while (result.next()) {
 			out.print("<tr>");
-			out.print("<th>");
-			out.print("Auction ID ");
-			out.print("</th>");		
-			out.print("<th>");
-			out.print("Category");
-			out.print("</th>");	
-			out.print("<th>");
-			out.print("Brand");
-			out.print("</th>");	
-			out.print("<th>");
-			out.print("Color");
-			out.print("</th>");
-			out.print("<th>");
-			out.print("Gender");
-			out.print("</th>");
-			
-			out.print("<th>");
-			out.print("Current Bid");
-			out.print("</th>");
+			out.print("<td>");
+			out.print(result.getInt("auction_id"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("category"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("brand"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("color"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("gender"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getFloat("current_bid"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print("$" + result.getFloat("price"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("end_date"));
+			out.print("</td>");
+
+			out.print("<td>");
+			String tempwinner = result.getString("winner");
+			if (result.wasNull())
+				tempwinner = " ";
+			out.print(tempwinner);
+			out.print("</td>");
 
 			out.print("<th>");
-			out.print("Price");
+			String status = result.getString("status");
+			out.print(result.getString("status"));
 			out.print("</th>");
 
-			out.print("<th>");
-			out.print("End Time");
-			out.print("</th>");
-			
-			out.print("<th>");
-			out.print("Winner");
-			out.print("</th>");
-			
-			out.print("<th>");
-			out.print("Status");
-			out.print("</th>");
-			
-			out.print("<th>");
-			out.print(" ");
-			out.print("</th>");
-			out.print("</tr>");
-			
-			while (result.next()) 
-			{
-				out.print("<tr>");
+			if (!status.equals("close")) {
 				out.print("<td>");
-				out.print(result.getInt("auction_id"));
+				out.print(
+						"<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='"
+								+ result.getInt("auction_id") + "'>Bid on Item</button></form>");
 				out.print("</td>");
-
-				out.print("<td>");
-				out.print(result.getString("category"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(result.getString("brand"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(result.getString("color"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(result.getString("gender"));
-				out.print("</td>");
-
-				out.print("<td>");
-				out.print(result.getFloat("current_bid"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print("$" + result.getFloat("price"));
-				out.print("</td>");
-
-				out.print("<td>");
-				out.print(result.getString("end_date"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				String tempwinner = result.getString("winner");
-				if (result.wasNull())
-					tempwinner = " ";
-				out.print(tempwinner); 
-				out.print("</td>");
-				
-				out.print("<th>");
-				String status = result.getString("status");
-				out.print(result.getString("status"));
-				out.print("</th>");
-				
-				
-				
-				if(!status.equals("close")){
-					out.print("<td>");
-					out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'>Bid on Item</button></form>");
-					out.print("</td>"); 
-				}
-				
-				out.print("<td>");
-				out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> View Bid History </button></form>");
-				out.print("</td>"); 
-
-				out.print("<td>");
-				out.print("<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> View Similar Items </button></form>");
-				out.print("</td>");
-
-				out.print("<td>");
-				out.print("<form action='viewAlert.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("auction_id") + "'> Alert Me! </button></form>");
-				out.print("</td>");
-
-				out.print("</tr>");
 			}
-			out.print("</table>");	
-		} 
-	catch (Exception e) 
-	{
-			out.print(e);
-	}
-	finally
-	{
-		if (result != null) result.close();
-		if (stmt != null) stmt.close();
-		if (con != null) con.close();
-	}%>
+
+			out.print("<td>");
+			out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='"
+					+ result.getInt("auction_id") + "'> View Bid History </button></form>");
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(
+					"<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='"
+							+ result.getInt("auction_id") + "'> View Similar Items </button></form>");
+			out.print("</td>");
+
+			out.print("</tr>");
+		}
+		out.print("</table>");
+			} catch (Exception e) {
+		out.print(e);
+			} finally {
+		if (result != null)
+			result.close();
+		if (stmt != null)
+			stmt.close();
+		if (con != null)
+			con.close();
+			}
+	%>
 
 		
 			

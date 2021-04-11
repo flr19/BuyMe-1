@@ -16,19 +16,12 @@
     ResultSet result = null;
     int auction_id = Integer.parseInt(request.getParameter("auction_id"));
     String username = (String)session.getAttribute("user");
-   // System.out.println("I am an asswhoel"+auction_id);
-
-   //have to run query first to get th current bid of the item
-   
-    
+  
     String insert = "INSERT INTO alerts(username, alert_message, user_bid, auction_id)"
 					+ "VALUES (?, ?, ?, ?)" ;
-    //Create a Prepared SQL statement allowing you to introduce the parameters of the query
 	ps = con.prepareStatement(insert);
 	String message="You have been outbidded on this item"; 
-    //how to get current bid??
-    int currentbid=session.getAttribute()
-	//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+    /* int currentbid=session.getAttribute(); */
 	ps.setString(1, username);
 	ps.setString(2, message);
 	ps.setFloat(3, currentbid);

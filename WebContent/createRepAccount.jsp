@@ -8,11 +8,12 @@
 </head>
 <body>
 	<form action="checkCreateRepAccount.jsp" method="POST">
-		Enter name: <input type="text" name="name" /> <br /> Enter username: <input
-			type="text" name="username" /> <br /> Enter password: <input
+		Enter name: <input type="text" name="name" /> <br /> Enter username:
+		<input type="text" name="username" /> <br /> Enter password: <input
 			type="password" name="password" /> <br /> Enter address: <input
-			type="text" name="address" /> <br /> Enter email: <input type="text"
-			name="email" /> <br /> <input type="submit" value="Submit" />
+			type="text" name="address" /> <br /> Enter email: <input
+			type="text" name="email" /> <br /> <input type="submit"
+			value="Submit" />
 	</form>
 </body>
 </html>

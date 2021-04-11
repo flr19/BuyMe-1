@@ -30,7 +30,6 @@ tr:nth-child(even) {
 <% 			
 ApplicationDB db = new ApplicationDB();	
 Connection con = db.getConnection();
-//Create a SQL statement
 Statement stmt = con.createStatement();
 PreparedStatement ps = null;
 ResultSet result = null;
@@ -42,7 +41,6 @@ try
 	String str = "SELECT p.category, sum(a.current_bid) FROM product p, auction a WHERE p.product_id=a.product_id  and a.status = 'close' and a.current_bid >= a.min_price group by p.category";
 	result = stmt.executeQuery(str);
 	out.print("<table>");
-	//make a row
 	out.print("<tr>");
 	out.print("<th>");
 	out.print("Category");

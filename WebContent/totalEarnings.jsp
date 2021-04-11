@@ -27,33 +27,32 @@ tr:nth-child(even) {
 <title>Generate Report</title>
 </head>
 <body>
-<% 			
-ApplicationDB db = new ApplicationDB();	
-Connection con = db.getConnection();
-Statement stmt = con.createStatement();
-PreparedStatement ps = null;
-ResultSet result = null;
-try 
-{
-	out.print("<b>Total earnings: </b>");
- String str = "select sum(current_bid) as total_earnings from auction where status = 'close' and current_bid >= min_price";	
- result = stmt.executeQuery(str);
-	while(result.next())
-	{
-		out.print(result.getFloat("total_earnings"));
-	}
-}		
-catch (Exception e) 
-{
+	<%
+	ApplicationDB db = new ApplicationDB();
+	Connection con = db.getConnection();
+	Statement stmt = con.createStatement();
+	PreparedStatement ps = null;
+	ResultSet result = null;
+	try {
+		out.print("<b>Total earnings: </b>");
+		String str = "select sum(current_bid) as total_earnings from auction where status = 'close' and current_bid >= min_price";
+		result = stmt.executeQuery(str);
+		while (result.next()) {
+			out.print(result.getFloat("total_earnings"));
+		}
+	} catch (Exception e) {
 		out.print(e);
-}
-finally
-{
-	if (result != null) result.close();
-	if (ps != null) ps.close();
-	if (stmt != null) stmt.close();
-	if (con != null) con.close();
-}%>
+	} finally {
+		if (result != null)
+			result.close();
+		if (ps != null)
+			ps.close();
+		if (stmt != null)
+			stmt.close();
+		if (con != null)
+			con.close();
+	}
+	%>
 
 
 </body>

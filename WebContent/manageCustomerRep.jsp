@@ -35,7 +35,7 @@
 			}
 			while (rs.next()) {
 		%>
-		<tr>
+	<%-- 	<tr>
 			<td><%=rs.getString("username")%></td>
 			<td><%=rs.getString("name")%></td>
 			<td><%=rs.getString("email")%></td>
@@ -47,7 +47,7 @@
 						value=<%=rs.getString("username")%>>
 				</form>
 			</td>
-		</tr>
+		</tr> --%>
 		<%
 		}
 		} catch (SQLException se) {

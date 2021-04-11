@@ -8,7 +8,6 @@
 <title>Search Products</title>
 </head>
 <body>
-	<!-- <a href="askQuestion.jsp">Return to questions dashboard.</a> -->
 	<h3>Search Items</h3>
 	<form>
 		<input type="text" name="search" placeholder="question">
@@ -19,49 +18,35 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
-
-		//Create a SQL statement
 		Statement stmt = con.createStatement();
-		//Get the selected radio button from the index.jsp
 		String entity = request.getParameter("search");
-		//Make a SELECT query from the table specified by the 'command' parameter at the index.jsp
 		String str = "SELECT category, brand, color, gender, seller where category like '%" + entity + "%' or brand like '%"
 		+ entity + "% or color like '%" + entity + "% or gender like '%" + entity + "%";
-		//Run the query against the database.
-
 		ResultSet rs = stmt.executeQuery(str);
-		//Make an HTML table to show the results in:
 		out.print("<table>");
-
-		//make a row
 		out.print("<tr>");
-		//make a column
 		out.print("<td>");
-		//print out column header
-		out.print("Product");
+		out.print("Product ID");
 		out.print("</td>");
-
 		out.print("<td>");
-		//print out column header
-		out.print("Sold or not");
+		out.print("Catgory");
 		out.print("</td>");
-
 		out.print("<td>");
-		//print out column header
-		out.print("Current Bid");
+		out.print("Brand");
 		out.print("</td>");
-		//make a column
 		out.print("<td>");
-		out.print("User with Current Bid");
+		out.print("Color");
+		out.print("</td>");
+		out.print("<td>");
+		out.print("Gender");
 		out.print("</td>");
 		out.print("</tr>");
 
-		//parse out the results
 		while (rs.next()) {
 
 			out.print("<tr>");
 			out.print("<td>");
-			out.print(rs.getString("product_id"));
+			out.print(rs.getInt("product_id"));
 			out.print("</td>");
 			out.print("<td>");
 			out.print(rs.getString("category"));
@@ -82,8 +67,6 @@
 		}
 
 		out.print("</table>");
-
-		//close the connection.
 		con.close();
 
 	} catch (Exception e) {

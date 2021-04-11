@@ -23,82 +23,65 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style> -->
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bid History</title>
 </head>
 <body>
-<% 
-ApplicationDB db = new ApplicationDB();	
-Connection con = db.getConnection();
-//Create a SQL statement
-Statement stmt = con.createStatement();
-ResultSet result = null;
-PreparedStatement ps = null;
-/* if(session.getAttribute("ACCOUNT_TYPE").equals("seller"))
-{
-	out.print("Logged in as: Seller");
-	out.print("<br/>");
-	out.print("Username: " +  session.getAttribute("USERNAME"));
-	out.print("<br/>");
-}
-if(session.getAttribute("ACCOUNT_TYPE").equals("buyer"))
-{
-	out.print("Logged in as: Buyer");
-	out.print("<br/>");
-	out.print("Username: " +  session.getAttribute("USERNAME"));
-	out.print("<br/>");
-} */
-try 
-{
-	//String newAuction = (String)session.getAttribute("auction_id");
-	int auction_id = Integer.parseInt(request.getParameter("auction_id"));
-	String viewBid = "SELECT * FROM bid WHERE auction_id = ? ORDER BY amount desc";
-	ps = con.prepareStatement(viewBid);
-	ps.setInt(1, auction_id);
-	result = ps.executeQuery();
-	out.print("<table>");
-	out.print("<tr>");
-	out.print("<th>");
-	out.print("Auction ID ");
-	out.print("</th>");		
-	out.print("<th>");
-	out.print("Buyer");
-	out.print("</th>");	
-	out.print("<th>");
-	out.print("Amount");
-	out.print("</th>");	
-	out.print("</tr>");
-	
-	while (result.next()) 
-	{
+	<%
+	ApplicationDB db = new ApplicationDB();
+	Connection con = db.getConnection();
+	Statement stmt = con.createStatement();
+	ResultSet result = null;
+	PreparedStatement ps = null;
+	try {
+		int auction_id = Integer.parseInt(request.getParameter("auction_id"));
+		String viewBid = "SELECT * FROM bid WHERE auction_id = ? ORDER BY amount desc";
+		ps = con.prepareStatement(viewBid);
+		ps.setInt(1, auction_id);
+		result = ps.executeQuery();
+		out.print("<table>");
 		out.print("<tr>");
-		out.print("<td>");
-		out.print(result.getInt("auction_id"));
-		out.print("</td>");
-		
-		out.print("<td>");
-		out.print(result.getString("buyer"));
-		out.print("</td>");
-		
-		out.print("<td>");
-		out.print("$" + result.getFloat("amount"));
-		out.print("</td>");
+		out.print("<th>");
+		out.print("Auction ID ");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Buyer");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Amount");
+		out.print("</th>");
 		out.print("</tr>");
-	}
-	out.print("</table>");	
-	
-}
-catch (Exception e) 
-{
+
+		while (result.next()) {
+			out.print("<tr>");
+			out.print("<td>");
+			out.print(result.getInt("auction_id"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("buyer"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print("$" + result.getFloat("amount"));
+			out.print("</td>");
+			out.print("</tr>");
+		}
+		out.print("</table>");
+
+	} catch (Exception e) {
 		out.print(e);
-}
-finally
-{
-	if (result != null) result.close();
-	if (ps != null) ps.close();
-	if (stmt != null) stmt.close();
-	if (con != null) con.close();
-}%>
+	} finally {
+		if (result != null)
+			result.close();
+		if (ps != null)
+			ps.close();
+		if (stmt != null)
+			stmt.close();
+		if (con != null)
+			con.close();
+	}
+	%>
 
 
 </body>

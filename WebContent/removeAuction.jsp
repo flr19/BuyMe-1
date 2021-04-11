@@ -13,7 +13,6 @@
 	<% 	
 	ApplicationDB db = new ApplicationDB();	
 	Connection con = db.getConnection();
-	//Create a SQL statement
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	PreparedStatement ps = null;
@@ -29,7 +28,7 @@
 	{
 		String delete = "DELETE FROM auction WHERE auction_id ='" + request.getParameter("auction_id") + "'";
         stmt.executeUpdate(delete);
-		response.sendRedirect("browseAuctionsCustomerRep.jsp");
+		response.sendRedirect("manageAuctionsCustomerRep.jsp");
 	}
 	else
 	{

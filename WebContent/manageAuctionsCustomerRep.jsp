@@ -6,7 +6,7 @@
 <html>
 <head>
 <!-- <style>
-/* #buttons{
+#buttons{
     display:flex;
 }
 table {
@@ -21,72 +21,54 @@ td, th {
 }
 tr:nth-child(even) {
     background-color: #dddddd;
-} */
+}
 </style> -->
-<meta charset="ISO-8859-1">
-<title>Sort Auctions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Browse Auctions Customer Rep</title>
 </head>
 <body>
-	<div id="buttons">
-		<form action='sortAuctions.jsp'>
-			<input type="submit" value="Sort by Auction ID" />
-		</form>
-		<form action='sortAuctionsByCategory.jsp'>
-			<input type="submit" value="Sort by Category" />
-		</form>
-		<form action='sorthAuctionsByBrand.jsp'>
-			<input type="submit" value="Sort by Brand" />
-		</form>
-		<form action='sortActionByGender.jsp'>
-			<input type="submit" value="Sort by Gender" />
-		</form>
-		<form action='sortAuctionsByColor.jsp'>
-			<input type="submit" value="Sort by Color" />
-		</form>
-		<form action='sortAuctionsByPrice.jsp'>
-			<input type="submit" value="Sort by Price" />
-		</form>
-		<form action='sortAuctionsByEndTime.jsp'>
-			<input type="submit" value="Sort by End Time" />
-		</form>
-
-	</div>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
+
 	try {
-		String str = "select * from auction join product using (product_id) order by (end_date);";
+
+		String str = "select * from auction join product using (product_id)";
 		result = stmt.executeQuery(str);
 		out.print("<table>");
 		out.print("<tr>");
 		out.print("<th>");
 		out.print("Auction ID ");
 		out.print("</th>");
+
 		out.print("<th>");
 		out.print("Category");
 		out.print("</th>");
+
 		out.print("<th>");
 		out.print("Brand");
 		out.print("</th>");
+
 		out.print("<th>");
 		out.print("Color");
 		out.print("</th>");
+
 		out.print("<th>");
 		out.print("Gender");
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print("Current Bid");
+		out.print("Seller");
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print("Price");
+		out.print("Start Date");
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print("End Time");
+		out.print("End Date");
 		out.print("</th>");
 
 		out.print("<th>");
@@ -98,7 +80,7 @@ tr:nth-child(even) {
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print(" ");
+		out.print("Remove Auction");
 		out.print("</th>");
 		out.print("</tr>");
 
@@ -107,7 +89,6 @@ tr:nth-child(even) {
 			out.print("<td>");
 			out.print(result.getInt("auction_id"));
 			out.print("</td>");
-
 			out.print("<td>");
 			out.print(result.getString("category"));
 			out.print("</td>");
@@ -125,15 +106,15 @@ tr:nth-child(even) {
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getFloat("current_bid"));
+			out.print(result.getString("seller"));
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print("$" + result.getFloat("price"));
+			out.print(result.getTimestamp("start_date"));
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("end_date"));
+			out.print(result.getTimestamp("end_date"));
 			out.print("</td>");
 
 			out.print("<td>");
@@ -148,10 +129,17 @@ tr:nth-child(even) {
 			out.print("</th>");
 
 			out.print("<td>");
-			out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='"
-			+ result.getInt("auction_id") + "'>Bid on Item</button></form>");
+			out.print("<form action='removeAuction.jsp' method='post'><button name='auction_id' type='submit' value='"
+			+ result.getInt("auction_id") + "'>Remove Auction</button></form>");
 			out.print("</td>");
+
+			out.print("<td>");
+			out.print("<form action='manageBids.jsp' method='post'><button name='auction_id' type='submit' value='"
+			+ result.getInt("auction_id") + "'>View Bids</button></form>");
+			out.print("</td>");
+
 			out.print("</tr>");
+
 		}
 		out.print("</table>");
 
@@ -166,10 +154,5 @@ tr:nth-child(even) {
 			con.close();
 	}
 	%>
-
-
-
-
-
 </body>
 </html>

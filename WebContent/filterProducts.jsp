@@ -9,9 +9,8 @@
 <title>Filter Items</title>
 </head>
 <body>
-	<b> Filter Items by Criteria </b>
-	<form name="itemsearch" method="post"
-		action="filterProductsHandler.jsp">
+	<b> search the list of items by various criteria </b>
+	<form method="post" action="filterProductsHandler.jsp">
 		<table>
 			<tr>
 				<td>Category:</td>
@@ -42,5 +41,6 @@
 		<input type="radio" name="status1" value="open"> Open<br>
 		<input type="radio" name="status1" value="closed"> Closed <br>
 		<input type="submit" value="Search">
+	</form>
 </body>
 </html>
