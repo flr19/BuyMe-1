@@ -17,6 +17,7 @@
 			<li><a href="sortAuctions.jsp">View Auctions</a></li>
 			<li><a href="createWatch.jsp">Create a new watch</a></li>
 			<li><a href="showAllWatch.jsp">Show Watches</a></li>
+			<li><a href="searchAuctionsByUsers.jsp">Search Auctions By Users</a></li>
 		</ul>
 	</div>
 </body>

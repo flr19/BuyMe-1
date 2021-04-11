@@ -15,9 +15,6 @@
 			name="email" /> <br /> <input type="radio" name="account_type"
 			value="buyer" checked> Buyer<br> <input type="radio"
 			name="account_type" value="seller"> Seller<br> <input
-			type="radio" name="account_type" value="customerrep">
-		Customer Representative<br> <input type="radio"
-			name="account_type" value="admin"> Administrator<br> <input
 			type="submit" value="Submit" />
 	</form>
 </body>

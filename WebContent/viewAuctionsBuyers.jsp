@@ -39,7 +39,7 @@ tr:nth-child(even) {
 
 		String username = request.getParameter("username");
 		String str = "select b.auction_id,b.amount, a.product_id from bid b,auction a WHERE (b.username ='" + username
-		+ "and b.auction_id=a.auction_id";
+		+ "' and b.auction_id=a.auction_id";
 		result = stmt.executeQuery(str);
 		out.print("<table>");
 		out.print("<tr>");

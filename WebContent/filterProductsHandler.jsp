@@ -41,9 +41,10 @@ tr:nth-child(even) {
 		String genderv = request.getParameter("gender");
 		String pricev = request.getParameter("price");
 		String seller = request.getParameter("seller");
-		String str = "Select p.category, p.brand, p.color, p.gender, a.price, a.seller, a.status from product p, auction a WHERE p.product_id = a.product_id and (category ='"
+		String status = request.getParameter("status");
+		String str = "select p.category, p.brand, p.color, p.gender, a.price, a.seller, a.status from product p, auction a WHERE p.product_id = a.product_id and (category ='"
 		+ categoryv + "') or (brand ='" + brandv + "') or (color ='" + colorv + "') or  (gender = '" + genderv
-		+ "') or (price ='" + pricev + "') ;";
+		+ "') or (price =" + pricev + ") or status = "+ status;
 		result = stmt.executeQuery(str);
 
 		out.print("<table>");

@@ -37,8 +37,8 @@ tr:nth-child(even) {
 
 	try {
 
-		String username = request.getParameter("username1");
-		String str = "Select seller,start_date,end_date, auction_id, status from  auction  Where ( seller ='" + username
+		String username = request.getParameter("username");
+		String str = "Select seller,start_date,end_date, auction_id, status from  auction  where ( seller ='" + username
 		+ "')";
 		result = stmt.executeQuery(str);
 		out.print("<table>");

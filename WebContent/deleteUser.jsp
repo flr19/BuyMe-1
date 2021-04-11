@@ -13,8 +13,8 @@ try {
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
 	Statement st = con.createStatement();
-	String user = request.getParameter("user");
-	int res = st.executeUpdate("DELETE FROM users WHERE username='" + user + "'");
+	String user = request.getParameter("username");
+	int res = st.executeUpdate("DELETE FROM account WHERE username='" + user + "'");
 	if (res > 0) {
 		out.println("User deleted.");
 	} else {
@@ -30,8 +30,5 @@ try {
 	e.printStackTrace();
 }
 %>
-<body>
-	<p>User deleted.</p>
-	<a href="customerRepHomepage.jsp">Homepage</a>
 </body>
 </html>

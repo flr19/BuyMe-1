@@ -9,7 +9,7 @@
 <title>Filter Items</title>
 </head>
 <body>
-	<b> search the list of items by various criteria </b>
+	<b> Search the list of items by various criteria </b>
 	<form method="post" action="filterProductsHandler.jsp">
 		<table>
 			<tr>
@@ -38,8 +38,8 @@
 			</tr>
 		</table>
 		<p>Is the Auction Open or Closed?</p>
-		<input type="radio" name="status1" value="open"> Open<br>
-		<input type="radio" name="status1" value="closed"> Closed <br>
+		<input type="radio" name="status" value='open'> Open<br>
+		<input type="radio" name="status" value='close'> Closed <br>
 		<input type="submit" value="Search">
 	</form>
 </body>
