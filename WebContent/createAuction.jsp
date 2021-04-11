@@ -18,7 +18,7 @@
 	<table>
 	 <tr> 
 	 <td>
-	<input type="hidden" name="product_id" value = <%=request.getParameter("auction_id")%>>
+	<input type="hidden" name="product_id" value = <%=request.getParameter("product_id")%>>
 	</td>
 	</tr> 
 	<tr>    

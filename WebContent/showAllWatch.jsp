@@ -72,7 +72,7 @@
 				out.print("</td>");
 				
 				out.print("<td>");
-				out.print("<form action='createAuction.jsp' method='post'><button name='auction_id' type='submit' value='" + result.getInt("product_id") + "'>Create Auction</button></form>");
+				out.print("<form action='createAuction.jsp' method='post'><button name='product_id' type='submit' value='" + result.getInt("product_id") + "'>Create Auction</button></form>");
 				out.print("</td>"); 
 				out.print("</tr>");
 			}
