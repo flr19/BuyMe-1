@@ -19,6 +19,7 @@
 			<li><a href="showAllWatch.jsp">View Watches</a></li>
 			<li><a href="searchProducts.jsp">Search Watches Based on Keywords</a></li>
 			<li><a href="searchAuctionsByUsers.jsp">Search Auctions By Users</a></li>
+			<li><a href="viewAlerts.jsp">View Alerts</a></li>
 		</ul>
 	</div>
 </body>

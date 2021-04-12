@@ -5,73 +5,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Show All Watches</title>
+<meta charset="UTF-8">
+<title>View Alerts</title>
 </head>
 <body>
-	<a href="account.jsp">Return to account</a>
 
-	<%
+<%
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
-		String str = "select * from product;";
+		String str = "select * from alerts;";
 		ResultSet result = null;
 		result = stmt.executeQuery(str);
 
 		out.print("<table>");
 		out.print("<tr>");
 		out.print("<th>");
-		out.print("Product ID ");
+		out.print("Alert ID ");
 		out.print("</th>");
 		out.print("<th>");
-		out.print("Category");
+		out.print("Alert Message");
 		out.print("</th>");
 		out.print("<th>");
-		out.print("Brand");
+		out.print("Product ID");
 		out.print("</th>");
 		out.print("<th>");
-		out.print("Color");
-		out.print("</th>");
-		out.print("<th>");
-		out.print("Gender");
-		out.print("</th>");
-
-		out.print("<th>");
-		out.print(" ");
+		out.print("Auction ID");
 		out.print("</th>");
 		out.print("</tr>");
 
 		while (result.next()) {
 			out.print("<tr>");
 			out.print("<td>");
-			out.print(result.getInt("product_id"));
+			out.print(result.getInt("alert_id"));
 			out.print("</td>");
 			out.print("<td>");
-			out.print(result.getString("category"));
-			out.print("</td>");
-
-			out.print("<td>");
-			out.print(result.getString("brand"));
+			out.print(result.getString("alert_message"));
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("color"));
+			out.print(result.getString("product_id"));
 			out.print("</td>");
 
 			out.print("<td>");
+			out.print(result.getString("auction_id"));
+			out.print("</td>");
+
+		/* 	out.print("<td>");
 			out.print(result.getString("gender"));
-			out.print("</td>");
-
-			out.print("<td>");
-			out.print("<form action='createAuction.jsp' method='post'><button name='product_id' type='submit' value='"
-			+ result.getInt("product_id") + "'>Create Auction</button></form>");
-			out.print("</td>");
-
-			out.print("<td>");
-			out.print("<form action='createAlertProduct.jsp' method='post'><button name='product_id' type='submit' value='"
-			+ result.getInt("product_id") + "'> Alert Me! </button></form>");
-			out.print("</td>");
+			out.print("</td>"); */
 
 			out.print("</tr>");
 		}
@@ -82,6 +65,6 @@
 	} catch (Exception e) {
 	}
 	%>
-
+	
 </body>
 </html>

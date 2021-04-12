@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>View Alerts</title>
+<title>Create Alerts</title>
 </head>
 <body>
     <%
@@ -14,15 +14,12 @@
     Statement stmt = con.createStatement();
     PreparedStatement ps = null;
     ResultSet result = null;
-    int auction_id = Integer.parseInt(request.getParameter("auction_id"));
+    int product_id = Integer.parseInt(request.getParameter("product_id"));
     String username = (String)session.getAttribute("user");
-  
-    String insert = "INSERT INTO alerts(username, alert_message, user_bid, auction_id)"
+    String insert = "INSERT INTO alerts(username, alert_message, product_id)"
 					+ "VALUES (?, ?, ?, ?)" ;
 	ps = con.prepareStatement(insert);
-	String message="You have been outbidded on this item"; 
-    /* int currentbid=session.getAttribute(); */
+	String message="Alert set for this item"; 
 	ps.setString(1, username);
 	ps.setString(2, message);
-	ps.setFloat(3, currentbid);
-	ps.setInt(4, auction_id);
+	ps.setInt(3, product_id);

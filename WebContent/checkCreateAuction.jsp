@@ -52,6 +52,11 @@ try {
 	rs.next();
 	//int auction_id = rs.getInt(1);
 	response.sendRedirect("sortAuctions.jsp");
+	
+	
+	/* String query = "select * from alerts where product_id = ?"; */
+	
+	
 
 } catch (Exception e) {
 	response.sendRedirect("createAuctionError.jsp");
