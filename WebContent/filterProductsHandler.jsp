@@ -33,12 +33,16 @@ tr:nth-child(even) {
 	Connection con = db.getConnection();
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
+	System.out.println("print");
+	ArrayList parameters = new ArrayList();
+	
 	try {
-		String categoryv, brandv,colorv, genderv, seller, status;
+		String categoryv, brandv,colorv, genderv, sellerv, statusv;
 		float pricev = 0;
 		if(!request.getParameter("category").isEmpty())
 		{
-		categoryv = request.getParameter("category");
+			categoryv = request.getParameter("category");
+			parameters.add(categoryv);
 		}
 		else 
 		{
@@ -47,7 +51,8 @@ tr:nth-child(even) {
 		
 		if(!request.getParameter("brand").isEmpty())
 		{
-		brandv = request.getParameter("brand");
+			brandv = request.getParameter("brand");
+			parameters.add(brandv);
 		}
 		else 
 		{
@@ -56,7 +61,8 @@ tr:nth-child(even) {
 		
 		if(!request.getParameter("color").isEmpty())
 		{
-		colorv= request.getParameter("color");
+			colorv= request.getParameter("color");
+			parameters.add(colorv);
 		}
 		else 
 		{
@@ -65,41 +71,86 @@ tr:nth-child(even) {
 		
 		if(!request.getParameter("price").isEmpty())
 		{
-		categoryv = request.getParameter("category");
+			pricev = Float.parseFloat(request.getParameter("price"));
+			parameters.add(pricev);
 		} 
 		else 
 		{
-			categoryv = null;
+			pricev= 0; 
 		} 
 		
-		if(!request.getParameter("category").isEmpty())
+		
+		if(!request.getParameter("status").isEmpty())
 		{
-		categoryv = request.getParameter("category");
+			statusv = request.getParameter("status");
+			parameters.add(statusv);
 		}
 		else 
 		{
-			categoryv = null;
+			statusv = null;
 		} 
+		System.out.println("print1");
+		for(Object object: parameters) {
+		    System.out.println(object);
+		    System.out.println("araay");// Will invoke overrided `toString()` method
+		}
+		StringBuilder query = new StringBuilder("SELECT * FROM product JOIN auction on product.product_id=auction.auction_id WHERE ");
+		if (!request.getParameter("category").isEmpty()) {
+		    query.append(" AND category = ?");
+		}
+		if (!request.getParameter("brand").isEmpty()) {
+		    query.append(" AND brand = ?");
+		}
+		if (!request.getParameter("color").isEmpty()) {
+		    query.append(" AND color = ?");
+		}
+		if (!request.getParameter("gender").isEmpty()) {
+		    query.append(" AND gender = ?");
+		}
+		if (!request.getParameter("status").isEmpty()) {
+		    query.append(" AND status = ?");
+		}
+		if (!request.getParameter("seller").isEmpty()) {
+		    query.append(" AND seller = ?");
+		}
+		if (!request.getParameter("price").isEmpty()) {
+		    query.append(" AND price = ?");
+		}
 		
+		// FIX THIS KUHUUU
+		stmt = DataBaseConnection.DBConn.getConnection().prepareStatement(query);
+		//append the parameters
+		int i = 1;
+		for (Object parameter : parameters) {
+		    stmt.setObject(i++, parameter);
+		}
+		//execute the dynamic query
+		rs = stmt.executeQuery();
+	
+		/*System.out.println(categoryv);
 		brandv = request.getParameter("brand");
 		colorv = request.getParameter("color");
 		genderv = request.getParameter("gender");
-		pricev = Float.parseFloat(request.getParameter("price"));
-		seller = request.getParameter("seller");
-		status = request.getParameter("status");
-		String str = "select *"
-		+ "from product p,auction a WHERE p.product_id = a.product_id and (p.category=? or p.brand=? or p.color=? or p.gender=?"
-		+ "or a.price=? or a.seller=? or a.status=?)";
+		//pricev = Float.parseFloat(request.getParameter("price"));
+		sellerv = request.getParameter("seller");
+		statusv = request.getParameter("status");
+		System.out.println(statusv);
+		System.out.println("print2"); */
+		
+		//String str = "select *"
+		//+ "from product p,auction a WHERE p.product_id = a.product_id and (p.category=? or p.brand=? or p.color=? or p.gender=?"
+		//+ "or a.price=? or a.seller=? or a.status=?)";
+		
 
-		PreparedStatement ps = con.prepareStatement(str);
-		ps.setString(1, categoryv);
+		//PreparedStatement ps = con.prepareStatement(str);
+		/* ps.setString(1, categoryv);
 		ps.setString(2, brandv);
 		ps.setString(3, colorv);
 		ps.setString(4, genderv);
 		ps.setFloat(5, pricev);
-		ps.setString(6, seller);
-		ps.setString(7, status);
-		result = ps.executeQuery();
+		ps.setString(6, sellerv);
+		ps.setString(7, statusv);
+		result = ps.executeQuery(); */
 
 		out.print("<table>");
 		out.print("<tr>");
