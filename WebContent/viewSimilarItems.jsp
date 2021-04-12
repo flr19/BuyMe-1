@@ -116,11 +116,14 @@
 		out.print(tempwinner);
 		out.print("</td>");
 
-		out.print("<th>");
+		out.print("<td>");
 		String status = result.getString("status");
 		out.print(result.getString("status"));
-		out.print("</th>");
+		out.print("</td>");
+		
+		out.print("</tr>");
 	}
+	out.print("</table>");
 	%>
 
 </body>

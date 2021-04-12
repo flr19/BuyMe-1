@@ -24,8 +24,7 @@ tr:nth-child(even) {
 }
 </style> -->
 <meta charset="ISO-8859-1">
-<title>search the list of items by various criteria
-</title>
+<title>search the list of items by various criteria</title>
 </head>
 <body>
 
@@ -35,17 +34,72 @@ tr:nth-child(even) {
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	try {
-		String categoryv = request.getParameter("category");
-		String brandv = request.getParameter("brand");
-		String colorv = request.getParameter("color");
-		String genderv = request.getParameter("gender");
-		String pricev = request.getParameter("price");
-		String seller = request.getParameter("seller");
-		String status = request.getParameter("status");
-		String str = "select p.category, p.brand, p.color, p.gender, a.price, a.seller, a.status from product p, auction a WHERE p.product_id = a.product_id and (category ='"
-		+ categoryv + "') or (brand ='" + brandv + "') or (color ='" + colorv + "') or  (gender = '" + genderv
-		+ "') or (price =" + pricev + ") or status = "+ status;
-		result = stmt.executeQuery(str);
+		String categoryv, brandv,colorv, genderv, seller, status;
+		float pricev = 0;
+		if(!request.getParameter("category").isEmpty())
+		{
+		categoryv = request.getParameter("category");
+		}
+		else 
+		{
+			categoryv = null;
+		} 
+		
+		if(!request.getParameter("brand").isEmpty())
+		{
+		brandv = request.getParameter("brand");
+		}
+		else 
+		{
+			brandv = null;
+		} 
+		
+		if(!request.getParameter("color").isEmpty())
+		{
+		colorv= request.getParameter("color");
+		}
+		else 
+		{
+			colorv = null;
+		} 
+		
+		if(!request.getParameter("price").isEmpty())
+		{
+		categoryv = request.getParameter("category");
+		} 
+		else 
+		{
+			categoryv = null;
+		} 
+		
+		if(!request.getParameter("category").isEmpty())
+		{
+		categoryv = request.getParameter("category");
+		}
+		else 
+		{
+			categoryv = null;
+		} 
+		
+		brandv = request.getParameter("brand");
+		colorv = request.getParameter("color");
+		genderv = request.getParameter("gender");
+		pricev = Float.parseFloat(request.getParameter("price"));
+		seller = request.getParameter("seller");
+		status = request.getParameter("status");
+		String str = "select *"
+		+ "from product p,auction a WHERE p.product_id = a.product_id and (p.category=? or p.brand=? or p.color=? or p.gender=?"
+		+ "or a.price=? or a.seller=? or a.status=?)";
+
+		PreparedStatement ps = con.prepareStatement(str);
+		ps.setString(1, categoryv);
+		ps.setString(2, brandv);
+		ps.setString(3, colorv);
+		ps.setString(4, genderv);
+		ps.setFloat(5, pricev);
+		ps.setString(6, seller);
+		ps.setString(7, status);
+		result = ps.executeQuery();
 
 		out.print("<table>");
 		out.print("<tr>");

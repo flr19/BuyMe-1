@@ -11,9 +11,7 @@
 <title>Frequently Asked Questions</title>
 </head>
 <body>
-
-	<div class="content">
-		<%
+<%
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ApplicationDB db = new ApplicationDB();
@@ -28,17 +26,16 @@
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-		%>
-		<h1>Question Results:</h1>
+		/* <h1>Question Results:</h1>
 		<p style="font-size: 8pt;">**Please note that all questions may
 			not be answered until a customer representative gets a chance to
 			answer them**</p>
-		<table>
+		<%-- <table>
 			<tr>
 				<th>Question</th>
 				<th>Answer</th>
-			</tr>
-			<%
+			</tr> */
+	
 			do {
 			%>
 			<tr>
@@ -63,17 +60,14 @@
 			<%
 			} while (rs.next());
 			%>
-		</table>
-		<%
+		<%-- <%
 		} else {
-		%>
+	
 		<br>
 		<h2>No questions have been asked.</h2>
-		<%
-		}
-		%>
 
-		<%
+		} --%>
+
 		} catch (SQLException e) {
 		out.print("<p>Error connecting to MYSQL server.</p>");
 		e.printStackTrace();

@@ -30,14 +30,14 @@
 			</tr>
 			<tr>
 				<td>Seller:</td>
-				<td><input type="text" name="gender"></td>
+				<td><input type="text" name="seller"></td>
 			</tr>
 			<tr>
 				<td>Price:</td>
 				<td><input type="text" name="price"></td>
 			</tr>
 		</table>
-		<p>Is the Auction Open or Closed?</p>
+		<p>Close or Open Auctions</p>
 		<input type="radio" name="status" value='open'> Open<br>
 		<input type="radio" name="status" value='close'> Closed <br>
 		<input type="submit" value="Search">

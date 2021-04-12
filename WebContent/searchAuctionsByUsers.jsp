@@ -21,7 +21,7 @@
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		String entity = request.getParameter("search");
-		String str = "SELECT * FROM account WHERE username LIKE'%" + entity
+		String str = "SELECT * FROM account WHERE username LIKE '%" + entity
 		+ "%' AND username NOT IN (SELECT username FROM admin) AND username NOT IN(SELECT username FROM customerrep)";
 		ResultSet result = stmt.executeQuery(str);
 
@@ -56,8 +56,8 @@
 			if(result.getString("account_type").equals("seller"))
 			{
 			out.print("<td>");
-			out.print("<form action='viewAuctionsSellers.jsp' method='post'><input name = 'username' type ='submit' value='"
-					+ result.getString("username") + "'>View Auctions this Seller has participated in</form>");
+			out.print("<form action='viewAuctionsSellers.jsp' method='post'><button name = 'username' type ='submit' value='"
+					+ result.getString("username") + "'>View Auctions this Seller has participated in </button></form>");
 			out.print("</td>");
 			}
 			

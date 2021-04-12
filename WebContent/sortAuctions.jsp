@@ -29,15 +29,18 @@ tr:nth-child(even) {
 <body>
 	<div id="buttons">
 		<form action='sortAuctionsHandler.jsp'>
-			<input name="sortAuctions" type="radio" value="Sort by Auction ID" checked/> Sort by Auction ID<br>
-			<input name="sortAuctions" type="radio" value="Sort by Category" />Sort by Category<br>
-			<input name="sortAuctions" type="radio" value="Sort by Brand" /> Sort by Brand<br>
-			<input
-				name="sortAuctions" type="radio" value="Sort by Gender" /> Sort by Gender <br><input
-				name="sortAuctions" type="radio" value="Sort by Color" /> Sort by Color<br><input
-				name="sortAuctions" type="radio" value="Sort by Price" />Sort by Price<br><input
-				name="sortAuctions" type="radio" value="Sort by End Time" /> Sort by End Time
-		<input type="submit" value="Submit" />
+			<input name="sortAuctions" type="radio" value="Sort by Auction ID"
+				checked /> Sort by Auction ID<br> <input name="sortAuctions"
+				type="radio" value="Sort by Category" />Sort by Category<br> <input
+				name="sortAuctions" type="radio" value="Sort by Brand" /> Sort by
+			Brand<br> <input name="sortAuctions" type="radio"
+				value="Sort by Gender" /> Sort by Gender <br>
+			<input name="sortAuctions" type="radio" value="Sort by Color" />
+			Sort by Color<br>
+			<input name="sortAuctions" type="radio" value="Sort by Price" />Sort
+			by Price<br>
+			<input name="sortAuctions" type="radio" value="Sort by End Time" />
+			Sort by End Time <input type="submit" value="Submit" />
 		</form>
 	</div>
 	<%
@@ -48,6 +51,7 @@ tr:nth-child(even) {
 	try {
 		String str = "select * from auction join product using (product_id) order by (auction_id);";
 		result = stmt.executeQuery(str);
+			
 		out.print("<table>");
 		out.print("<tr>");
 		out.print("<th>");
@@ -77,24 +81,22 @@ tr:nth-child(even) {
 		out.print("<th>");
 		out.print("End Time");
 		out.print("</th>");
-		
-		String status = result.getString("status");
-		if(status.equals("close"))
+			
+		if(result.next())
 		{
-		out.print("<th>");
-		out.print("Winner");
-		out.print("</th>");
+		String status = result.getString("status");
+		if (status.equals("close")) {
+			out.print("<th>");
+			out.print("Winner");
+			out.print("</th>");
+		}
 		}
 
 		out.print("<th>");
 		out.print("Status");
 		out.print("</th>");
-
-		out.print("<th>");
-		out.print(" ");
-		out.print("</th>");
-		out.print("</tr>");
-
+		
+		result.beforeFirst();
 		while (result.next()) {
 			out.print("<tr>");
 			out.print("<td>");
@@ -116,7 +118,7 @@ tr:nth-child(even) {
 			out.print("<td>");
 			out.print(result.getString("gender"));
 			out.print("</td>");
-			
+
 			out.print("<td>");
 			out.print(result.getFloat("current_bid"));
 			out.print("</td>");
@@ -126,16 +128,14 @@ tr:nth-child(even) {
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("end_date"));
+			out.print(result.getTimestamp("end_date"));
 			out.print("</td>");
-			
-			
+
 			String status1 = result.getString("status");
-			if(status1.equals("close"))
-			{
-			out.print("<td>");
-			out.print(result.getString("winner"));
-			out.print("</td>");
+			if (status1.equals("close")) {
+		out.print("<td>");
+		out.print(result.getString("winner"));
+		out.print("</td>");
 			}
 
 			out.print("<td>");

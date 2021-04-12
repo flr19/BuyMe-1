@@ -14,7 +14,7 @@
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 		Statement st = con.createStatement();
-		String user = request.getParameter("user");
+		String user = request.getParameter("username");
 		int result = st.executeUpdate("DELETE FROM customerrep WHERE username='" + user + "'");
 		if (result > 0) {
 			out.println("Representative deleted");

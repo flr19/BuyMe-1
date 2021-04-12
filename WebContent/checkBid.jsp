@@ -47,7 +47,7 @@
 		float initialPrice = result2.getFloat("price");
 		float current_bid = result.getFloat("max(b.amount)");
 
-		if ((newBid <= current_bid) || newBid < initialPrice) {
+		if ((newBid < current_bid) || newBid < initialPrice) {
 			throw new Exception(
 			"You can't bid lower than the initial price or the previous highest bid! Your bid amount is:" + newBid
 					+ " , whereas the current winning bid is:" + current_bid + " , and the seller minimum is:"

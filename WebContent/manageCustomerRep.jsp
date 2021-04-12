@@ -14,42 +14,58 @@
 		<input type="text" name="search" placeholder="username">
 		<button type="submit">Search</button>
 	</form>
-	<table>
-		<tr>
-			<th>Username</th>
-			<th>Full Name</th>
-			<th>Email</th>
-		</tr>
 		<%
 		try {
 			ApplicationDB db = new ApplicationDB();
 			Connection con = db.getConnection();
 			Statement st = con.createStatement();
-			ResultSet rs;
+			ResultSet result;
 			String name = request.getParameter("search");
 			if (name != null && name.length() > 0) {
-				rs = st.executeQuery("SELECT * FROM account WHERE username LIKE'%" + name
+				result = st.executeQuery("SELECT * FROM account WHERE username LIKE'%" + name
 				+ "%' AND username IN (SELECT username FROM customerrep)");
 			} else {
-				rs = st.executeQuery("SELECT * FROM account WHERE username IN (SELECT username FROM customerrep)");
+				result = st.executeQuery("SELECT * FROM account WHERE username IN (SELECT username FROM customerrep)");
 			}
-			while (rs.next()) {
-		%>
-	<%-- 	<tr>
-			<td><%=rs.getString("username")%></td>
-			<td><%=rs.getString("name")%></td>
-			<td><%=rs.getString("email")%></td>
-			<td>
-				<form method="POST">
-					<input type="submit" value="Delete"
-						onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteCustomerRep.jsp'}">
-					<input type="hidden" name="user"
-						value=<%=rs.getString("username")%>>
-				</form>
-			</td>
-		</tr> --%>
-		<%
+			
+			out.print("<table>");
+			out.print("<tr>");
+			out.print("<td>");
+			out.print("Username");
+			out.print("</td>");
+			out.print("<td>");
+			out.print("Name");
+			out.print("</td>");
+			out.print("<td>");
+			out.print("Email");
+			out.print("</td>");
+			out.print("</tr>");
+			
+			while (result.next()) {
+				
+				out.print("<tr>");
+				out.print("<td>");
+				out.print(result.getString("username"));
+				out.print("</td>");
+				out.print("<td>");
+				out.print(result.getString("name"));
+				out.print("</td>");
+
+				out.print("<td>");
+				out.print(result.getString("email"));
+				out.print("</td>");
+	
+
+				out.print("<td>");
+				out.print("<form action='deleteCustomerRep.jsp' method='post'> <button name = 'username' type = 'submit' value='"
+						+ result.getString("username") + "'>Delete Customer Rep</button></form>");
+				out.print("</td>");
+				
+
+				out.print("</tr>");
+
 		}
+			out.print("</table>");
 		} catch (SQLException se) {
 		se.printStackTrace();
 		} catch (Exception e) {

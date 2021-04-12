@@ -38,8 +38,8 @@ tr:nth-child(even) {
 	try {
 
 		String username = request.getParameter("username");
-		String str = "select b.auction_id,b.amount, a.product_id from bid b,auction a WHERE (b.username ='" + username
-		+ "' and b.auction_id=a.auction_id";
+		String str = "select DISTINCT b.auction_id,p.product_id,p.category,p.brand,p.color,p.gender from auction a,bid b, product p WHERE b.buyer ='" + username
+		+ "' and b.auction_id=a.auction_id and p.product_id = a.product_id";
 		result = stmt.executeQuery(str);
 		out.print("<table>");
 		out.print("<tr>");
@@ -49,8 +49,18 @@ tr:nth-child(even) {
 		out.print("<th>");
 		out.print("Item ID");
 		out.print("</th>");
+		
 		out.print("<th>");
-		out.print("Amount bid");
+		out.print("Category");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Brand");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Color");
+		out.print("</th>");
+		out.print("<th>");
+		out.print("Gender");
 		out.print("</th>");
 		out.print("</tr>");
 
@@ -62,9 +72,17 @@ tr:nth-child(even) {
 			out.print("<td>");
 			out.print(result.getInt("product_id"));
 			out.print("</td>");
-
 			out.print("<td>");
-			out.print(result.getFloat("amount"));
+			out.print(result.getString("category"));
+			out.print("</td>");
+			out.print("<td>");
+			out.print(result.getString("brand"));
+			out.print("</td>");
+			out.print("<td>");
+			out.print(result.getString("color"));
+			out.print("</td>");
+			out.print("<td>");
+			out.print(result.getString("gender"));
 			out.print("</td>");
 
 			out.print("</tr>");

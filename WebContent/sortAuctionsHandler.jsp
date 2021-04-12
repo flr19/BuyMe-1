@@ -129,7 +129,7 @@ tr:nth-child(even) {
 				out.print("</td>");
 
 				out.print("<td>");
-				out.print(result.getString("end_date"));
+				out.print(result.getTimestamp("end_date"));
 				out.print("</td>");
 
 				out.print("<td>");

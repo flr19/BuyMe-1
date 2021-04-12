@@ -38,9 +38,9 @@ tr:nth-child(even) {
 	try {
 
 		String username = request.getParameter("username");
-		String str = "Select seller,start_date,end_date, auction_id, status from  auction  where ( seller ='" + username
-		+ "')";
+		String str = "Select seller,start_date,end_date, auction_id, status from  auction  where seller ='" + username + "'";
 		result = stmt.executeQuery(str);
+		
 		out.print("<table>");
 
 		out.print("<tr>");
@@ -68,13 +68,13 @@ tr:nth-child(even) {
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getTimestamp("end_date"));
-			out.print("</td>");
-
-			out.print("<td>");
 			out.print(result.getInt("auction_id"));
 			out.print("</td>");
-
+			
+			out.print("<td>");
+			out.print(result.getTimestamp("end_date"));
+			out.print("</td>");
+			
 			out.print("<td>");
 			out.print(result.getString("status"));
 			out.print("</td>");
