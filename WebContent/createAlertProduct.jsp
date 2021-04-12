@@ -17,9 +17,17 @@
     int product_id = Integer.parseInt(request.getParameter("product_id"));
     String username = (String)session.getAttribute("user");
     String insert = "INSERT INTO alerts(username, alert_message, product_id)"
-					+ "VALUES (?, ?, ?, ?)" ;
+					+ "VALUES (?, ?, ?)" ;
 	ps = con.prepareStatement(insert);
 	String message="Alert set for this item"; 
 	ps.setString(1, username);
 	ps.setString(2, message);
 	ps.setInt(3, product_id);
+	ps.executeUpdate();
+	
+	response.sendRedirect("alertSuccess.jsp");		
+	 %>
+
+	 </body>
+	 </html>
+	 
