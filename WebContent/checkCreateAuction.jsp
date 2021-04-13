@@ -59,7 +59,7 @@ try {
 	ResultSet result2 = ps2.executeQuery();
 	
 	while(result2.next()){
-		if(result2.getString("alert_message").equals("Alert set for this item"))
+		if(result2.getString("alert_message").equals("Alert set for this item") && !result2.getString("username").equals(seller))
 		{
 			String str = "INSERT INTO alerts(username, alert_message, product_id, auction_id)" + "VALUES(?, ?, ?, ?)";
 			ps = conn.prepareStatement(str);

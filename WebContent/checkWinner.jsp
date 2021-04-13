@@ -14,7 +14,7 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
-		String str = "create temporary table t2 (SELECT * FROM auction WHERE end_date < now())";
+		String str = "create temporary table t2 (SELECT * FROM auction WHERE end_date < now() and status = 'open')";
 		PreparedStatement ps = null;
 		ps = con.prepareStatement(str);
 		ps.executeUpdate();
@@ -35,8 +35,6 @@
 		ResultSet result = ps.executeQuery();
 		
 		while(result.next()){
-		
-			System.out.println("NO");
 			
 		str = "INSERT INTO alerts(username, alert_message, product_id, auction_id)" + "VALUES(?, ?, ?, ?)";
 		ps = con.prepareStatement(str);
