@@ -10,10 +10,11 @@
 </head>
 <body>
 	<b> Search the list of items by various criteria </b>
+	<b> Items in * are required </b>
 	<form method="post" action="filterProductsHandler.jsp">
 		<table>
 			<tr>
-				<td>Category:</td>
+				<td>*Category:</td>
 				<td><input type="text" name="category" required></td>
 			</tr>
 			<tr>
@@ -33,13 +34,13 @@
 				<td><input type="text" name="seller"></td>
 			</tr>
 			<tr>
-				<td>Price:</td>
+				<td>Price less than:</td>
 				<td><input type="text" name="price"></td>
 			</tr>
 		</table>
-		<p>Close or Open Auctions</p>
-		<input type="radio" name="status" value='open'> Open<br>
-		<input type="radio" name="status" value='close'> Closed <br>
+		<p>*Close or Open Auctions</p>
+		<input type="radio" name="status" value='open' required> Open<br>
+		<input type="radio" name="status" value='close'required> Closed <br>
 		<input type="submit" value="Search">
 	</form>
 </body>

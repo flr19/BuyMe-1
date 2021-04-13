@@ -134,7 +134,7 @@ tr:nth-child(even) {
 		    query.append(" AND seller = ?");
 		}
 		if (!request.getParameter("price").isEmpty()) {
-		    query.append(" AND price = ?");
+		    query.append(" AND price < ?");
 		}
 		String realQuery = query.toString();
 		stmt = con.prepareStatement(realQuery);
