@@ -50,11 +50,33 @@ try {
 	result = ps.executeUpdate();
 	rs = ps.getGeneratedKeys();
 	rs.next();
-	//int auction_id = rs.getInt(1);
-	response.sendRedirect("sortAuctions.jsp");
+	int auction_id = rs.getInt(1);
 	
 	
-	/* String query = "select * from alerts where product_id = ?"; */
+	String query = "select * from alerts where product_id = ?";
+	PreparedStatement ps2 = conn.prepareStatement(query);
+	ps2.setInt(1, product_id);
+	ResultSet result2 = ps2.executeQuery();
+	
+	while(result2.next()){
+		if(result2.getString("alert_message").equals("Alert set for this item"))
+		{
+			String str = "INSERT INTO alerts(username, alert_message, product_id, auction_id)" + "VALUES(?, ?, ?, ?)";
+			ps = conn.prepareStatement(str);
+			ps.setString(1, result2.getString("username"));
+			ps.setString(2, "The item " +result2.getString("product_id")+ ", is available in auction with id: "+auction_id+". Go bid to own it!");
+			ps.setInt(3, result2.getInt("product_id"));
+			ps.setInt(4, auction_id);
+
+			ps.executeUpdate();
+		}
+		
+	}
+
+response.sendRedirect("sortAuctions.jsp");
+
+
+
 	
 	
 

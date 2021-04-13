@@ -95,6 +95,7 @@ try
 		
 		String previous_user = result2.getString("buyer");
 		int previous_bid_id = result2.getInt("bid_id");
+		String product_id = result2.getString("product_id");
 		
 		
 		str3 = "SELECT b.bid_id FROM bid b, auction a WHERE b.amount=? and a.auction_id=?"; 
@@ -168,6 +169,16 @@ try
 					}
 				}
 				
+				//
+				str3 = "INSERT INTO alerts(username, alert_message, product_id, auction_id)"+
+					"VALUES(?, ?, ?, ?)";
+				ps3=con.prepareStatement(str3);
+				ps3.setString(1, previous_user);
+				ps3.setString(2, "You have been outbidded by "+newUser+", who has currently bidded $"+ newBid +". Bid now to get the item!");
+				ps3.setString(3, product_id);
+				ps3.setInt(4, auction_id);
+								
+				ps3.executeUpdate();
 			}
 		}
 	}

@@ -14,7 +14,7 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
-		String str = "create temporary table t2 (SELECT auction_id FROM auction WHERE end_date < now())";
+		String str = "create temporary table t2 (SELECT * FROM auction WHERE end_date < now())";
 		PreparedStatement ps = null;
 		ps = con.prepareStatement(str);
 		ps.executeUpdate();
@@ -28,6 +28,26 @@
 		ps = null;
 		ps = con.prepareStatement(str);
 		ps.executeUpdate();
+
+		
+		str = "SELECT * FROM t2";
+		ps = con.prepareStatement(str);
+		ResultSet result = ps.executeQuery();
+		
+		while(result.next()){
+		
+			System.out.println("NO");
+			
+		str = "INSERT INTO alerts(username, alert_message, product_id, auction_id)" + "VALUES(?, ?, ?, ?)";
+		ps = con.prepareStatement(str);
+		ps.setString(1, result.getString("winner"));
+		ps.setString(2, "Dear " +result.getString("winner")+ ", you have won the auction! Please keep the payment of amount $" + result.getString("current_bid")+ " ready :)");
+		ps.setInt(3, result.getInt("product_id"));
+		ps.setInt(4, result.getInt("auction_id"));
+
+		ps.executeUpdate();
+		
+		}
 
 		str = "drop temporary table t2";
 

@@ -14,10 +14,12 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
-		Statement stmt = con.createStatement();
-		String str = "select * from alerts;";
+		String user = session.getAttribute("user").toString();
+		String str = "select * from alerts a where a.username=?";
 		ResultSet result = null;
-		result = stmt.executeQuery(str);
+		PreparedStatement ps2 = con.prepareStatement(str);
+		ps2.setString(1, user);
+		result = ps2.executeQuery();
 
 		out.print("<table>");
 		out.print("<tr>");
