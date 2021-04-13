@@ -147,6 +147,7 @@ tr:nth-child(even) {
 		for (Object parameter : parameters) {
 		    ps3.setObject(i++, parameter);
 		}
+		//I LOVE ME
 		
 		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itsel
 		//Run the query against the DB
