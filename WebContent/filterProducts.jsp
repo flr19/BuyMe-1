@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<td>Category:</td>
-				<td><input type="text" name="category"></td>
+				<td><input type="text" name="category" required></td>
 			</tr>
 			<tr>
 				<td>Brand:</td>

@@ -34,11 +34,12 @@ tr:nth-child(even) {
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	System.out.println("print");
-	ArrayList parameters = new ArrayList();
+	ArrayList<Object> parameters = new ArrayList();
 	
 	try {
 		String categoryv, brandv,colorv, genderv, sellerv, statusv;
-		float pricev = 0;
+		//float pricev = 0;
+		
 		if(!request.getParameter("category").isEmpty())
 		{
 			categoryv = request.getParameter("category");
@@ -68,17 +69,15 @@ tr:nth-child(even) {
 		{
 			colorv = null;
 		} 
-		
-		if(!request.getParameter("price").isEmpty())
+		if(!request.getParameter("gender").isEmpty())
 		{
-			pricev = Float.parseFloat(request.getParameter("price"));
-			parameters.add(pricev);
-		} 
+			genderv= request.getParameter("gender");
+			parameters.add(genderv);
+		}
 		else 
 		{
-			pricev= 0; 
-		} 
-		
+			genderv = null;
+		}
 		
 		if(!request.getParameter("status").isEmpty())
 		{
@@ -89,6 +88,27 @@ tr:nth-child(even) {
 		{
 			statusv = null;
 		} 
+		
+		if(!request.getParameter("seller").isEmpty())
+		{
+			sellerv= request.getParameter("seller");
+			parameters.add(sellerv);
+		}
+		else 
+		{
+			sellerv= null;
+		}
+		String priceParameter = request.getParameter("price");
+		if(priceParameter.isEmpty())
+		{
+			priceParameter = "0";
+		}
+		else
+		{
+			Float price = Float.parseFloat(priceParameter);
+			parameters.add(price);
+		}
+
 		System.out.println("print1");
 		for(Object object: parameters) {
 		    System.out.println(object);
@@ -96,7 +116,7 @@ tr:nth-child(even) {
 		}
 		StringBuilder query = new StringBuilder("SELECT * FROM product JOIN auction on product.product_id=auction.auction_id WHERE ");
 		if (!request.getParameter("category").isEmpty()) {
-		    query.append(" AND category = ?");
+		    query.append(" category = ?");
 		}
 		if (!request.getParameter("brand").isEmpty()) {
 		    query.append(" AND brand = ?");
@@ -116,16 +136,26 @@ tr:nth-child(even) {
 		if (!request.getParameter("price").isEmpty()) {
 		    query.append(" AND price = ?");
 		}
-		
-		// FIX THIS KUHUUU
-		stmt = DataBaseConnection.DBConn.getConnection().prepareStatement(query);
-		//append the parameters
+		String realQuery = query.toString();
+		stmt = con.prepareStatement(realQuery);
+		System.out.println("reached");
+		System.out.println(realQuery);
+		PreparedStatement ps3 = null;
+		ps3 = con.prepareStatement(realQuery);
 		int i = 1;
 		for (Object parameter : parameters) {
-		    stmt.setObject(i++, parameter);
+		    ps3.setObject(i++, parameter);
 		}
+		
+		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itsel
+		//Run the query against the DB
+		result=ps3.executeQuery();
+		// FIX THIS KUHUUU
+		
+		//append the parameters
+		
 		//execute the dynamic query
-		rs = stmt.executeQuery();
+		
 	
 		/*System.out.println(categoryv);
 		brandv = request.getParameter("brand");
