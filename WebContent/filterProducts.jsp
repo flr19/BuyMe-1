@@ -12,12 +12,15 @@
 	<b> Search the list of items by various criteria </b>
 	<b> Items in * are required </b>
 	<form method="post" action="filterProductsHandler.jsp">
+	<label for="category">Category</label> <select name="category"
+				id="category" required>
+				<option value="" disabled selected hidden="true">Select
+					category</option>
+				<option value="Analog Watches">Analog Watches</option>
+				<option value="Digital Watches">Digital Watches</option>
+				<option value="Touchscreen Watches">Touchscreen Watches</option>
+			</select> <br>
 		<table>
-			<tr>
-				<td>*Category:</td>
-				<td><input type="text" name="category" required></td>
-			</tr>
-			<tr>
 				<td>Brand:</td>
 				<td><input type="text" name="brand"></td>
 			</tr>
