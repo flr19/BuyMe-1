@@ -79,14 +79,15 @@ tr:nth-child(even) {
 			genderv = null;
 		}
 		
-		if(!request.getParameter("status").isEmpty())
+		if(request.getParameter("status").isEmpty() || request.getParameter("status").equals("both"))
 		{
-			statusv = request.getParameter("status");
-			parameters.add(statusv);
+			statusv = null;
+			
 		}
 		else 
 		{
-			statusv = null;
+			statusv = request.getParameter("status");
+			parameters.add(statusv);
 		} 
 		
 		if(!request.getParameter("seller").isEmpty())
@@ -127,7 +128,7 @@ tr:nth-child(even) {
 		if (!request.getParameter("gender").isEmpty()) {
 		    query.append(" AND gender = ?");
 		}
-		if (!request.getParameter("status").isEmpty()) {
+		if (!request.getParameter("status").isEmpty() && !request.getParameter("status").equals("both")) {
 		    query.append(" AND status = ?");
 		}
 		if (!request.getParameter("seller").isEmpty()) {

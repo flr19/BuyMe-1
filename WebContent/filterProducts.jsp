@@ -10,9 +10,9 @@
 </head>
 <body>
 	<b> Search the list of items by various criteria </b>
-	<b> Items in * are required </b>
+	<br><b> Items in * are required </b>
 	<form method="post" action="filterProductsHandler.jsp">
-	<label for="category">Category</label> <select name="category"
+	<label for="category">*Category</label> <select name="category"
 				id="category" required>
 				<option value="" disabled selected hidden="true">Select
 					category</option>
@@ -41,9 +41,15 @@
 				<td><input type="text" name="price"></td>
 			</tr>
 		</table>
-		<p>*Close or Open Auctions</p>
-		<input type="radio" name="status" value='open' required> Open<br>
-		<input type="radio" name="status" value='close'required> Closed <br>
+		<label for="staus">*status</label> <select name="status"
+				id="status" >
+				<option value="" disabled selected hidden="true">Select
+					category</option>
+				<option value="open">open</option>
+				<option value="closed">closed</option>
+				<option value="both">both</option>
+				
+			</select> <br>
 		<input type="submit" value="Search">
 	</form>
 </body>
