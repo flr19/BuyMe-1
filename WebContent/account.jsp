@@ -20,6 +20,8 @@
 			<li><a href="searchProducts.jsp">Search Watches Based on Keywords</a></li>
 			<li><a href="searchAuctionsByUsers.jsp">Search Auctions By Users</a></li>
 			<li><a href="viewAlerts.jsp">View Alerts</a></li>
+			<li><a href="myAuctions.jsp">My Auctions</a></li>
+			<li><a href="viewMyBidHistory.jsp">View My Bid History</a></li>
 		</ul>
 	</div>
 </body>

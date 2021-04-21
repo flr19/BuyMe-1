@@ -30,9 +30,9 @@
 		out.print("<td>");
 		out.print("Username");
 		out.print("</td>");
-		out.print("<td>");
+		/* out.print("<td>");
 		out.print("Buyer or seller");
-		out.print("</td>");
+		out.print("</td>"); */
 	
 		out.print("</tr>");
 		while (result.next()) {
@@ -41,25 +41,25 @@
 			out.print("<td>");
 			out.print(result.getString("username"));
 			out.print("</td>");
-			out.print("<td>");
+		/* 	out.print("<td>");
 			out.print(result.getString("account_type"));
-			out.print("</td>");
+			out.print("</td>"); */
 			
-			if(result.getString("account_type").equals("buyer"))
+		/* 	if(result.getString("account_type").equals("buyer"))
 			{
 			out.print("<td>");
 			out.print("<form action='viewAuctionsBuyers.jsp' method='post'><button name='username' type='submit' value='"
 			+ result.getString("username") + "'>View Auctions this Buyer has participated In</button></form>");
 			out.print("</td>");
-			}
+			} */
 			
-			if(result.getString("account_type").equals("seller"))
-			{
+			
+			
 			out.print("<td>");
-			out.print("<form action='viewAuctionsSellers.jsp' method='post'><button name = 'username' type ='submit' value='"
-					+ result.getString("username") + "'>View Auctions this Seller has participated in </button></form>");
+			out.print("<form action='viewAuctionsUsers.jsp' method='post'><button name = 'username' type ='submit' value='"
+					+ result.getString("username") + "'>View Auctions this User has participated in </button></form>");
 			out.print("</td>");
-			}
+			
 			
 
 			out.print("</tr>");

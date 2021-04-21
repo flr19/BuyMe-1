@@ -6,26 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <style>
-#buttons{
-    display:flex;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style> -->
+
 <meta charset="ISO-8859-1">
-<title>Search result: Seller</title>
+<title>View Auctions By Users</title>
 </head>
 <body>
 
@@ -38,7 +21,8 @@ tr:nth-child(even) {
 	try {
 
 		String username = request.getParameter("username");
-		String str = "Select seller,start_date,end_date, auction_id, status from  auction  where seller ='" + username + "'";
+		String str = "select auction_id, seller from auction where seller ='" + username + "'"+ "UNION select auction_id, buyer from bid where buyer = '"+username+"'";
+;
 		result = stmt.executeQuery(str);
 		
 		out.print("<table>");
@@ -49,35 +33,19 @@ tr:nth-child(even) {
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print("End Date");
-		out.print("</th>");
-
-		out.print("<th>");
 		out.print("Auction ID");
 		out.print("</th>");
-
-		out.print("<th>");
-		out.print("status");
-		out.print("</th>");
-		out.print("</tr>");
 
 		while (result.next()) {
 			out.print("<tr>");
 			out.print("<td>");
-			out.print(result.getString("seller"));
+			out.print(username);
 			out.print("</td>");
 
 			out.print("<td>");
 			out.print(result.getInt("auction_id"));
 			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(result.getTimestamp("end_date"));
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(result.getString("status"));
-			out.print("</td>");
+
 			out.print("</tr>");
 		}
 
