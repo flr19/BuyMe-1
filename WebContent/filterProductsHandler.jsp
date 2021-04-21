@@ -115,7 +115,7 @@ tr:nth-child(even) {
 		    System.out.println(object);
 		    System.out.println("araay");// Will invoke overrided `toString()` method
 		}
-		StringBuilder query = new StringBuilder("SELECT * FROM product JOIN auction on product.product_id=auction.auction_id WHERE ");
+		StringBuilder query = new StringBuilder("SELECT * FROM product JOIN auction on product.product_id=auction.product_id WHERE ");
 		if (!request.getParameter("category").isEmpty()) {
 		    query.append(" category = ?");
 		}

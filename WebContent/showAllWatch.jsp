@@ -36,6 +36,10 @@
 		out.print("<th>");
 		out.print("Gender");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Seller");
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print(" ");
@@ -62,12 +66,21 @@
 			out.print("<td>");
 			out.print(result.getString("gender"));
 			out.print("</td>");
-
+			
+			out.print("<td>");
+			out.print(result.getString("seller"));
+			out.print("</td>");
+			
+			
+			if(result.getString("seller").equals(session.getAttribute("user").toString()))
+			{
+			
 			out.print("<td>");
 			out.print("<form action='createAuction.jsp' method='post'><button name='product_id' type='submit' value='"
 			+ result.getInt("product_id") + "'>Create Auction</button></form>");
 			out.print("</td>");
-
+			}
+			
 			out.print("<td>");
 			out.print("<form action='createAlertProduct.jsp' method='post'><button name='product_id' type='submit' value='"
 			+ result.getInt("product_id") + "'> Alert Me! </button></form>");

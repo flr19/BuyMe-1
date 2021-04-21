@@ -10,13 +10,13 @@
 	<div class="frontend">
 		<h1>Submit a new question:</h1>
 		<form action="questionsHandler.jsp" method="post">
-			<textarea style="font-size: 18pt" rows="1" cols="90" maxlength="125"
+			<textarea style="font-size: 18pt" rows="1" cols="45" maxlength="30"
 				name="question"></textarea>
-			<br> <input type="submit" value="Submit">
+			<br> <input type="submit" value="submit">
 		</form>
 	</div>
 	<h1>
-		<a href="questionSearcher.jsp"> Search for questions</a>
+		<a href="questions.jsp">View all Questions</a>
 	</h1>
 </body>
 </html>

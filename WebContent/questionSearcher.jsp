@@ -19,46 +19,37 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
-
-		//Create a SQL statement
 		Statement stmt = con.createStatement();
-		//Get the selected radio button from the index.jsp
 		String entity = request.getParameter("search");
-		//Make a SELECT query from the table specified by the 'command' parameter at the index.jsp
 		String str = "SELECT question,answer FROM questions WHERE question LIKE'%" + entity + "%'";
-		//Run the query against the database.
-		ResultSet rs = stmt.executeQuery(str);
-	%>
-	<%
-	//Make an HTML table to show the results in:
+		ResultSet result = stmt.executeQuery(str);
 	out.print("<table>");
-
-	//make a row
 	out.print("<tr>");
-	//make a column
 	out.print("<td>");
-	//print out column header
 	out.print("Question");
 	out.print("</td>");
-	//make a column
 	out.print("<td>");
 	out.print("Answer");
 	out.print("</td>");
 	out.print("</tr>");
 
-	//parse out the results
-	while (rs.next()) {
-	%>
-	<tr>
-		<td><%=rs.getString("question")%></td>
-		<td><%=rs.getString("answer")%></td>
-	</tr>
-	<%
+	while (result.next()) {
+		out.print("<tr>");
+
+		out.print("<td>");
+		out.print(result.getString("question"));
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print(result.getString("answer"));
+		out.print("</td>");
+		
+		out.print("</tr>");
+
+	
 	}
 
 	out.print("</table>");
-
-	//close the connection.
 	con.close();
 
 	} catch (Exception e) {

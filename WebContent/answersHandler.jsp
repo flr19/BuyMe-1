@@ -12,18 +12,16 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection conn = db.getConnection();
-
-		int questionId = Integer.parseInt(request.getParameter("question_id"));
+		String username = session.getAttribute("user").toString();
+		int question_id = Integer.parseInt(request.getParameter("question_id"));
 		String answer = request.getParameter("answer");
-		if (answer != null && !answer.isEmpty()) {
+		if (answer != null) {
 
-			String insert = "UPDATE questions SET answer=? WHERE question_id=?";
-
+			String insert = "UPDATE questions SET answer=?, customerrep_username = ? WHERE question_id=?";
 			ps = conn.prepareStatement(insert);
-
 			ps.setString(1, answer);
-			ps.setInt(2, questionId);
-
+			ps.setString(2, username);
+			ps.setInt(3, question_id);
 			int result = 0;
 			result = ps.executeUpdate();
 			if (result < 1) {

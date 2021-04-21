@@ -16,13 +16,15 @@ try {
 	String brand = request.getParameter("brand");
 	String gender = request.getParameter("gender");
 	String color = request.getParameter("color");
-	String insert = "INSERT INTO product (category, brand, color, gender)" + "VALUES(?, ?, ?, ?)";
+	String username = session.getAttribute("user").toString();
+	String insert = "INSERT INTO product (category, brand, color, gender, seller)" + "VALUES(?, ?, ?, ?, ?)";
 	ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 
 	ps.setString(1, category);
 	ps.setString(2, brand);
 	ps.setString(3, color);
 	ps.setString(4, gender);
+	ps.setString(5, username);
 
 	int result = 0;
 	result = ps.executeUpdate();

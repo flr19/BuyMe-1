@@ -13,22 +13,20 @@ try {
 
 	String username = (session.getAttribute("user")).toString();
 	String question = request.getParameter("question");
-	if (username != null && !username.isEmpty() && question != null && !question.isEmpty()) {
+	if (question != null) {
 
-		String insert = "INSERT INTO questions (user, question, answer)" + "VALUES (?, ?, ?)";
-
+		String insert = "INSERT INTO questions (username, question, answer)" + "VALUES (?, ?, ?)";
 		ps = conn.prepareStatement(insert);
-
 		ps.setString(1, username);
 		ps.setString(2, question);
-		ps.setString(3, "Awaiting answer from customer representative");
-
+		ps.setString(3, "Customer rep hasn't answered yet");
 		int result = 0;
 		result = ps.executeUpdate();
 		if (result < 1) {
-	out.println("Error: Question failed.");
+	out.println("Insert failed");
 		} else {
-	response.sendRedirect("askQuestionsHandler.jsp?submit=success");
+	out.print("<h1>Your question has been submitted successfully.</h1>");
+	out.print("<a href='questionSearcher.jsp'>Search for questions</a>");
 	return;
 		}
 	} else {
@@ -37,7 +35,6 @@ try {
 	}
 } catch (Exception e) {
 	out.print("<p>Error connecting to MYSQL server.</p>" + e);
-	e.printStackTrace();
 } finally {
 	try {
 		ps.close();
