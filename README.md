@@ -5,7 +5,7 @@
 - Class: CS 336 Principles of Data Management and Information 
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
-= Course Site:
+- Course Site:
 - Project URL: 
 
 ## Description
