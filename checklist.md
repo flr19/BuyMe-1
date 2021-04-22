@@ -2,17 +2,17 @@
 
 ## II. Auctions (Manual) 
 - [ ] seller creates auctions and posts items for sale
-	  [ ] set all the characteristics of the item
-	[ ] set closing date and time
-        	[ ] set a hidden minimum price (reserve)
-    [] a buyer should be able to bid
-	    [ ] let the buyer set a new bid
-	    [] alert other buyers of the item that a higher bid has been placed 
-  [] define the winner of the auction - winner() = max(bids)
-	[] when the closing time has come, check if the seller has set a reserve
-	    [] if yes: if the reserve is higher than the last bid none is the winner.
-	    [] if no: whoever has the higher bid is the winner
-		[] alert the winner that they won the auction
+	- [ ] set all the characteristics of the item
+	- [ ] set closing date and time
+	- [ ] set a hidden minimum price (reserve)
+- [ ] a buyer should be able to bid
+- 	[ ] let the buyer set a new bid
+- 	[ ] alert other buyers of the item that a higher bid has been placed 
+- [ ] define the winner of the auction - winner() = max(bids)
+	- [ ] when the closing time has come, check if the seller has set a reserve
+	    - [ ] if yes: if the reserve is higher than the last bid none is the winner.
+	    - [ ] if no: whoever has the higher bid is the winner
+		- [ ] alert the winner that they won the auction
 
 ## III Auctions (Automatic)
 - [] a buyer should be able to set an automatic bidding
