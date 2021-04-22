@@ -58,13 +58,13 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Clone the repo
+1. Install Eclipse Java EE IDE
+2. Clone the repo locally on Eclipse
    ```sh
    git clone https://github.com/kuhuhalder/336-Auction-System-Project.git
    ```
-2. Install Eclipse Java EE IDE
 3. Install Apache Tomcat 
-4. Configure the settings for Runtime Environment
+4. Configure the settings for Runtime Environment - Server - Add Runtime Environment - Add Apache Tomcat 7.0
 
 ## Project Directory Contents
 
