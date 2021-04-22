@@ -1,11 +1,11 @@
 
 # Online Auction System (eBay clone)
 
-- Contributors: <a href = 'https://github.com/kuhuhalder'> Kuhu Halder </a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf </a>, <a href = 'https://github.com/princerawal'> Prince Rawal </a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
-- Class: CS 336 Principles of Data Management and Information 
+- Contributors: <a href = 'https://github.com/kuhuhalder'> Kuhu Halder</a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf</a>, <a href = 'https://github.com/princerawal'> Prince Rawal</a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
+- Class: CS 336 Principles of Information and Data Management
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
-- Course Site:
+- Course Site: <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/course-synopses/course-details/01-198-336-principles-of-information-and-data-management'> Link </a>
 - Project URL: 
 
 ## Table of Contents
