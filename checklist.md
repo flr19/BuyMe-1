@@ -1,4 +1,5 @@
 ## I. Create accounts of users; login, log out.
+- [X] Create accounts of users - login, logout
 
 ## II. Auctions (Manual) 
 - [X] seller creates auctions and posts items for sale
@@ -43,7 +44,7 @@
 - [X] Admin (create an admin account ahead of time)
 - [X] Creates accounts for customer representatives
 - [X] Generates sales reports 
-	- [X] total earnings
+ 	- [X] total earnings
 		- [X] earnings per:
 			- [X] item 
 	    		- [X] item type (analog, digital, touchscreen)
