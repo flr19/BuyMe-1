@@ -1,8 +1,8 @@
 
 # Ebay Auction System
 
-Contributors: Kuhu Halder, Farah Lubaba Rouf, Prince Rawal, Jigisha Mavani
-Class: Principles of Data Management and Information
+Contributors: Kuhu Halder, Farah Lubaba Rouf, Prince Rawal, Jigisha Mavani \n
+Class: Principles of Data Management and Information \n
 Professor: Antonio Miranda-Garcia
 Semester: Spring 2021
 Course Site:
