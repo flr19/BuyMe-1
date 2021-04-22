@@ -1,12 +1,12 @@
 ## I. Create accounts of users; login, log out.
 
 ## II. Auctions (Manual) 
-- [] seller creates auctions and posts items for sale
-	  [] set all the characteristics of the item
-	[] set closing date and time
-        	[] set a hidden minimum price (reserve)
+- [ ] seller creates auctions and posts items for sale
+	  [ ] set all the characteristics of the item
+	[ ] set closing date and time
+        	[ ] set a hidden minimum price (reserve)
     [] a buyer should be able to bid
-	    [] let the buyer set a new bid
+	    [ ] let the buyer set a new bid
 	    [] alert other buyers of the item that a higher bid has been placed 
   [] define the winner of the auction - winner() = max(bids)
 	[] when the closing time has come, check if the seller has set a reserve
