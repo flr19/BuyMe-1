@@ -30,9 +30,7 @@
 		out.print("<td>");
 		out.print("Username");
 		out.print("</td>");
-		/* out.print("<td>");
-		out.print("Buyer or seller");
-		out.print("</td>"); */
+
 	
 		out.print("</tr>");
 		while (result.next()) {
@@ -41,18 +39,6 @@
 			out.print("<td>");
 			out.print(result.getString("username"));
 			out.print("</td>");
-		/* 	out.print("<td>");
-			out.print(result.getString("account_type"));
-			out.print("</td>"); */
-			
-		/* 	if(result.getString("account_type").equals("buyer"))
-			{
-			out.print("<td>");
-			out.print("<form action='viewAuctionsBuyers.jsp' method='post'><button name='username' type='submit' value='"
-			+ result.getString("username") + "'>View Auctions this Buyer has participated In</button></form>");
-			out.print("</td>");
-			} */
-			
 			
 			
 			out.print("<td>");

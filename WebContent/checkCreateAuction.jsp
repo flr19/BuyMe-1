@@ -18,6 +18,8 @@ try {
 	String seller = (session.getAttribute("user")).toString();
 	float minPrice = Float.parseFloat(request.getParameter("min_price"));
 	float price = Float.parseFloat(request.getParameter("starting_price"));
+	float new_bid_increment = Float.parseFloat(request.getParameter("new_bid_increment"));
+
 	String endDate = request.getParameter("end_datetime");
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -34,17 +36,18 @@ try {
 	&& minPrice >= 0.0f
 	&& startingPrice >= 0.0f) { */
 
-	String insert = "INSERT INTO auction (product_id, seller, min_price, price, status, start_date, end_date, winner, current_bid)"
+	String insert = "INSERT INTO auction (product_id, seller, new_bid_increment, min_price, price, status, start_date, end_date, winner, current_bid)"
 	+ "VALUES(?, ?, ?, ?, ?, now(), ?, ?, ?)";
 	ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 	ps.setInt(1, product_id);
 	ps.setString(2, seller);
-	ps.setFloat(3, minPrice);
-	ps.setFloat(4, price);
-	ps.setString(5, "open");
-	ps.setTimestamp(6, endTimestamp);
-	ps.setString(7, null);
-	ps.setFloat(8, 0);
+	ps.setFloat(3, new_bid_increment);
+	ps.setFloat(4, minPrice);
+	ps.setFloat(5, price);
+	ps.setString(6, "open");
+	ps.setTimestamp(7, endTimestamp);
+	ps.setString(8, null);
+	ps.setFloat(9, 0);
 
 	int result = 0;
 	result = ps.executeUpdate();

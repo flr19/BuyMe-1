@@ -15,10 +15,16 @@ Connection con = db.getConnection();
 Statement stmt = con.createStatement();
 ResultSet result = null;
 PreparedStatement ps = null;
+int auction_id = Integer.parseInt(request.getParameter("auction_id"));
+String bid = "select status from auction where auction_id = ?";
+PreparedStatement ps1 = con.prepareStatement(bid);
+ps1.setInt(1, auction_id);
+ResultSet rs = ps1.executeQuery();
 try 
 {
-	String viewBid = "SELECT * FROM bid WHERE buyer IS NOT NULL";
+	String viewBid = "SELECT * FROM bid WHERE buyer IS NOT NULL and auction_id = ?";
 	ps = con.prepareStatement(viewBid);
+	ps.setInt(1, auction_id);
 	result = ps.executeQuery();
 	
 	out.print("<table>");
@@ -50,9 +56,13 @@ try
 		out.print("</td>");
 		out.print("</tr>");
 		
+		String status = rs.getString("status");
+		if(status.equals("open"))
+		{
 		out.print("<td>");
 		out.print("<form action='removeBids.jsp' method='post'><button name='bid_id' type='submit' value='" + result.getString("bid_id") + "'>Remove Bid</button></form>");
 		out.print("</td>");
+		}
 	}
 	out.print("</table>");	
 	

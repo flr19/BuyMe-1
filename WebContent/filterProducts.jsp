@@ -21,6 +21,7 @@
 				<option value="Touchscreen Watches">Touchscreen Watches</option>
 			</select> <br>
 		<table>
+		<tr>
 				<td>Brand:</td>
 				<td><input type="text" name="brand"></td>
 			</tr>
@@ -41,7 +42,7 @@
 				<td><input type="text" name="price"></td>
 			</tr>
 		</table>
-		<label for="staus">*status</label> <select name="status"
+		<label for="status">*status</label> <select name="status"
 				id="status" >
 				<option value="" disabled selected hidden="true">Select
 					category</option>

@@ -23,11 +23,13 @@ PreparedStatement ps4 = null;
 try 
 {
 	//Get the combobox from the index.jsp
+	//only get bid_amount when auto bid if false - bid amount is not required if autobid is true
 	float newBid = Float.parseFloat(request.getParameter("bid_amount"));
-	boolean auto_bool = ("yes").equals(request.getParameter("autobid_bool").toString())? true : false;
+	boolean auto_bool = ("yes").equals(session.getAttribute("autobid_bool").toString())? true : false;
 	float auto_increment = -1;
 	float max_bid = -1;
 	if(auto_bool){
+		
 		auto_increment = Float.parseFloat(request.getParameter("autobid_amount"));
 		max_bid = Float.parseFloat(request.getParameter("max_bid"));
 	}	

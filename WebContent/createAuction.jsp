@@ -26,6 +26,9 @@
 	<tr>    
 	<td>Starting Price: </td><td><input type="text" name="starting_price" required></td>
 	</tr>	
+	<tr>    
+	<td>New Bid Increment: </td><td><input type="text" name="new_bid_increment" required></td>
+	</tr>	
 	</table>
 	<input type="submit" value="Create Auction">
 	</form>

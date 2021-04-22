@@ -22,7 +22,7 @@
 	//status = result.getString("status");
 	session.setAttribute("auction_id", auctionID);
 
-	out.print("<form method='post' action='checkBid.jsp'>");
+	out.print("<form method='post' action='checkAutoBid.jsp'>");
 
 	out.print("<table>");
 
@@ -31,30 +31,23 @@
 	out.print("</tr>");
 
 	out.print("<tr>");
-	out.print("<td>**Bid Amount: </td><td><input type='text' name='bid_amount' required></td>");
-	out.print("</tr>");
 
-	out.print("<tr>");
-	out.print(
-			"<td>**Auto Bid? (Enter 'yes' or anything else for no): </td><td><input type='text' name='autobid_bool' required></td>");
-	out.print("</tr>");
+	out.print("<td><label for='autobid_bool'>**Auto Bid?</label>");
 
-	out.print("<tr>");
-	out.print("<td>Auto Bid Amount (if yes above): </td><td><input type='text' name='autobid_amount'></td>");
-	out.print("</tr>");
+	out.print("<select name='autobid_bool'>");
+	out.print("<option value='yes'>yes</option>");
+	out.print("<option value='no'>no</option>");
 
-	out.print("<tr>");
-	out.print("<td>Max Bid: </td><td><input type='text' name='max_bid'></td>");
+	out.print("</select>");
+	
+	out.print("</td>");
+
 	out.print("</tr>");
+	
 
 	out.print("</table>");
-
 	out.print("<input type='submit' value='Submit Bid!'>");
 	out.print("</form>");
-
-	/* out.print("<form method='post' action='../search/userParticipation.jsp'>");
-	out.print("<input type='submit' value='search user'>");
-	out.print("</form>");	 */
 	%>
 </body>
 </html>
