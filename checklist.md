@@ -8,11 +8,11 @@
 - [X] a buyer should be able to bid
 	- [X] let the buyer set a new bid
 	- [X] alert other buyers of the item that a higher bid has been placed 
-- [X] define the winner of the auction - winner() = max(bids)
+- [X] define the winner of the auction
 	- [X] when the closing time has come, check if the seller has set a reserve
 	    - [X] if yes: if the reserve is higher than the last bid none is the winner.
 	    - [X] if no: whoever has the higher bid is the winner
-		- [X] alert the winner that they won the auction
+	- [X] alert the winner that they won the auction
 
 ## III Auctions (Automatic)
 - [X] a buyer should be able to set an automatic bidding
@@ -22,9 +22,9 @@
     - [X] alert buyers in case someone bids more than their upper limit 
     - [X] define the winner of the auction
 - [X] when the closing time has come, check if the seller has set a reserve
-	    - [X] if yes: if the reserve is higher than the last bid none is the winner.
-	    - [X] if no: whoever has the higher bid is the winner
-		- [X] alert the winner that they won the auction
+	- [X] if yes: if the reserve is higher than the last bid none is the winner.
+	- [X] if no: whoever has the higher bid is the winner
+- [X] alert the winner that they won the auction
 
 
 ## IV Browsing and advanced search functionality
@@ -33,8 +33,8 @@
 - [X] search the list of items by various criteria.
 - [X] a user should be able to:
 	- [X] view all the history of bids for any specific auction
-- [X] view the list of all auctions a specific buyer or seller has participated in
-- [X] view the list of "similar" items on auctions in the preceding month (and auction information about them)
+	- [X] view the list of all auctions a specific buyer or seller has participated in
+	- [X] view the list of "similar" items on auctions in the preceding month (and auction information about them)
 - [X] let user set an alert for specific items s/he is interested 
 	- [X] get an alert when the item becomes available
 
