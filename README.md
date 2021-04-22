@@ -1,11 +1,5 @@
 
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-
-  <h3 align="center">Ebay Auction System</h3>
-</p>
+#Ebay Auction System
 
 
 
