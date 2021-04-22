@@ -1,7 +1,7 @@
 
 # Online Auction System (eBay clone)
 
-- Contributors: Kuhu Halder, Farah Lubaba Rouf, Prince Rawal, Jigisha Mavani
+- Contributors: <a href = 'https://github.com/kuhuhalder'> Kuhu Halder </a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf </a>, <a href = 'https://github.com/princerawal'> Prince Rawal </a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
 - Class: CS 336 Principles of Data Management and Information 
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
