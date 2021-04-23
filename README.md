@@ -1,12 +1,12 @@
 
-# Online Auction System (eBay clone)
+# BuyMe - Online Auction System (eBay clone)
 
 - Contributors: <a href = 'https://github.com/kuhuhalder'> Kuhu Halder</a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf</a>, <a href = 'https://github.com/princerawal'> Prince Rawal</a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
-- Class: CS 336 Principles of Information and Data Management
+- Course: CS 336 Principles of Information and Data Management
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
 - Course Site: <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/course-synopses/course-details/01-198-336-principles-of-information-and-data-management'> Link </a>
-- Project URL: 
+- <a href = 'http://ec2-18-222-204-142.us-east-2.compute.amazonaws.com:8080/CS336-Project/'>Project URL</a>
 
 ## Table of Contents
 
