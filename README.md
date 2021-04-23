@@ -6,7 +6,7 @@
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
 - Course Site: <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/course-synopses/course-details/01-198-336-principles-of-information-and-data-management'> Link </a>
-- Project URL: 
+- <a href = 'http://ec2-18-222-204-142.us-east-2.compute.amazonaws.com:8080/CS336-Project/'>Project URL</a>
 
 ## Table of Contents
 
