@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +58,7 @@
 	out.print(result.getString("answer"));
 	out.print("</td>");
 	}
-			out.print("</tr>");
+	out.print("</tr>");
 
 	}
 	out.print("</table>");

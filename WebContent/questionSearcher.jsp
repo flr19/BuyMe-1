@@ -23,34 +23,33 @@
 		String entity = request.getParameter("search");
 		String str = "SELECT question,answer FROM questions WHERE question LIKE'%" + entity + "%'";
 		ResultSet result = stmt.executeQuery(str);
-	out.print("<table>");
-	out.print("<tr>");
-	out.print("<td>");
-	out.print("Question");
-	out.print("</td>");
-	out.print("<td>");
-	out.print("Answer");
-	out.print("</td>");
-	out.print("</tr>");
-
-	while (result.next()) {
+		out.print("<table>");
 		out.print("<tr>");
-
 		out.print("<td>");
-		out.print(result.getString("question"));
+		out.print("Question");
 		out.print("</td>");
-		
 		out.print("<td>");
-		out.print(result.getString("answer"));
+		out.print("Answer");
 		out.print("</td>");
-		
 		out.print("</tr>");
 
-	
-	}
+		while (result.next()) {
+			out.print("<tr>");
 
-	out.print("</table>");
-	con.close();
+			out.print("<td>");
+			out.print(result.getString("question"));
+			out.print("</td>");
+
+			out.print("<td>");
+			out.print(result.getString("answer"));
+			out.print("</td>");
+
+			out.print("</tr>");
+
+		}
+
+		out.print("</table>");
+		con.close();
 
 	} catch (Exception e) {
 	}

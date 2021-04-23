@@ -5,24 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <style>
-#buttons{
-    display:flex;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style> -->
 <meta charset="ISO-8859-1">
 <title>Earning Per Item</title>
 </head>

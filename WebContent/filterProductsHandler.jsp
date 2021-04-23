@@ -5,24 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <style>
-#buttons{
-    display:flex;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style> -->
 <meta charset="ISO-8859-1">
 <title>search the list of items by various criteria</title>
 </head>
@@ -34,7 +16,7 @@ tr:nth-child(even) {
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
 	System.out.println("print");
-	ArrayList<Object> parameters = new ArrayList();
+	List<Object> parameters = new ArrayList<Object>();
 	
 	try {
 		String categoryv, brandv,colorv, genderv, sellerv, statusv;
@@ -109,12 +91,7 @@ tr:nth-child(even) {
 			Float price = Float.parseFloat(priceParameter);
 			parameters.add(price);
 		}
-
-		System.out.println("print1");
-		for(Object object: parameters) {
-		    System.out.println(object);
-		    System.out.println("araay");// Will invoke overrided `toString()` method
-		}
+		
 		StringBuilder query = new StringBuilder("SELECT * FROM product JOIN auction on product.product_id=auction.product_id WHERE ");
 		if (!request.getParameter("category").isEmpty()) {
 		    query.append(" category = ?");
@@ -147,42 +124,8 @@ tr:nth-child(even) {
 		for (Object parameter : parameters) {
 		    ps3.setObject(i++, parameter);
 		}
-		//I LOVE ME
-		
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itsel
-		//Run the query against the DB
 		result=ps3.executeQuery();
-		// FIX THIS KUHUUU
-		
-		//append the parameters
-		
-		//execute the dynamic query
-		
-	
-		/*System.out.println(categoryv);
-		brandv = request.getParameter("brand");
-		colorv = request.getParameter("color");
-		genderv = request.getParameter("gender");
-		//pricev = Float.parseFloat(request.getParameter("price"));
-		sellerv = request.getParameter("seller");
-		statusv = request.getParameter("status");
-		System.out.println(statusv);
-		System.out.println("print2"); */
-		
-		//String str = "select *"
-		//+ "from product p,auction a WHERE p.product_id = a.product_id and (p.category=? or p.brand=? or p.color=? or p.gender=?"
-		//+ "or a.price=? or a.seller=? or a.status=?)";
-		
 
-		//PreparedStatement ps = con.prepareStatement(str);
-		/* ps.setString(1, categoryv);
-		ps.setString(2, brandv);
-		ps.setString(3, colorv);
-		ps.setString(4, genderv);
-		ps.setFloat(5, pricev);
-		ps.setString(6, sellerv);
-		ps.setString(7, statusv);
-		result = ps.executeQuery(); */
 
 		out.print("<table>");
 		out.print("<tr>");

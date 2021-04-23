@@ -11,15 +11,6 @@
 <body>
 	<%
 	int auctionID = Integer.parseInt(request.getParameter("auction_id"));
-	/*String str = "SELECT * FROM auction JOIN product using (product_id) " +  
-			"WHERE auction_id = ?";
-
-	ps = con.prepareStatement(str);
-	ps.setInt(1, auctionID);*/
-
-	//result = ps.executeQuery(str);
-	//result.next();	
-	//status = result.getString("status");
 	session.setAttribute("auction_id", auctionID);
 
 	out.print("<form method='post' action='checkAutoBid.jsp'>");
