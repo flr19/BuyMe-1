@@ -26,16 +26,6 @@ try {
 	java.util.Date date = sdf.parse(endDate);
 	java.sql.Timestamp endTimestamp = new java.sql.Timestamp(date.getTime());
 
-	// Make sure all the fields are entered
-	/* 		if(category != null  && !category.isEmpty()
-	&& brand != null && !brand.isEmpty() 
-	&& color != null && !color.isEmpty()
-			&& gender != null && !gender.isEmpty()
-	&& startDate != null && !startDate.isEmpty()
-	&& endDate != null && !endDate.isEmpty()
-	&& minPrice >= 0.0f
-	&& startingPrice >= 0.0f) { */
-
 	String insert = "INSERT INTO auction (product_id, seller, new_bid_increment, min_price, price, status, start_date, end_date, winner, current_bid)"
 	+ "VALUES(?, ?, ?, ?, ?, now(), ?, ?, ?)";
 	ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
