@@ -53,11 +53,6 @@
 			out.print("<td>");
 			out.print(result.getString("auction_id"));
 			out.print("</td>");
-
-		/* 	out.print("<td>");
-			out.print(result.getString("gender"));
-			out.print("</td>"); */
-
 			out.print("</tr>");
 		}
 		out.print("</table>");
