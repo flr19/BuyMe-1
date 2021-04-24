@@ -24,19 +24,7 @@ try
 {
 	//Get the combobox from the index.jsp
 	//only get bid_amount when auto bid if false - bid amount is not required if autobid is true
-	float newBid = Float.parseFloat(request.getParameter("bid_amount"));
-	boolean auto_bool = ("yes").equals(session.getAttribute("autobid_bool").toString())? true : false;
-	float auto_increment = -1;
-	float max_bid = -1;
-	if(auto_bool){
-		
-		auto_increment = Float.parseFloat(request.getParameter("autobid_amount"));
-		max_bid = Float.parseFloat(request.getParameter("max_bid"));
-	}	
 	int  auction_id = Integer.parseInt(session.getAttribute("auction_id").toString());
-	String newUser = (String)session.getAttribute("user"); //user or username?
-	
-	
 	
 	String str = "SELECT max(b.amount) FROM auction a, bid b WHERE b.auction_id=? AND b.auction_id=a.auction_id"; //get the max bid for our current auction
 	ps = con.prepareStatement(str);
@@ -45,7 +33,7 @@ try
 	result = ps.executeQuery();
 	result.next();
 	
-	String str2 = "SELECT price FROM auction WHERE auction_id=?";
+	String str2 = "SELECT price, new_bid_increment FROM auction WHERE auction_id=?";
 	ps2 = con.prepareStatement(str2);
 	ps2.setInt(1, auction_id);
 	result2 = ps2.executeQuery();
@@ -54,6 +42,37 @@ try
 	
 	float initialPrice = result2.getFloat("price");
 	float current_bid = result.getFloat("max(b.amount)");
+	float new_bid_increment = result2.getFloat("new_bid_increment");
+	
+	
+	float newBid = -1;
+	boolean auto_bool = ("yes").equals(session.getAttribute("autobid_bool").toString())? true : false;
+	float auto_increment = -1;
+	float max_bid = -1;
+	if(auto_bool){
+		
+		auto_increment = Float.parseFloat(request.getParameter("autobid_amount"));
+		max_bid = Float.parseFloat(request.getParameter("max_bid"));
+		if(new_bid_increment>auto_increment){
+			throw new Exception("Your bid increment is lesser than the seller minimum. You entered : "+new_bid_increment+" , and your's is : "+auto_increment);
+		}
+		
+		if(current_bid==0){
+			newBid = initialPrice;
+		}
+		else{
+			newBid = new_bid_increment+current_bid;
+		}
+	}	
+	else{
+		newBid = Float.parseFloat(request.getParameter("bid_amount"));	
+	}
+	
+	String newUser = (String)session.getAttribute("user"); //user or username?
+	
+	
+	
+	
 	
 	
 	
@@ -108,7 +127,7 @@ try
 		result2 = ps4.executeQuery();
 		result2.next();
 		
-		
+		float tem = 0;
 		int current_bid_id = result2.getInt("bid_id");
 		
 		boolean previous_auto_bid;
@@ -133,8 +152,19 @@ try
 					previous_auto_increment = result2.getFloat("bid_increment");
 					previous_auto_max = result2.getFloat("upper_limit");
 					
-					if(previous_auto_bid && newBid+previous_auto_increment<=previous_auto_max){
+					if(previous_auto_bid){
 						//System.out.println("Check 4");
+						if(newBid+previous_auto_increment>previous_auto_max){
+							if(previous_auto_max - newBid < new_bid_increment){
+								break;
+							}
+							else{
+								tem = previous_auto_max;
+							}
+						}
+						else{
+							tem = newBid+previous_auto_increment;
+						}
 						str3 = "INSERT INTO bid(buyer, upper_limit, is_autobid, bid_increment, amount, auction_id)"
 								+ "VALUES (?, ?, ?, ?, ?, ?)";
 						ps3 = con.prepareStatement(str3);
@@ -142,14 +172,11 @@ try
 						ps3.setFloat(2, previous_auto_max);
 						ps3.setBoolean(3, previous_auto_bid);
 						ps3.setFloat(4, previous_auto_increment);
-						ps3.setFloat(5, newBid+previous_auto_increment);
+						ps3.setFloat(5, tem);
 						ps3.setInt(6, auction_id);
 						
 						ps3.executeUpdate();
 						
-						if(!auto_bool){
-							break;
-						}
 						temp = newUser;
 						//This project is so complicated :(
 						newUser = previous_user;
@@ -159,9 +186,16 @@ try
 						previous_bid_id = current_bid_id;
 						current_bid_id = temp2;
 						
+
+						newBid = tem;
+						
+						if(!auto_bool){
+							break;
+						}
+						
+						
 						auto_bool = true;
 						
-						newBid = newBid+previous_auto_increment;
 						
 						//System.out.println("Check 5");
 					}
