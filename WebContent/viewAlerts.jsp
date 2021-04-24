@@ -47,12 +47,20 @@
 			out.print("</td>");
 
 			out.print("<td>");
-			out.print(result.getString("product_id"));
+			out.print(result.getInt("product_id"));
 			out.print("</td>");
-
+			if(result.getInt("auction_id") == 0)
+			{
+				out.print("<td>");
+				out.print("No Auction yet");
+				out.print("</td>");
+			}
+			else
+			{
 			out.print("<td>");
-			out.print(result.getString("auction_id"));
+			out.print(result.getInt("auction_id"));
 			out.print("</td>");
+			}
 			out.print("</tr>");
 		}
 		out.print("</table>");

@@ -10,7 +10,7 @@
 	<div class="frontend">
 		<h1>Submit a new question:</h1>
 		<form action="questionsHandler.jsp" method="post">
-			<textarea style="font-size: 18pt" rows="1" cols="45" maxlength="30"
+			<textarea style="font-size: 18pt" rows="1" cols="60" maxlength="250"
 				name="question"></textarea>
 			<br> <input type="submit" value="submit">
 		</form>

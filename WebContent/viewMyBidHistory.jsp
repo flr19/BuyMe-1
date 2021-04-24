@@ -45,6 +45,14 @@
 		out.print("<th>");
 		out.print("Gender");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Bid Amount");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Status of Auction");
+		out.print("</th>");
 
 		while (result.next()) {
 			out.print("<tr>");
@@ -71,6 +79,14 @@
 			
 			out.print("<td>");
 			out.print(result.getString("gender"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getFloat("amount"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getString("status"));
 			out.print("</td>");
 
 			out.print("</tr>");

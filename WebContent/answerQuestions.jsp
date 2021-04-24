@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
-<!DOCTYPE html>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Frequently Asked Questions</title>
+<title>Answers Questions</title>
 </head>
+<html>
 <body>
+
+
 	<%
 	PreparedStatement ps = null;
 	ResultSet result = null;
@@ -48,35 +48,45 @@
 			out.print(result.getString("question"));
 			out.print("</td>");
 
-			out.print("<td>");
-			out.print(result.getString("answer"));
-			out.print("</td>");
-		out.print("<td>");
-		out.print(result.getString("customerrep_username"));
-		out.print("</td>");
+			if (result.getString("answer").equals("Customer rep hasn't answered yet")) {
+	%>
 
-		out.print("</tr>");
-			
-		}
+	<form
+		action="answersHandler.jsp?question_id=<%=result.getInt("question_id")%>"
+		method="POST">
+		<td><textarea type="textarea" name="answer"></textarea> <input
+			type="submit" value="answer"></td>
+	</form>
+	<%
+	} else {
 
-		out.print("</table>");
+	out.print("<td>");
+	out.print(result.getString("answer"));
+	out.print("</td>");
+
+	out.print("<td>");
+	out.print(result.getString("customerrep_username"));
+	out.print("</td>");
+	}
+	}
+	out.print("</tr>");
+
+	out.print("</table>");
 
 	} catch (SQLException e) {
-		out.print("<p>Error connecting to MYSQL server.</p>");
-		e.printStackTrace();
+	out.print("<p>Error connecting to MYSQL server.</p>");
+	e.printStackTrace();
 	} finally {
-		try {
-			result.close();
-		} catch (Exception e) {
-		}
-		try {
-			conn.close();
-		} catch (Exception e) {
-		}
+	try {
+	result.close();
+	} catch (Exception e) {
+	}
+	try {
+	conn.close();
+	} catch (Exception e) {
+	}
 	}
 	%>
 
-
-	</div>
 </body>
 </html>

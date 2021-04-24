@@ -27,7 +27,7 @@ try {
 	java.sql.Timestamp endTimestamp = new java.sql.Timestamp(date.getTime());
 
 	String insert = "INSERT INTO auction (product_id, seller, new_bid_increment, min_price, price, status, start_date, end_date, winner, current_bid)"
-	+ "VALUES(?, ?, ?, ?, ?, now(), ?, ?, ?)";
+	+ "VALUES(?, ?, ?, ?, ?, ?, now(), ?, ?, ?)";
 	ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 	ps.setInt(1, product_id);
 	ps.setString(2, seller);

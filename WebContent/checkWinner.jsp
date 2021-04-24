@@ -30,7 +30,7 @@
 		ps.executeUpdate();
 
 		
-		str = "SELECT * FROM t2";
+		str = "SELECT * FROM t2 where current_bid>min_price";
 		ps = con.prepareStatement(str);
 		ResultSet result = ps.executeQuery();
 		
@@ -46,6 +46,7 @@
 		ps.executeUpdate();
 		
 		}
+		
 
 		str = "drop temporary table t2";
 

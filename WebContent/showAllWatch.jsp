@@ -81,10 +81,13 @@
 			out.print("</td>");
 			}
 			
+			else{
 			out.print("<td>");
 			out.print("<form action='createAlertProduct.jsp' method='post'><button name='product_id' type='submit' value='"
 			+ result.getInt("product_id") + "'> Alert Me! </button></form>");
 			out.print("</td>");
+			}
+			
 
 			out.print("</tr>");
 		}

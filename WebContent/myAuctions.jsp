@@ -42,6 +42,10 @@
 		out.print("<th>");
 		out.print("Current Bid");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Minimum Price");
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print("Price");
@@ -89,6 +93,10 @@
 			out.print(result.getFloat("current_bid"));
 			out.print("</td>");
 
+			out.print("<td>");
+			out.print(result.getFloat("min_price"));
+			out.print("</td>"); 
+			
 			out.print("<td>");
 			out.print("$" + result.getFloat("price"));
 			out.print("</td>");

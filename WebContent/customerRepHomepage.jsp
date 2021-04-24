@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Customer Representative Homepage</h2>
-	<a href="questions.jsp">Reply to User Questions</a>
+	<a href="answerQuestions.jsp">Reply to User Questions</a>
 	<br>
 	<a href="manageUsers.jsp">Manage User Accounts</a>
 	<br>

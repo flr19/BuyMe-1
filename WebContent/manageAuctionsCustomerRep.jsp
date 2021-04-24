@@ -54,7 +54,7 @@
 		out.print("</th>");
 
 		out.print("<th>");
-		out.print("Winner");
+		out.print("Winner/ Tentative Winner");
 		out.print("</th>");
 
 		out.print("<th>");

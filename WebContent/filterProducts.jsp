@@ -47,7 +47,7 @@
 				<option value="" disabled selected hidden="true">Select
 					category</option>
 				<option value="open">open</option>
-				<option value="closed">closed</option>
+				<option value="close">closed</option>
 				<option value="both">both</option>
 				
 			</select> <br>

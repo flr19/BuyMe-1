@@ -14,7 +14,7 @@ try {
 	Connection con = db.getConnection();
 	Statement st = con.createStatement();
 	String user = request.getParameter("username");
-	int res = st.executeUpdate("DELETE FROM account WHERE username='" + user + "' and username not in (select * from admin) and username not in (select * from customerrep)");
+	int res = st.executeUpdate("DELETE FROM account WHERE username='" + user + "'");
 	if (res > 0) {
 		out.println("User deleted.");
 	} else {

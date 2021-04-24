@@ -31,6 +31,11 @@
 		out.print("<td>");
 		out.print("Answer");
 		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Answered By Customer Rep Username");
+		out.print("</td>");
+		
 		out.print("</tr>");
 
 		while (result.next()) {
@@ -42,6 +47,10 @@
 
 			out.print("<td>");
 			out.print(result.getString("answer"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getString("customerrep_username"));
 			out.print("</td>");
 
 			out.print("</tr>");

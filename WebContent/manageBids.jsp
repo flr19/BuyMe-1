@@ -22,7 +22,7 @@ ps1.setInt(1, auction_id);
 ResultSet rs = ps1.executeQuery();
 try 
 {
-	String viewBid = "SELECT * FROM bid WHERE buyer IS NOT NULL and auction_id = ?";
+	String viewBid = "SELECT * FROM bid join auction using (auction_id) WHERE buyer is not null and auction_id = ?";
 	ps = con.prepareStatement(viewBid);
 	ps.setInt(1, auction_id);
 	result = ps.executeQuery();
@@ -44,7 +44,7 @@ try
 	{
 		out.print("<tr>");
 		out.print("<td>");
-		out.print(result.getString("bid_id"));
+		out.print(result.getInt("bid_id"));
 		out.print("</td>");
 		
 		out.print("<td>");
@@ -56,11 +56,11 @@ try
 		out.print("</td>");
 		out.print("</tr>");
 		
-		String status = rs.getString("status");
+		String status = result.getString("status");
 		if(status.equals("open"))
 		{
 		out.print("<td>");
-		out.print("<form action='removeBids.jsp' method='post'><button name='bid_id' type='submit' value='" + result.getString("bid_id") + "'>Remove Bid</button></form>");
+		out.print("<form action='removeBids.jsp' method='post'><button name='bid_id' type='submit' value='" + result.getInt("bid_id") + "'>Remove Bid</button></form>");
 		out.print("</td>");
 		}
 	}

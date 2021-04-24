@@ -60,9 +60,14 @@
 		out.print("<th>");
 		out.print("Current Bid");
 		out.print("</th>");
+		
 
 		out.print("<th>");
 		out.print("Price");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("New Bid Increment");
 		out.print("</th>");
 
 		out.print("<th>");
@@ -103,6 +108,10 @@
 
 			out.print("<td>");
 			out.print("$" + result.getFloat("price"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print("$" + result.getFloat("new_bid_increment"));
 			out.print("</td>");
 
 			out.print("<td>");

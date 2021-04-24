@@ -12,7 +12,7 @@
 	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection conn = db.getConnection();
-		String username = session.getAttribute("user").toString();
+		String username = session.getAttribute("customerrep").toString();
 		int question_id = Integer.parseInt(request.getParameter("question_id"));
 		String answer = request.getParameter("answer");
 		if (answer != null) {

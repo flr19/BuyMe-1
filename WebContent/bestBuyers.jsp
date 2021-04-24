@@ -19,6 +19,7 @@
 	try {
 
 		out.print("<b>Best Buyers</b>");
+		out.print("<br/>");
 		String str = "SELECT a.winner, count(*) FROM auction a, product p WHERE a.product_id=p.product_id and a.status='close' and a.current_bid>=a.min_price order by count(*) desc limit 5";
 		result = stmt.executeQuery(str);
 		while (result.next()) {
