@@ -20,7 +20,7 @@
 	{
 		String delete = "DELETE FROM bid WHERE bid_id =" + request.getParameter("bid_id");
         stmt.executeUpdate(delete);
-		response.sendRedirect("manageBids.jsp");		
+		response.sendRedirect("manageAuctionsCustomerRep.jsp");		
 	}		
 	
 	catch (Exception e) 

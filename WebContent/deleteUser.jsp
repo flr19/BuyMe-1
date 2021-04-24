@@ -14,6 +14,45 @@ try {
 	Connection con = db.getConnection();
 	Statement st = con.createStatement();
 	String user = request.getParameter("username");
+	String str = "select * from bid join auction using (auction_id) where status = 'open' and buyer = ?";
+	PreparedStatement ps = con.prepareStatement(str);
+	ps.setString(1,user);
+	ResultSet result = ps.executeQuery();
+while(result.next())
+	{
+	int bid_id = result.getInt("bid_id");
+	
+	int auction_id = result.getInt("auction_id");
+	
+	String str1 = "delete from bid where bid_id = ? and auction_id = ?";
+	PreparedStatement ps1 = con.prepareStatement(str1);
+	ps1.setInt(1, bid_id);
+	ps1.setInt(2, auction_id);
+	ps1.executeUpdate();
+	
+	String str2 = "select max(amount) from bid where auction_id = ?";
+	PreparedStatement ps3 = con.prepareStatement(str2);
+	ps3.setInt(1,auction_id);
+	ResultSet result2 = ps3.executeQuery();
+	result2.next();
+	float current_bid = result2.getFloat("max(amount)");
+
+	str = "SELECT buyer from bid join auction using (auction_id) where amount = ? and auction_id = ?"; //get the max bid for our current auction
+	ps = con.prepareStatement(str);
+	ps.setFloat(1, current_bid);
+	ps.setInt(2, auction_id);
+	ResultSet result3 = ps.executeQuery();
+	result3.next();
+	String name = result3.getString("buyer");
+
+	str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
+	ps = con.prepareStatement(str);
+	ps.setString(2, name);
+	ps.setFloat(1, current_bid);
+	ps.setInt(3, auction_id);
+	ps.executeUpdate();
+	
+	}
 	int res = st.executeUpdate("DELETE FROM account WHERE username='" + user + "'");
 	if (res > 0) {
 		out.println("User deleted.");

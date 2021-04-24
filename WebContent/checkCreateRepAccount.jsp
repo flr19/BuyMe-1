@@ -9,6 +9,7 @@
 <title>Create Customer Rep Account Check Details</title>
 </head>
 <body>
+<jsp:include page="checkWinner.jsp" />
 	<%
 	String userid = request.getParameter("username");
 	String pwd = request.getParameter("password");
