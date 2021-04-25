@@ -54,6 +54,18 @@
 		out.print("<th>");
 		out.print("Seller");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Price");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Minimum Price");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("New Bid Increment");
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print("Start Date");
@@ -77,6 +89,10 @@
 
 		out.print("<th>");
 		out.print("Remove Auction");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Remove Bids");
 		out.print("</th>");
 		out.print("</tr>");
 
@@ -103,6 +119,18 @@
 
 			out.print("<td>");
 			out.print(result.getString("seller"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getFloat("price"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getFloat("min_price"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getFloat("new_bid_increment"));
 			out.print("</td>");
 
 			out.print("<td>");

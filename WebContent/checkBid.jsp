@@ -156,7 +156,6 @@
 
 				if (previous_auto_bid) {
 					//System.out.println("Check 4");
-					System.out.println("The i currently is : "+ i+ "and bid, incre, max : "+previous_auto_bid+"ikwshjgdbiuwd"+previous_auto_increment+"jvsdjhvdh"+previous_auto_max);
 					if (newBid + previous_auto_increment > previous_auto_max) {
 						if (previous_auto_max - newBid < new_bid_increment) {
 							break;
@@ -168,23 +167,26 @@
 					}
 					str3 = "INSERT INTO bid(buyer, upper_limit, is_autobid, bid_increment, amount, auction_id)"
 							+ "VALUES (?, ?, ?, ?, ?, ?)";
-					ps3 = con.prepareStatement(str3);
+					ps3 = con.prepareStatement(str3, Statement.RETURN_GENERATED_KEYS);
 					ps3.setString(1, previous_user);
 					ps3.setFloat(2, previous_auto_max);
 					ps3.setBoolean(3, previous_auto_bid);
 					ps3.setFloat(4, previous_auto_increment);
 					ps3.setFloat(5, tem);
 					ps3.setInt(6, auction_id);
-
 					ps3.executeUpdate();
+					
+					result = ps3.getGeneratedKeys();
+					result.next();
+					
+					previous_bid_id = current_bid_id;
 
+					current_bid_id = result.getInt(1);
+					
 					temp = newUser;
 					//This project is so complicated :(
 					newUser = previous_user;
 					previous_user = temp;
-
-				
-					previous_bid_id ++;
 
 					newBid = tem;
 

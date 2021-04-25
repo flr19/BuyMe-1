@@ -55,6 +55,18 @@
 		out.print("</th>");
 		
 		out.print("<th>");
+		out.print("Auto Bid: On or Off?");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Bid Increment");
+		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Upper Limit");
+		out.print("</th>");
+		
+		out.print("<th>");
 		out.print("Status of Auction");
 		out.print("</th>");
 
@@ -88,6 +100,36 @@
 			out.print("<td>");
 			out.print(result.getFloat("amount"));
 			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getBoolean("is_autobid"));
+			out.print("</td>");
+			
+			if(result.getFloat("bid_increment") == -1)
+			{
+				out.print("<td>");
+				out.print("no bid increment since auto bid is not on");
+				out.print("</td>");
+			}
+			else
+			{
+				out.print("<td>");
+				out.print(result.getFloat("bid_increment"));
+				out.print("</td>");
+			}
+			
+			if(result.getFloat("upper_limit") == -1)
+			{
+				out.print("<td>");
+				out.print("no upper limit since auto bid is not on");
+				out.print("</td>");
+			}
+			else
+			{
+				out.print("<td>");
+				out.print(result.getFloat("upper_limit"));
+				out.print("</td>");
+			}
 			
 			out.print("<td>");
 			out.print(result.getString("status"));

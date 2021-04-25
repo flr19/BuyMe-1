@@ -12,6 +12,7 @@
 </head>
 <body>
    	<button onclick="window.location.href='account.jsp';">Return to Homepage</button>
+   	<h2> Create a new watch</h2>
 	<div class="content">
 		<form action="checkCreateWatch.jsp" method="POST">
 			<label for="category">Category</label> <select name="category"
