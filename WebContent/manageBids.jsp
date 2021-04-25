@@ -16,6 +16,7 @@ Statement stmt = con.createStatement();
 ResultSet result = null;
 PreparedStatement ps = null;
 int auction_id = Integer.parseInt(request.getParameter("auction_id"));
+session.setAttribute("auction_id", auction_id);
 String bid = "select status from auction where auction_id = ?";
 PreparedStatement ps1 = con.prepareStatement(bid);
 ps1.setInt(1, auction_id);

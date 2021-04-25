@@ -20,6 +20,35 @@
 	{
 		String delete = "DELETE FROM bid WHERE bid_id =" + request.getParameter("bid_id");
         stmt.executeUpdate(delete);
+        
+        
+        int bid_id = Integer.parseInt(request.getParameter("bid_id"));
+    	
+    	int auction_id = Integer.parseInt(session.getAttribute("auction_id").toString());
+    	
+    	String str2 = "select max(amount) from bid where auction_id = ?";
+    	PreparedStatement ps3 = con.prepareStatement(str2);
+    	ps3.setInt(1,auction_id);
+    	ResultSet result2 = ps3.executeQuery();
+    	result2.next();
+    	float current_bid = result2.getFloat("max(amount)");
+
+    	String str = "SELECT buyer from bid join auction using (auction_id) where amount = ? and auction_id = ?"; //get the max bid for our current auction
+    	ps = con.prepareStatement(str);
+    	ps.setFloat(1, current_bid);
+    	ps.setInt(2, auction_id);
+    	ResultSet result3 = ps.executeQuery();
+    	result3.next();
+    	String name = result3.getString("buyer");
+
+    	str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
+    	ps = con.prepareStatement(str);
+    	ps.setString(2, name);
+    	ps.setFloat(1, current_bid);
+    	ps.setInt(3, auction_id);
+    	ps.executeUpdate();
+    	
+    	
 		response.sendRedirect("manageAuctionsCustomerRep.jsp");		
 	}		
 	
