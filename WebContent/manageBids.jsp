@@ -53,9 +53,18 @@ try
 		out.print(result.getInt("bid_id"));
 		out.print("</td>");
 		
+		if(result.getString("buyer")==null)
+{
+		out.print("<td>");
+		out.print("Deleted User");
+		out.print("</td>");
+}
+		else
+		{
 		out.print("<td>");
 		out.print(result.getString("buyer"));
 		out.print("</td>");
+		}
 		
 		out.print("<td>");
 		out.print("$" + result.getString("amount"));

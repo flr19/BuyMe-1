@@ -20,6 +20,8 @@ try {
 	PreparedStatement ps = con.prepareStatement(str);
 	ps.setString(1,user);
 	ResultSet result = ps.executeQuery();
+	String name;
+	float current_bid = 0;
 while(result.next())
 	{
 	int bid_id = result.getInt("bid_id");
@@ -38,15 +40,21 @@ while(result.next())
 	ResultSet result2 = ps3.executeQuery();
 	if(result2.next())
 	{
-	float current_bid = result2.getFloat("max(amount)");
-
+	current_bid = result2.getFloat("max(amount)");
+	}
+	if(current_bid==0) {
+		name = "";
+	}
+	else
+		{
 	str = "SELECT buyer from bid join auction using (auction_id) where amount = ? and auction_id = ?"; //get the max bid for our current auction
 	ps = con.prepareStatement(str);
 	ps.setFloat(1, current_bid);
 	ps.setInt(2, auction_id);
 	ResultSet result3 = ps.executeQuery();
 	result3.next();
-	String name = result3.getString("buyer");
+	name = result3.getString("buyer");
+		}
 
 	str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
 	ps = con.prepareStatement(str);
@@ -54,19 +62,11 @@ while(result.next())
 	ps.setFloat(1, current_bid);
 	ps.setInt(3, auction_id);
 	ps.executeUpdate();
-	}
-	else
-	{
-		str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
-		ps = con.prepareStatement(str);
-		ps.setString(2, "");
-		ps.setFloat(1, 0);
-		ps.setInt(3, auction_id);
-		ps.executeUpdate();
-	}
 	
 	
-	}
+}
+	
+	
 str = "select * from bid join auction using (auction_id) where status = 'close' and buyer = ?";
 ps = con.prepareStatement(str);
 ps.setString(1,user);
@@ -77,7 +77,7 @@ while(result.next())
 	int auction_id = result.getInt("auction_id");
 	String str1 = "update bid set buyer =? where bid_id = ? and auction_id = ?";
 	PreparedStatement ps1 = con.prepareStatement(str1);
-	ps1.setString(1, "deleted user");
+	ps1.setString(1, null);
 	ps1.setInt(2, bid_id);
 	ps1.setInt(3, auction_id);
 	ps1.executeUpdate();
