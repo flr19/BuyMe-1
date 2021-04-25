@@ -9,6 +9,7 @@
 		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+<h2>Admin Login</h2>
 	<form action="checkAdminLogin.jsp" method="POST">
 		Username: <input type="text" name="username" /> <br /> Password: <input
 			type="password" name="password" /> <br /> <input type="submit"

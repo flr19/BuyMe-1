@@ -32,7 +32,8 @@
     	PreparedStatement ps3 = con.prepareStatement(str2);
     	ps3.setInt(1,auction_id);
     	ResultSet result2 = ps3.executeQuery();
-    	result2.next();
+    	if(result2.next())
+    	{
     	float current_bid = result2.getFloat("max(amount)");
 
     	String str = "SELECT buyer from bid join auction using (auction_id) where amount = ? and auction_id = ?"; //get the max bid for our current auction
@@ -49,6 +50,16 @@
     	ps.setFloat(1, current_bid);
     	ps.setInt(3, auction_id);
     	ps.executeUpdate();
+    	}
+    	else
+    	{
+    		String str1 = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
+        	ps = con.prepareStatement(str1);
+        	ps.setString(2, "");
+        	ps.setFloat(1, 0);
+        	ps.setInt(3, auction_id);
+        	ps.executeUpdate();
+    	}
     	
     	
 		response.sendRedirect("manageAuctionsCustomerRep.jsp");		

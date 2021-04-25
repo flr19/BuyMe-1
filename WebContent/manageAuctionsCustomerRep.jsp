@@ -9,6 +9,11 @@
 <title>Browse Auctions Customer Rep</title>
 <link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+			<style>
+			body {
+			margin: 0;
+			}
+		</style>
 </head>
 <body>
 	<button onclick="window.location.href='customerRepHomepage.jsp';">Return to Customer Rep Homepage</button>
@@ -57,6 +62,10 @@
 		out.print("<th>");
 		out.print("End Date");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("Current Bid");
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print("Winner/ Tentative Winner");
@@ -102,6 +111,10 @@
 
 			out.print("<td>");
 			out.print(result.getTimestamp("end_date"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(result.getFloat("current_bid"));
 			out.print("</td>");
 
 			out.print("<td>");

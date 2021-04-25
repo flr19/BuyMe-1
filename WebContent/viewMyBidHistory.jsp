@@ -22,7 +22,7 @@
 
 	try {
 		
-		String str = "select * from auction join bid using (auction_id) join product using (product_id) where buyer = '" + username + "'";
+		String str = "select * from auction join bid using (auction_id) join product using (product_id) where buyer = '" + username + "' order by amount ";
 ;
 		result = stmt.executeQuery(str);
 		

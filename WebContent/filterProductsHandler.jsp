@@ -9,29 +9,6 @@
 <title>search the list of items by various criteria</title>
 <link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
-<style>
-      			table {
-				width:100%;
-			}
-			table, th, td {
-  				border: 1px solid black;
- 				border-collapse: collapse;
- 				font-size: 8pt;
-			}
-			th, td {
-  				text-align: center;
-			}
-			table tr:nth-child(even) {
-  				background-color: #eee;
-			}
-			table tr:nth-child(odd) {
- 				background-color: #fff;
-			}
-			table th {
-  				background-color: aqua;
-  				color: black;
-			}
-		</style>
 </head>
 <body>
 <button onclick="window.location.href='filterProducts.jsp';">Return to Filter Products Page</button><br>
@@ -140,8 +117,6 @@
 		}
 		String realQuery = query.toString();
 		stmt = con.prepareStatement(realQuery);
-		System.out.println("reached");
-		System.out.println(realQuery);
 		PreparedStatement ps3 = null;
 		ps3 = con.prepareStatement(realQuery);
 		int i = 1;
@@ -149,8 +124,6 @@
 		    ps3.setObject(i++, parameter);
 		}
 		result=ps3.executeQuery();
-
-
 		out.print("<table>");
 		out.print("<tr>");
 		out.print("<th>");

@@ -36,7 +36,8 @@ while(result.next())
 	PreparedStatement ps3 = con.prepareStatement(str2);
 	ps3.setInt(1,auction_id);
 	ResultSet result2 = ps3.executeQuery();
-	result2.next();
+	if(result2.next())
+	{
 	float current_bid = result2.getFloat("max(amount)");
 
 	str = "SELECT buyer from bid join auction using (auction_id) where amount = ? and auction_id = ?"; //get the max bid for our current auction
@@ -53,6 +54,16 @@ while(result.next())
 	ps.setFloat(1, current_bid);
 	ps.setInt(3, auction_id);
 	ps.executeUpdate();
+	}
+	else
+	{
+		str = "UPDATE auction a SET a.current_bid=? , a.winner=? where a.auction_id = ?";
+		ps = con.prepareStatement(str);
+		ps.setString(2, "");
+		ps.setFloat(1, 0);
+		ps.setInt(3, auction_id);
+		ps.executeUpdate();
+	}
 	
 	
 	}
@@ -66,7 +77,7 @@ while(result.next())
 	int auction_id = result.getInt("auction_id");
 	String str1 = "update bid set buyer =? where bid_id = ? and auction_id = ?";
 	PreparedStatement ps1 = con.prepareStatement(str1);
-	ps1.setString(1, null);
+	ps1.setString(1, "deleted user");
 	ps1.setInt(2, bid_id);
 	ps1.setInt(3, auction_id);
 	ps1.executeUpdate();
@@ -75,6 +86,7 @@ while(result.next())
 int res = st.executeUpdate("DELETE FROM account WHERE username='" + user + "'");
 if (res > 0) {
 	out.println("User deleted.");
+	out.println("<form action='manageUsers.jsp'><input type='submit' value='Go Back to Manage Users Page'/></form>");
 } else {
 	out.println("Error deleting user.");
 	out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");

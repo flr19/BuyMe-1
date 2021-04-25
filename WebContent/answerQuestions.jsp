@@ -20,8 +20,6 @@
 	ApplicationDB db = new ApplicationDB();
 	Connection conn = db.getConnection();
 	try {
-
-		String username = (session.getAttribute("user")).toString();
 		String questionsQuery = "SELECT * FROM questions";
 		String check = "Customer rep hasn't answered yet";
 

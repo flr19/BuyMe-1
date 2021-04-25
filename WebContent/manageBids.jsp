@@ -28,7 +28,7 @@ ps1.setInt(1, auction_id);
 ResultSet rs = ps1.executeQuery();
 try 
 {
-	String viewBid = "SELECT * FROM bid join auction using (auction_id) WHERE buyer is not null and auction_id = ?";
+	String viewBid = "SELECT * FROM bid join auction using (auction_id) WHERE auction_id = ? order by amount desc";
 	ps = con.prepareStatement(viewBid);
 	ps.setInt(1, auction_id);
 	result = ps.executeQuery();
