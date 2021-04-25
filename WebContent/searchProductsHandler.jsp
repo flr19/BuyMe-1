@@ -6,8 +6,12 @@
 <html>
 <head>
 <title>Search Products</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='searchProducts.jsp';">Return to Search Products Page</button>
+<h3> These are the list of items based on your keyword</h3>
 	<%
 	try {
 		ApplicationDB db = new ApplicationDB();
@@ -58,6 +62,11 @@
 
 			out.print("<td>");
 			out.print(rs.getString("gender"));
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print("<form action='createAlertProduct.jsp' method='post'><button name='product_id' type='submit' value='"
+			+ rs.getInt("product_id") + "'> Alert Me! </button></form>");
 			out.print("</td>");
 			
 			out.print("</tr>");

@@ -6,9 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Account Page</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='homepage.jsp';">Return to Homepage/ landing page</button><br>
+	<button onclick="window.location.href='logout.jsp';">Logout</button><br>
 
+<% out.println("Welcome: "+ session.getAttribute("user")); %>
 	<div class="frontend">
 		<h1>Account Page</h1>
 		<h2>Search Functions</h2>

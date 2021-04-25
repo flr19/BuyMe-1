@@ -9,9 +9,12 @@
 
 <meta charset="ISO-8859-1">
 <title>View Auctions By Users</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-
+	<button onclick="window.location.href='account.jsp';">Return to Account Page</button>
+<h2> View Auctions that Other Users have participated in</h2>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

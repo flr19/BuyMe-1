@@ -6,9 +6,11 @@
 <html>
 <head>
 <title>Manage Users</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<a href="customerRepHomepage.jsp">Return to dashboard.</a>
+	<button onclick="window.location.href='customerRepHomepage.jsp';">Return to account page</button><br>
 	<h3>Manage User Accounts</h3>
 	<form>
 		<input type="text" name="search" placeholder="username">

@@ -4,6 +4,8 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Answers Handler</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <html>
 <body>
@@ -25,15 +27,14 @@
 			int result = 0;
 			result = ps.executeUpdate();
 			if (result < 1) {
-		out.println("Error: Question failed.");
+		out.println("Error: Answer Question failed.");
 			} else {
 	%>
 
-	<jsp:include page="questions.jsp" />
 	<div class="frontend">
-		<h1>Question was successfully answered.</h1>
+		<h2>Question was successfully answered.</h2>
 	</div>
-	<a href="answerQuestions.jsp"> Answer More Questions</a>
+	<a href="answerQuestions.jsp"> Answer anymore questions</a>
 	<%
 	}
 	} else {
@@ -41,7 +42,7 @@
 	return;
 	}
 	} catch (Exception e) {
-	out.print("<p>Error connecting to MYSQL server.</p>" + e);
+	out.print("<p>Error</p>" + e);
 	e.printStackTrace();
 	} finally {
 	ps.close();

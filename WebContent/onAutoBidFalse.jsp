@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>AutoBid False</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='bidOnItem.jsp';">Return to Bid Page to set AutoBid</button>
+
    <form action="checkBid.jsp" method="POST">	
 	<table>
 	 <tr> 

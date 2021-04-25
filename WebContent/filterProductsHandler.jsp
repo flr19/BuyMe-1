@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>search the list of items by various criteria</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 
@@ -20,7 +22,6 @@
 	
 	try {
 		String categoryv, brandv,colorv, genderv, sellerv, statusv;
-		//float pricev = 0;
 		
 		if(!request.getParameter("category").isEmpty())
 		{

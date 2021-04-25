@@ -2,6 +2,14 @@
 	pageEncoding="UTF-8" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Check Create Watch</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+</head>
+<body>
 
 <%
 PreparedStatement ps = null;
@@ -51,3 +59,5 @@ try {
 	}
 }
 %>
+</body>
+</html>

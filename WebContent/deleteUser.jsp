@@ -7,6 +7,8 @@
 <html>
 <head>
 <title>Delete User</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <%
 try {

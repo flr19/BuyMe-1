@@ -4,10 +4,15 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Answers Questions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <html>
 <body>
+	<button onclick="window.location.href='customerRepHomepage.jsp';">Return to homepage</button>
 
+<h2>View Questions</h2>
+<p> Answer any unanswered questions</p>
 
 	<%
 	PreparedStatement ps = null;
@@ -74,7 +79,7 @@
 	out.print("</table>");
 
 	} catch (SQLException e) {
-	out.print("<p>Error connecting to MYSQL server.</p>");
+	out.print("<p>Error</p>");
 	e.printStackTrace();
 	} finally {
 	try {

@@ -6,8 +6,11 @@
 <html>
 <head>
 <title>View Similar Items</title>
-</head>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 <body>
+	<button onclick="window.location.href='sortAuctions.jsp';">Return to Auctions Page</button>
+<h2>View Similar Items</h2>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

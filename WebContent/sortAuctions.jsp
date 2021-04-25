@@ -8,9 +8,14 @@
 
 <meta charset="ISO-8859-1">
 <title>Sort Auctions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-<a href = 'account.jsp'> Go Back to Account</a>
+	<button onclick="window.location.href='account.jsp';">Return to account page</button>
+	<h2> List of all open auctions. </h2>
+	<p>Sort by different parameters available</p>
+	<p>Bid on item or view bid history for that auction</p>
 	<div id="buttons">
 		<form action='sortAuctionsHandler.jsp'>
 			<input name="sortAuctions" type="radio" value="Sort by Auction ID"
@@ -27,6 +32,7 @@
 			Sort by End Time <input type="submit" value="Submit" />
 		</form>
 	</div>
+	
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

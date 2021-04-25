@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Create Account</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+<h3> Create a New Account</h3>
 	<form action="checkCreateAccount.jsp" method="POST">
 		Enter name: <input type="text" name="name" /> <br /> Enter username: <input
 			type="text" name="username" /> <br /> Enter password: <input

@@ -7,8 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>My Auctions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='account.jsp';">Return to Homepage</button>
+<h3> List of auctions started by me!</h3>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

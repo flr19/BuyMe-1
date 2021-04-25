@@ -7,8 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Manage Bids</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='manageAuctionsCustomerRep.jsp';">Return to View All Auctions</button>
+
+<h3> View All Bids</h3>
 <% 
 ApplicationDB db = new ApplicationDB();
 Connection con = db.getConnection();
@@ -55,7 +60,6 @@ try
 		out.print("<td>");
 		out.print("$" + result.getString("amount"));
 		out.print("</td>");
-		out.print("</tr>");
 		
 		String status = result.getString("status");
 		if(status.equals("open"))
@@ -64,6 +68,7 @@ try
 		out.print("<form action='removeBids.jsp' method='post'><button name='bid_id' type='submit' value='" + result.getInt("bid_id") + "'>Remove Bid</button></form>");
 		out.print("</td>");
 		}
+		out.print("</tr>");
 	}
 	out.print("</table>");	
 	

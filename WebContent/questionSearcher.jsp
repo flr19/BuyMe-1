@@ -6,10 +6,12 @@
 <html>
 <head>
 <title>Search Questions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 	<a href="askQuestion.jsp">Return to questions dashboard.</a>
-	<h3>Search Questions</h3>
+	<h3>Search Questions based on Keywords</h3>
 	<form>
 		<input type="text" name="search" placeholder="question">
 		<button type="submit">Search</button>

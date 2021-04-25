@@ -5,9 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Page</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<h2>Generate Sales Reports</h2>
+	<button onclick="window.location.href='homepage.jsp';">Return to Homepage/ landing page</button><br>
+
+	<h2>Admin Page Options</h2>
 	<a href="createRepAccount.jsp">Create Customer Representative
 		Account</a>
 	<br>

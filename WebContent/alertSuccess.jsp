@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Alert Success</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-<h2>Alert set successfully! Check out other watches</h2>
+<h2>Alert set successfully!</h2>
 <a href="showAllWatch.jsp">Check out Watches</a>
 </body>
 </html>

@@ -6,6 +6,8 @@
 <html>
 <head>
 <title>Edit User</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 	<%
@@ -15,29 +17,25 @@
 		Statement st = con.createStatement();
 		Statement st2 = con.createStatement();
 		ResultSet rs1, rs2;
-		String currName = request.getParameter("name");
-		String currEmail = request.getParameter("email");
-		String password = request.getParameter("password");
-		String name = request.getParameter("oldName");
-		String usn = request.getParameter("username");
-		String email = request.getParameter("oldEmail");
-		PreparedStatement update = con
-		.prepareStatement("UPDATE account SET password = ?, email = ?, name = ?  WHERE username = ?");
-		/* if (!currName.equals(name) || !currEmail.equals(email)){ */
-		update.setString(3, currName);
-		update.setString(2, currEmail);
-		update.setString(1, password);
-		update.setString(4, usn);
-		int res = update.executeUpdate();
-		System.out.println(update);
-		if (res >= 1) {
-			out.println("Changes have been saved.");
-			out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
-		} else {
-			out.println("Changes failed.");
-			out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
-		}
-
+		String newName = request.getParameter("newName");
+		String newEmail = request.getParameter("newEmail");
+		String password = request.getParameter("oldPassword");
+		String newPassword = request.getParameter("newPassword");
+		String username = request.getParameter("username");
+			PreparedStatement update = con
+			.prepareStatement("UPDATE account SET password = ?, email = ?, name = ?  WHERE username = ?");
+			update.setString(3, newName);
+			update.setString(2, newEmail);
+			update.setString(1, newPassword);
+			update.setString(4, username);
+			int res = update.executeUpdate();
+			if (res >= 1) {
+		out.println("Changes have been saved.");
+		out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
+			} else {
+		out.println("Changes failed.");
+		out.println("<a href='customerRepHomepage.jsp'>Return to dashboard.</a>");
+			}
 	} catch (SQLException se) {
 		out.println("Error: Cannot Update <br>");
 		out.println("<a href='manageUsers.jsp'>Return to list of users</a>");

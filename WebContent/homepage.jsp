@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>BuyMe - Homepage</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 <h2> Welcome to BuyMe! We offer a variety of watches.</h2>

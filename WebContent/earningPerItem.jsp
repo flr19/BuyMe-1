@@ -7,8 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Earning Per Item</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='generateSalesReport.jsp';">Return to Generate Sales Report Page</button>
+
 <% 			
 ApplicationDB db = new ApplicationDB();	
 Connection con = db.getConnection();

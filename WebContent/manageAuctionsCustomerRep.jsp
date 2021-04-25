@@ -7,8 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Browse Auctions Customer Rep</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='customerRepHomepage.jsp';">Return to Customer Rep Homepage</button>
+
+<h3>View All Auctions</h3>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

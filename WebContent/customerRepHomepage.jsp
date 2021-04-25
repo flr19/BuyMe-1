@@ -5,9 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Customer Rep Home</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<h2>Customer Representative Homepage</h2>
+	<button onclick="window.location.href='homepage.jsp';">Return to Homepage/ landing page</button><br>
+
+	<h2>Customer Representative Page</h2>
 	<a href="answerQuestions.jsp">Reply to User Questions</a>
 	<br>
 	<a href="manageUsers.jsp">Manage User Accounts</a>

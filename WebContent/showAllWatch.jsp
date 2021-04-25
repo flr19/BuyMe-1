@@ -6,10 +6,13 @@
 <html>
 <head>
 <title>Show All Watches</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<a href="account.jsp">Return to account</a>
 
+	<button onclick="window.location.href='account.jsp';">Return to account dashboard</button>
+<h3> List of all available watches.</h3>
 	<%
 	try {
 		ApplicationDB db = new ApplicationDB();
@@ -72,7 +75,7 @@
 			out.print("</td>");
 			
 			
-			if(result.getString("seller").equals(session.getAttribute("user").toString()))
+			if(result.getString("seller").equalsIgnoreCase(session.getAttribute("user").toString()))
 			{
 			
 			out.print("<td>");

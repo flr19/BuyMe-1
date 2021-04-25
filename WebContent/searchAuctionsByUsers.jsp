@@ -5,10 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Manage Users</title>
+<title>View Auctions By Users</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<a href="account.jsp">Return to dashboard.</a>
+	<a href="account.jsp">Return to homepage</a>
 	<h3>View Auctions By Users</h3>
 	<form>
 		<input type="text" name="search" placeholder="username">

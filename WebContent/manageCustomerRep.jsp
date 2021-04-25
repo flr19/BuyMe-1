@@ -6,9 +6,11 @@
 <html>
 <head>
 <title>Delete Customer Rep</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<a href="adminPage.jsp">Return to dashboard.</a>
+	<a href="adminPage.jsp">Return to Homepage</a>
 	<h3>Manage Customer Representative Accounts</h3>
 	<form>
 		<input type="text" name="search" placeholder="username">

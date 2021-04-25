@@ -7,8 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Create Watch</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+   	<button onclick="window.location.href='account.jsp';">Return to Homepage</button>
 	<div class="content">
 		<form action="checkCreateWatch.jsp" method="POST">
 			<label for="category">Category</label> <select name="category"

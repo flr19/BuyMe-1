@@ -7,8 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Filter Items</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='account.jsp';">Return to Homepage</button><br>
+
 	<b> Search the list of items by various criteria </b>
 	<br><b> Items in * are required </b>
 	<form method="post" action="filterProductsHandler.jsp">

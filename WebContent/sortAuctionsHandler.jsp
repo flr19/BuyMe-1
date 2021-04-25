@@ -7,9 +7,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sort Auctions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-<a href = 'account.jsp'> Go Back to Account</a>
+	<button onclick="window.location.href='sortAuctions.jsp';">Return to All Auctions Page</button>
 	<%
 
 	ApplicationDB db = new ApplicationDB();

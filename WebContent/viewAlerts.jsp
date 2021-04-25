@@ -7,9 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>View Alerts</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='account.jsp';">Return to account page</button>
 
+<h2> View your alerts</h2>
 <%
 	try {
 		ApplicationDB db = new ApplicationDB();

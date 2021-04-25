@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Create Customer Rep Account Check Details</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 <jsp:include page="checkWinner.jsp" />
@@ -29,10 +31,9 @@
 		int x = stmt.executeUpdate("insert into account values('" + userid + "', '" + pwd + "', '" + address + "', '"
 		+ email + "', '" + name + "', '" + account_type + "')");
 		int y = stmt.executeUpdate("insert into customerrep values('" + userid + "', '" + pwd + "')");
-		session.setAttribute("customerrep", userid);
 		session.setAttribute("account_type", account_type);
-		response.sendRedirect("success.jsp");
-		out.println("welcome " + userid);
+		out.println("Customer Representative account created");
+		out.println("<br><a href = 'adminPage.jsp'>Go back to homepage</a>");
 	}
 	%>
 

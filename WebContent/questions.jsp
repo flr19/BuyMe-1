@@ -7,8 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Frequently Asked Questions</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
+	<button onclick="window.location.href='askQuestion.jsp';">Go back to ask a question page</button>
+
+<h3> View all Questions</h3>
 	<%
 	PreparedStatement ps = null;
 	ResultSet result = null;
@@ -62,7 +67,7 @@
 		out.print("</table>");
 
 	} catch (SQLException e) {
-		out.print("<p>Error connecting to MYSQL server.</p>");
+		out.print("<p>Error</p>");
 		e.printStackTrace();
 	} finally {
 		try {

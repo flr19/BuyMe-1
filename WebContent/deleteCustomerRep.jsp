@@ -6,6 +6,8 @@
 <html>
 <head>
 <title>Delete Customer Representative</title>
+<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
 	<%
@@ -18,7 +20,7 @@
 		int result = st.executeUpdate("DELETE FROM customerrep WHERE username='" + user + "'");
 		if (result > 0) {
 			out.println("Representative deleted");
-			out.println("<a href='adminPage.jsp'>Return to dashboard.</a>");
+			out.println("<br><a href='adminPage.jsp'>Return to dashboard.</a>");
 		}
 	} catch (SQLException se) {
 		out.println("<a href='adminPage.jsp'>Return to dashboard.</a>");
