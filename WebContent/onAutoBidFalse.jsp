@@ -19,7 +19,7 @@
 	</td>
 	</tr> 
 	<tr>    
-	<td>Bid Amount: </td><td><input type="text" name="bid_amount" required></td>
+	<td>Bid Amount: </td><td><input type="number" name="bid_amount" placeholder = "0" required></td>
 	</tr> 	
 	
 	</table>

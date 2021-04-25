@@ -17,6 +17,7 @@
 	Statement stmt = con.createStatement();
 	PreparedStatement ps = null;
 	ResultSet result = null;
+	String user = session.getAttribute("user").toString();
 	int auction_id = Integer.parseInt(request.getParameter("auction_id"));
 	String str = "SELECT * FROM auction a, product p WHERE a.product_id=p.product_id and a.auction_id=" + auction_id;
 	result = stmt.executeQuery(str);
@@ -52,21 +53,25 @@
 	out.print("<th>");
 	out.print("Gender");
 	out.print("</th>");
+	out.print("<th>");
+	out.print("Seller");
+	out.print("</th>");
 
 	out.print("<th>");
 	out.print("Current Bid");
 	out.print("</th>");
+	
 
 	out.print("<th>");
 	out.print("Price");
 	out.print("</th>");
-
+	
 	out.print("<th>");
-	out.print("End Time");
+	out.print("New Bid Increment");
 	out.print("</th>");
 
 	out.print("<th>");
-	out.print("Winner");
+	out.print("End Time");
 	out.print("</th>");
 
 	out.print("<th>");
@@ -99,6 +104,10 @@
 		out.print("<td>");
 		out.print(result.getString("gender"));
 		out.print("</td>");
+		
+		out.print("<td>");
+		out.print(result.getString("seller"));
+		out.print("</td>");
 
 		out.print("<td>");
 		out.print(result.getFloat("current_bid"));
@@ -107,22 +116,27 @@
 		out.print("<td>");
 		out.print("$" + result.getFloat("price"));
 		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("$" + result.getFloat("new_bid_increment"));
+		out.print("</td>");
 
 		out.print("<td>");
 		out.print(result.getString("end_date"));
 		out.print("</td>");
 
 		out.print("<td>");
-		String tempwinner = result.getString("winner");
-		if (result.wasNull())
-			tempwinner = " ";
-		out.print(tempwinner);
-		out.print("</td>");
-
-		out.print("<td>");
 		String status = result.getString("status");
 		out.print(result.getString("status"));
 		out.print("</td>");
+		
+		String status1= result.getString("status");
+		if (!status1.equals("close") && result.getString("seller").equalsIgnoreCase(user) == false) {
+			out.print("<td>");
+			out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='"
+					+ result.getInt("auction_id") + "'> Bid on Item </button></form>");
+			out.print("</td>");
+				}
 		
 		out.print("</tr>");
 	}

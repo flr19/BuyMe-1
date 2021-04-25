@@ -40,6 +40,9 @@
 		out.print("<td>");
 		out.print("Gender");
 		out.print("</td>");
+		out.print("<td>");
+		out.print("Seller");
+		out.print("</td>");
 		out.print("</tr>");
 
 		while (rs.next()) {
@@ -65,9 +68,25 @@
 			out.print("</td>");
 			
 			out.print("<td>");
+			out.print(rs.getString("seller"));
+			out.print("</td>");
+			
+			if(rs.getString("seller").equalsIgnoreCase(session.getAttribute("user").toString()))
+			{
+			
+			out.print("<td>");
+			out.print("<form action='createAuction.jsp' method='post'><button name='product_id' type='submit' value='"
+			+ rs.getInt("product_id") + "'>Create Auction</button></form>");
+			out.print("</td>");
+			}
+			
+			else{
+			out.print("<td>");
 			out.print("<form action='createAlertProduct.jsp' method='post'><button name='product_id' type='submit' value='"
 			+ rs.getInt("product_id") + "'> Alert Me! </button></form>");
 			out.print("</td>");
+			}
+			
 			
 			out.print("</tr>");
 		}

@@ -33,7 +33,7 @@ try {
 		if (result < 1) {
 	out.println("Insert failed");
 		} else {
-	out.print("<h1>Your question has been submitted successfully.</h1>");
+	out.print("<h3>Your question has been submitted successfully. Please wait for a representative to answer your question shortly.</h3>");
 	out.print("<a href='questionSearcher.jsp'>Search for questions</a><br>");
 	out.print("<a href='account.jsp'>Return to homepage</a>");
 

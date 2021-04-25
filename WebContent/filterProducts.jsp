@@ -14,7 +14,7 @@
 	<button onclick="window.location.href='account.jsp';">Return to Homepage</button><br>
 
 	<b> Search the list of items by various criteria </b>
-	<br><b> Items in * are required </b>
+	<br><b> Items in * are required </b><br><br>
 	<form method="post" action="filterProductsHandler.jsp">
 	<label for="category">*Category</label> <select name="category"
 				id="category" required>
@@ -47,7 +47,7 @@
 			</tr>
 		</table>
 		<label for="status">*status</label> <select name="status"
-				id="status" >
+				id="status" required >
 				<option value="" disabled selected hidden="true">Select
 					category</option>
 				<option value="open">open</option>

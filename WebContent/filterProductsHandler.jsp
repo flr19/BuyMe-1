@@ -9,15 +9,38 @@
 <title>search the list of items by various criteria</title>
 <link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+<style>
+      			table {
+				width:100%;
+			}
+			table, th, td {
+  				border: 1px solid black;
+ 				border-collapse: collapse;
+ 				font-size: 8pt;
+			}
+			th, td {
+  				text-align: center;
+			}
+			table tr:nth-child(even) {
+  				background-color: #eee;
+			}
+			table tr:nth-child(odd) {
+ 				background-color: #fff;
+			}
+			table th {
+  				background-color: aqua;
+  				color: black;
+			}
+		</style>
 </head>
 <body>
-
+<button onclick="window.location.href='filterProducts.jsp';">Return to Filter Products Page</button><br>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
 	Statement stmt = con.createStatement();
 	ResultSet result = null;
-	System.out.println("print");
+	String user = session.getAttribute("user").toString();
 	List<Object> parameters = new ArrayList<Object>();
 	
 	try {
@@ -180,6 +203,27 @@
 			out.print("<td>");
 			out.print(result.getString("status"));
 			out.print("</td>");
+			
+			String status1 = result.getString("status");
+			
+			if (!status1.equals("close") && result.getString("seller").equalsIgnoreCase(user) == false) {
+				out.print("<td>");
+				out.print("<form action='bidOnItem.jsp' method='post'><button name='auction_id' type='submit' value='"
+						+ result.getInt("auction_id") + "'> Bid on Item </button></form>");
+				out.print("</td>");
+					}
+
+					out.print("<td>");
+					out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='"
+					+ result.getInt("auction_id") + "'> View Bid History </button></form>");
+					out.print("</td>");
+
+					out.print("<td>");
+					out.print("<form action='viewSimilarItems.jsp' method='post'><button name='auction_id' type='submit' value='"
+					+ result.getInt("auction_id") + "'> View Similar Items </button></form>");
+					out.print("</td>");
+
+					out.print("</tr>");
 
 		}
 

@@ -32,7 +32,8 @@
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		java.util.Date date = sdf.parse(endDate);
 		java.sql.Timestamp endTimestamp = new java.sql.Timestamp(date.getTime());
-
+		
+	
 		String insert = "INSERT INTO auction (product_id, seller, new_bid_increment, min_price, price, status, start_date, end_date, winner, current_bid)"
 		+ "VALUES(?, ?, ?, ?, ?, ?, now(), ?, ?, ?)";
 		ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
@@ -76,7 +77,14 @@
 		response.sendRedirect("sortAuctions.jsp");
 
 	} catch (Exception e) {
-		response.sendRedirect("createAuctionError.jsp");
+		%>
+		<h2>Error: Failed to create auction.</h2>
+		<p>
+			Minimum Bid Price must be greater than 0 <br>
+		</p>
+		<a href="createAuction.jsp">Click here to try again.</a>
+		<%
+		
 		e.printStackTrace();
 	} finally {
 		try {

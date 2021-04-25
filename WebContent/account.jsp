@@ -16,27 +16,28 @@
 <% out.println("Welcome: "+ session.getAttribute("user")); %>
 	<div class="frontend">
 		<h1>Account Page</h1>
+		
 		<h2>Search Functions</h2>
 		<ul>
 			<li><a href="filterProducts.jsp">Filter Items Based on Criteria</a></li>
 			<li><a href="searchProducts.jsp">Search Watches Based on Keywords</a></li>
 			<li><a href="searchAuctionsByUsers.jsp">Search Auctions By Users</a></li>
-			<li><a href="sortAuctions.jsp">View Auctions</a></li>
-		</ul>
-		<h2>Account Functions</h2>
-		<ul>
-			<li><a href="viewAlerts.jsp">View Alerts</a></li>
-			<li><a href="viewMyBidHistory.jsp">View My Bid History</a></li>
 		</ul>
 		<h2>Auction Functions</h2>	
 		<ul>
+			<li><a href="sortAuctions.jsp">View All Open Auctions</a></li>
 			<li><a href="myAuctions.jsp">My Auctions</a></li>
 			<li><a href="createWatch.jsp">Create a new watch</a></li>
 			<li><a href="showAllWatch.jsp">View Watches</a></li>
 		</ul>
-		<h2>Anything Else?</h2>	
+		<h2>Account Functions</h2>
 		<ul>
-			<li><a href="askQuestion.jsp">Ask Question</a></li>
+			<li><a href="viewAlerts.jsp">View My Alerts</a></li>
+			<li><a href="viewMyBidHistory.jsp">View My Bid History</a></li>
+		</ul>
+		<h2>Ask a Question</h2>	
+		<ul>
+			<li><a href="askQuestion.jsp">Ask Question to a Customer Representative</a></li>
 		</ul>
 	</div>
 </body>

@@ -32,8 +32,10 @@
 		+ email + "', '" + name + "', '" + account_type + "')");
 		session.setAttribute("user", userid);
 		//session.setAttribute("account_type", account_type);
-		response.sendRedirect("account.jsp");
-		out.println("welcome " + userid);
+		/* response.sendRedirect("account.jsp"); */
+		/* out.println("welcome " + userid); */
+		out.println("<h3> Account Created Successfully");
+		out.println("<form action='login.jsp'><input type='submit' value='Login'/></form>");
 	}
 	%>
 

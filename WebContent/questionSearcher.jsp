@@ -23,7 +23,7 @@
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		String entity = request.getParameter("search");
-		String str = "SELECT question,answer FROM questions WHERE question LIKE'%" + entity + "%'";
+		String str = "SELECT question,answer FROM questions WHERE question LIKE'%" + entity + "%' or answer like '%" + entity + "%'";
 		ResultSet result = stmt.executeQuery(str);
 		out.print("<table>");
 		out.print("<tr>");

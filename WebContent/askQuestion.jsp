@@ -19,7 +19,8 @@
 		</form>
 	</div>
 	<h2>
-		<a href="questions.jsp">View all Questions</a>
+		<a href="questions.jsp">View all Questions</a><br>
+		<a href="questionSearcher.jsp">Search for Questions</a>
 	</h2>
 </body>
 </html>

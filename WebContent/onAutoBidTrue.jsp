@@ -20,10 +20,10 @@
 	</td>
 	</tr> 
 	<tr>    
-	<td>Bid Increment: </td><td><input type="text" name="autobid_amount" required></td>
+	<td>Bid Increment: </td><td><input type="number" name="autobid_amount" placeholder = "0" required></td>
 	</tr> 
 	<tr>    
-	<td>Max Bid Amount: </td><td><input type="text" name="max_bid" required></td>
+	<td>Max Bid Amount: </td><td><input type="number" name="max_bid" placeholder = "0" required></td>
 	</tr>		
 	</table>
 	<input type="submit" value="Submit Bid!">
