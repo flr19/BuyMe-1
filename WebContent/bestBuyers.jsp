@@ -14,6 +14,8 @@
 <body>
 	<button onclick="window.location.href='generateSalesReport.jsp';">Return to Generate Sales Report Page</button>
 <h2>List of Best Buyers</h2>
+
+<p> Best Buyers are based on how much money they spent</p>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

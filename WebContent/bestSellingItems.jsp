@@ -15,6 +15,7 @@
 <body>
 	<button onclick="window.location.href='generateSalesReport.jsp';">Return to Generate Sales Report Page</button>
 <h2>View Best Selling Items</h2>
+<p> Best selling items are based on how many times that item was sold in an auction</p>
 	<%
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
