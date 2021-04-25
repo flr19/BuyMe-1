@@ -29,4 +29,5 @@ Equal contribution among all team members
 Assumptions:
 - For our earnings per end-user, if the seller did not make any earnings, it doesn't show up.
 - We do not distinguish between buyer and seller even though we ask for their choice in the create account page. Users can bid on auctions they haven't created and create auction on items they have created.
+- We gave the buyers the authority over the bid increments which should be greater than the seller's bid increment. For users who have opted for auto-bidding, their last bid amount stops at the upper limit. 
 
