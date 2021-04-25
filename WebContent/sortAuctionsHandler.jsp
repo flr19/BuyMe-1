@@ -9,8 +9,8 @@
 <title>Sort Auctions</title>
 </head>
 <body>
+<a href = 'account.jsp'> Go Back to Account</a>
 	<%
-
 
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();

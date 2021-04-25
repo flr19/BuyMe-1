@@ -10,6 +10,7 @@
 <title>Sort Auctions</title>
 </head>
 <body>
+<a href = 'account.jsp'> Go Back to Account</a>
 	<div id="buttons">
 		<form action='sortAuctionsHandler.jsp'>
 			<input name="sortAuctions" type="radio" value="Sort by Auction ID"
