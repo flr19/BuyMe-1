@@ -33,6 +33,7 @@
 	<div class="frontend">
 		<h1>Question was successfully answered.</h1>
 	</div>
+	<a href="answerQuestions.jsp"> Answer More Questions</a>
 	<%
 	}
 	} else {
