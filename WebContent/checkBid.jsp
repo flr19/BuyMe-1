@@ -127,7 +127,7 @@
 			ps4.setFloat(2, auction_id);
 			result2 = ps4.executeQuery();
 			result2.next();
-
+			int i = 0;
 			float tem = 0;
 			int current_bid_id = result2.getInt("bid_id");
 
@@ -143,6 +143,7 @@
 			//System.out.println("Check 2");
 			while (true) {
 				//System.out.println("Check 3");
+				i++;
 				str3 = "SELECT * FROM bid b WHERE b.bid_id = ?";
 				ps4 = con.prepareStatement(str3);
 				ps4.setFloat(1, previous_bid_id);
@@ -155,6 +156,7 @@
 
 				if (previous_auto_bid) {
 					//System.out.println("Check 4");
+					System.out.println("The i currently is : "+ i+ "and bid, incre, max : "+previous_auto_bid+"ikwshjgdbiuwd"+previous_auto_increment+"jvsdjhvdh"+previous_auto_max);
 					if (newBid + previous_auto_increment > previous_auto_max) {
 						if (previous_auto_max - newBid < new_bid_increment) {
 							break;
@@ -181,9 +183,8 @@
 					newUser = previous_user;
 					previous_user = temp;
 
-					temp2 = previous_bid_id;
-					previous_bid_id = current_bid_id;
-					current_bid_id = temp2;
+				
+					previous_bid_id ++;
 
 					newBid = tem;
 

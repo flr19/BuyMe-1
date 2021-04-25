@@ -44,10 +44,18 @@
 			out.print("<td>");
 			out.print(result.getInt("auction_id"));
 			out.print("</td>");
-
+			
+			if(result.getString("buyer")==null)
+			{
+				out.print("<td>");
+				out.print("deleted user");
+				out.print("</td>");
+			}
+			else{
 			out.print("<td>");
 			out.print(result.getString("buyer"));
 			out.print("</td>");
+			}
 
 			out.print("<td>");
 			out.print("$" + result.getFloat("amount"));

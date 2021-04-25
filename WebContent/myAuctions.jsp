@@ -54,6 +54,10 @@
 		out.print("<th>");
 		out.print("Price");
 		out.print("</th>");
+		
+		out.print("<th>");
+		out.print("New Bid Increment");
+		out.print("</th>");
 
 		out.print("<th>");
 		out.print("End Time");
@@ -104,6 +108,10 @@
 			out.print("<td>");
 			out.print("$" + result.getFloat("price"));
 			out.print("</td>");
+			
+			out.print("<td>");
+			out.print("$" + result.getFloat("new_bid_increment"));
+			out.print("</td>");
 
 			out.print("<td>");
 			out.print(result.getTimestamp("end_date"));
@@ -125,6 +133,12 @@
 			out.print("<td>");
 			out.print(result.getString("status"));
 			out.print("</td>");
+			
+			out.print("<td>");
+			out.print("<form action='bidHistory.jsp' method='post'><button name='auction_id' type='submit' value='"
+			+ result.getInt("auction_id") + "'> View Bid History </button></form>");
+			out.print("</td>");
+
 
 			out.print("</tr>");
 		}
