@@ -1,7 +1,7 @@
 
 # BuyMe - Online Auction System (eBay clone)
 
-- Contributors: <a href = 'https://github.com/kuhuhalder'> Kuhu Halder</a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf</a>, <a href = 'https://github.com/princerawal'> Prince Rawal</a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
+- Contributors: <a href = 'https://github.com/princerawal'> Prince Rawal</a>, <a href = 'https://github.com/kuhuhalder'> Kuhu Halder</a>, <a href = 'https://github.com/flr19' >Farah Lubaba Rouf</a>, <a href = 'https://github.com/jigisham'>Jigisha Mavani</a>
 - Course: CS 336 Principles of Information and Data Management
 - Professor: Antonio Miranda-Garcia
 - Semester: Spring 2021
