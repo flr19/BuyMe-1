@@ -49,7 +49,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES ('childe','childe','childe','childe','childe','buyer'),('farah01','lubaba','saudi','farah@com','farah','customerrep'),('jigisha19','mavani','edison','jigisha@com','jigisha','customerrep'),('kuhu27','halder','1202','kuhu@com','kuhu','customerrep'),('prince18','1234','newbrunswick','prince@com','prince','admin'),('venti','venti','venti','venti','venti','buyer'),('xiao','xiao','xiao','xiao','xiao','buyer');
+INSERT INTO `account` VALUES ('black','black','1202','pink@com','pink','buyer'),('diluc','diluc','edison','diluc@com','diluc','null'),('farah01','lubaba','saudi','farah@com','farah','customerrep'),('jigisha19','mavani','edison','jigisha@com','jigisha','customerrep'),('kuhu27','halder','1202','kuhu@com','kuhu','customerrep'),('pink','pink','pink','pink','pink','buyer'),('prince18','1234','newbrunswick','prince@com','prince','admin'),('venti','xiao','venti','xiao@com','xiao','buyer');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `alerts` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `alerts_ibfk_1` FOREIGN KEY (`username`) REFERENCES `account` (`username`) ON DELETE CASCADE,
   CONSTRAINT `alerts_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `alerts` (
 
 LOCK TABLES `alerts` WRITE;
 /*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
-INSERT INTO `alerts` VALUES (5,'xiao','You have been outbidded by pink, who has currently bidded $155.0. Bid now to get the item!',4,7),(7,'venti','You have been outbidded by pink, who has currently bidded $105.0. Bid now to get the item!',5,8),(9,'childe','Dear childe, you have won the auction! Please keep the payment of amount $200 ready :)',5,8),(11,'venti','You have been outbidded by prince, who has currently bidded $310.0. Bid now to get the item!',5,9),(12,'venti','You have been outbidded by prince, who has currently bidded $115.0. Bid now to get the item!',5,10);
+INSERT INTO `alerts` VALUES (36,'venti','You have been outbidded by Prince, who has currently bidded $140.0. Bid now to get the item!',15,27),(39,'Black','You have been outbidded by Prince, who has currently bidded $140.0. Bid now to get the item!',19,30),(45,'Black','You have been outbidded by Pink, who has currently bidded $270.0. Bid now to get the item!',20,32),(46,'Black','You have been outbidded by pink, who has currently bidded $260.0. Bid now to get the item!',20,32),(47,'Black','You have been outbidded by pink, who has currently bidded $270.0. Bid now to get the item!',20,32),(48,'pink','You have been outbidded by Black, who has currently bidded $220.0. Bid now to get the item!',20,32),(49,'Black','You have been outbidded by pink, who has currently bidded $270.0. Bid now to get the item!',20,32),(50,'black','You have been outbidded by pink, who has currently bidded $200.0. Bid now to get the item!',21,33),(51,'venti','You have been outbidded by pink, who has currently bidded $230.0. Bid now to get the item!',16,35);
 /*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +133,7 @@ CREATE TABLE `auction` (
   KEY `product_id` (`product_id`),
   CONSTRAINT `auction_ibfk_1` FOREIGN KEY (`seller`) REFERENCES `product` (`seller`) ON DELETE CASCADE,
   CONSTRAINT `auction_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `auction` (
 
 LOCK TABLES `auction` WRITE;
 /*!40000 ALTER TABLE `auction` DISABLE KEYS */;
-INSERT INTO `auction` VALUES (7,4,'venti',5,100,10,'close','2021-04-25 00:12:02','2021-04-25 00:46:30','pink',155),(8,5,'xiao',5,40,40,'close','2021-04-25 00:23:55','2021-04-25 00:32:08','childe',200),(9,5,'xiao',10,120,20,'close','2021-04-25 01:03:45','2021-04-25 01:08:06','prince',310),(10,5,'xiao',5,200,10,'open','2021-04-25 01:04:09','2021-08-23 00:00:00','venti',100);
+INSERT INTO `auction` VALUES (16,10,'Black',10,150,15,'close','2021-04-25 19:44:50','2021-04-25 22:21:52','Prince',200),(27,15,'Black',5,120,10,'close','2021-04-25 22:04:14','2021-04-25 22:21:52','Prince',140),(28,17,'black',10,200,10,'close','2021-04-25 22:04:29','2021-04-25 22:21:52','No Winner',140),(29,18,'venti',10,120,10,'close','2021-04-25 22:06:15','2021-04-25 22:21:52','Black',120),(30,19,'venti',10,150,10,'close','2021-04-25 22:07:34','2021-04-25 22:21:52','No Winner',140),(32,20,'venti',10,100,10,'open','2021-04-25 22:23:35','2021-05-01 01:00:00','pink',270),(33,21,'venti',10,140,10,'open','2021-04-25 22:24:29','2021-05-01 00:00:00','pink',200),(35,16,'black',5,150,10,'open','2021-04-26 02:38:50','2021-05-23 00:00:00','pink',230),(36,17,'black',10,200,20,'open','2021-04-26 02:39:16','2021-05-24 00:00:00','venti',30),(37,22,'pink',15,300,30,'open','2021-04-26 02:40:39','2021-06-24 00:00:00','black',60);
 /*!40000 ALTER TABLE `auction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `bid` (
   KEY `auction_id` (`auction_id`),
   CONSTRAINT `bid_ibfk_1` FOREIGN KEY (`buyer`) REFERENCES `account` (`username`),
   CONSTRAINT `bid_ibfk_2` FOREIGN KEY (`auction_id`) REFERENCES `auction` (`auction_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `bid` (
 
 LOCK TABLES `bid` WRITE;
 /*!40000 ALTER TABLE `bid` DISABLE KEYS */;
-INSERT INTO `bid` VALUES (16,'xiao',150,1,5,10,7),(17,NULL,170,1,15,15,7),(18,'xiao',150,1,5,20,7),(19,NULL,170,1,15,35,7),(20,'xiao',150,1,5,40,7),(21,NULL,170,1,15,55,7),(22,'xiao',150,1,5,60,7),(23,NULL,170,1,15,75,7),(24,'xiao',150,1,5,80,7),(25,NULL,170,1,15,95,7),(26,'xiao',150,1,5,100,7),(27,NULL,170,1,15,115,7),(28,'xiao',150,1,5,120,7),(29,NULL,170,1,15,135,7),(30,'xiao',150,1,5,140,7),(31,NULL,170,1,15,155,7),(33,'venti',100,1,10,40,8),(34,NULL,200,1,10,45,8),(35,'venti',100,1,10,55,8),(36,NULL,200,1,10,65,8),(37,'venti',100,1,10,75,8),(38,NULL,200,1,10,85,8),(39,'venti',100,1,10,95,8),(40,NULL,200,1,10,105,8),(41,'childe',-1,0,-1,200,8),(42,'venti',300,1,20,20,9),(43,'venti',100,1,20,10,10),(44,NULL,350,1,20,30,9),(45,'venti',300,1,20,50,9),(46,NULL,350,1,20,70,9),(47,'venti',300,1,20,90,9),(48,NULL,350,1,20,110,9),(49,'venti',300,1,20,130,9),(50,NULL,350,1,20,150,9),(51,'venti',300,1,20,170,9),(52,NULL,350,1,20,190,9),(53,'venti',300,1,20,210,9),(54,NULL,350,1,20,230,9),(55,'venti',300,1,20,250,9),(56,NULL,350,1,20,270,9),(57,'venti',300,1,20,290,9),(58,NULL,350,1,20,310,9),(60,'venti',100,1,20,35,10),(62,'venti',100,1,20,70,10),(64,'venti',100,1,20,100,10);
+INSERT INTO `bid` VALUES (61,NULL,200,1,20,15,16),(63,NULL,200,1,20,45,16),(65,NULL,200,1,20,85,16),(67,NULL,200,1,20,125,16),(69,NULL,200,1,20,165,16),(71,NULL,200,1,20,200,16),(174,'Black',400,1,20,10,29),(175,'venti',200,1,10,10,27),(176,'venti',200,1,10,10,28),(177,'Black',100,1,20,10,30),(178,NULL,200,1,20,15,27),(179,'venti',200,1,10,25,27),(180,NULL,200,1,10,35,27),(181,'venti',100,1,20,55,27),(182,NULL,200,1,20,75,27),(183,'venti',200,1,10,85,27),(184,NULL,200,1,10,95,27),(185,'venti',100,1,20,100,27),(186,NULL,200,1,20,120,27),(187,'venti',200,1,10,130,27),(188,NULL,200,1,10,140,27),(189,NULL,200,1,20,20,28),(190,'venti',200,1,10,30,28),(191,NULL,100,1,20,50,28),(192,'venti',200,1,20,70,28),(193,NULL,200,1,10,80,28),(194,'venti',200,1,10,90,28),(195,NULL,100,1,20,100,28),(196,'venti',200,1,20,120,28),(197,NULL,200,1,10,130,28),(198,'venti',200,1,10,140,28),(199,NULL,300,1,20,20,29),(200,'Black',400,1,20,40,29),(201,NULL,200,1,10,50,29),(202,'Black',200,1,10,60,29),(203,NULL,100,1,20,80,29),(204,'Black',200,1,20,100,29),(205,NULL,200,1,10,110,29),(206,'Black',200,1,10,120,29),(207,NULL,500,1,20,20,30),(208,'Black',100,1,20,40,30),(209,NULL,200,1,20,60,30),(210,'Black',200,1,10,70,30),(211,NULL,200,1,10,80,30),(212,'Black',100,1,20,100,30),(213,NULL,200,1,20,120,30),(214,'Black',200,1,10,130,30),(215,NULL,200,1,10,140,30),(217,'Black',250,1,20,20,32),(219,'Black',250,1,20,60,32),(221,'Black',250,1,20,100,32),(239,'pink',400,1,20,110,32),(240,'Black',250,1,20,130,32),(241,'pink',200,1,10,140,32),(242,'Black',250,1,20,160,32),(243,'pink',200,1,10,170,32),(244,'Black',250,1,20,190,32),(245,'pink',200,1,10,200,32),(246,'Black',250,1,20,220,32),(247,'pink',400,1,20,230,32),(248,'Black',250,1,20,250,32),(249,'pink',400,1,20,270,32),(250,'pink',300,1,20,10,33),(251,'pink',500,1,30,10,35),(252,'black',300,1,40,20,33),(253,'pink',300,1,20,40,33),(254,'black',200,1,20,60,33),(255,'pink',300,1,20,80,33),(256,'black',200,1,20,100,33),(257,'pink',300,1,20,120,33),(258,'black',200,1,20,140,33),(259,'pink',300,1,20,160,33),(260,'black',200,1,20,180,33),(261,'pink',300,1,20,200,33),(262,'black',-1,0,-1,60,37),(263,'venti',250,1,40,15,35),(264,'pink',500,1,30,45,35),(265,'venti',200,1,20,65,35),(266,'pink',500,1,30,95,35),(267,'venti',200,1,20,115,35),(268,'pink',500,1,30,145,35),(269,'venti',200,1,20,165,35),(270,'pink',500,1,30,195,35),(271,'venti',200,1,20,200,35),(272,'pink',500,1,30,230,35),(273,'venti',-1,0,-1,30,36);
 /*!40000 ALTER TABLE `bid` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +200,7 @@ CREATE TABLE `customerrep` (
 
 LOCK TABLES `customerrep` WRITE;
 /*!40000 ALTER TABLE `customerrep` DISABLE KEYS */;
-INSERT INTO `customerrep` VALUES ('farah01','lubaba'),('jigisha19','mavani'),('kuhu27','halder');
+INSERT INTO `customerrep` VALUES ('diluc','diluc'),('farah01','lubaba'),('jigisha19','mavani'),('kuhu27','halder');
 /*!40000 ALTER TABLE `customerrep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +221,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   KEY `seller` (`seller`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`seller`) REFERENCES `account` (`username`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +230,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (4,'Analog Watches','chopard','black','man','venti'),(5,'Analog Watches','van cleef arpels','blue','girl','xiao');
+INSERT INTO `product` VALUES (10,'Analog Watches','Rolex','Brown','Guy','Black'),(15,'Analog Watches','Rolex','Blue','Woman','Black'),(16,'Touchscreen Watches','piere Cardin','Blue','Man','Black'),(17,'Touchscreen Watches','sigma','black','man','black'),(18,'Digital Watches','michael kors','pink','woman','venti'),(19,'Digital Watches','piaget','purple','woman','venti'),(20,'Digital Watches','piaget','black','man','venti'),(21,'Touchscreen Watches','sigma','black','girl','venti'),(22,'Digital Watches','mont blanc','purple','woman','pink');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +252,7 @@ CREATE TABLE `questions` (
   KEY `customerrep_username` (`customerrep_username`),
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`username`) REFERENCES `account` (`username`) ON DELETE CASCADE,
   CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`customerrep_username`) REFERENCES `customerrep` (`username`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,6 +261,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (3,'venti','kuhu27','how to autobid?','like this');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
@@ -274,4 +275,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-24 21:18:03
+-- Dump completed on 2021-04-25 22:45:32
