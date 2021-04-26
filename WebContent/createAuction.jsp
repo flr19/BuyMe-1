@@ -23,7 +23,7 @@
 	</td>
 	</tr> 
 	<tr>    
-	<td>End Date: <br><p>Enter the end date of the auction in the specified format</p> </td><td><input type="text" name="end_datetime" id="end_datetime" placeholder="yyyy-MM-dd hh:mm:ss" required></td>
+	<td>End Date: <br><p>Enter the end date of the auction in the specified format (yyyy-MM-dd hh:mm:ss)</p> </td><td><input type="text" name="end_datetime" id="end_datetime" placeholder="yyyy-MM-dd hh:mm:ss" required></td>
 	</tr> 
 	<tr>    
 	<td>Secret Minimum Price: <br><p>Enter the minimum price that you want to sell this item for</p><br> <p>Minimum Price has to be greater than 0 </p> </td><td><input type="number" name="min_price" placeholder="0" required></td>

@@ -9,8 +9,7 @@
 		href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
 </head>
 <body>
-	<button onclick="window.location.href='bidOnItem.jsp';">Return to Bid Page to set AutoBid</button>
-
+<button onclick="window.location.href='sortAuctions.jsp';">Return to Auctions Page</button>
 <div class="content">
 		<form action="checkBid.jsp" method="POST">	
 	<table>
