@@ -8,7 +8,7 @@
 - Course Site: <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/course-synopses/course-details/01-198-336-principles-of-information-and-data-management'> Link </a>
 - <a href = 'http://ec2-18-222-204-142.us-east-2.compute.amazonaws.com:8080/CS336-Project/'>Project URL</a>
 
-All use of this code must be consistent with the <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/academic-integrity-policy/programming-assignments' DCS Academic Integrity Policy</a> and the <a href = 'http://studentconduct.rutgers.edu/student-conduct-processes/university-code-of-student-conduct/' Rutgers University Code of Student Conduct.</a>
+All use of this code must be consistent with the <a href = 'https://www.cs.rutgers.edu/academics/undergraduate/academic-integrity-policy/programming-assignments'> DCS Academic Integrity Policy </a> and the <a href = 'http://studentconduct.rutgers.edu/student-conduct-processes/university-code-of-student-conduct/'> Rutgers University Code of Student Conduct.</a>
 
 ## Table of Contents
 
